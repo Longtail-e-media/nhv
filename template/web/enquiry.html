@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!-- Title Of Site -->
+    <jcms:site:seotitle/>
+
+    <!-- Fav and Touch Icons -->
+    <jcms:site:fevicon/>
+
+    <!-- Font face -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+    <!-- CSS Plugins -->
+    <link href="css/font-icons.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/animate.html" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/plugin.css" rel="stylesheet">
+
+    <!-- CSS Custom -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- CSS Custom -->
+    <link href="css/your-style.css" rel="stylesheet">
+</head>
+
+<body class="with-waypoint-sticky">
+<!-- start Body Inner -->
+<div class="body-inner">
+    <!-- start Header -->
+    <header id="header-waypoint-sticky" class="header-main header-main1 header-mobile-menu with-absolute-navbar">
+        <div class="container">
+            <div class="header-outer clearfix">
+                <div class="row shrink-auto-lg gap-0 align-items-center">
+                    <div class="col-9 col-shrink z-in-1111">
+                        <div class="col-inner">
+                            <div class="main-logo">
+                                <jcms:site:logo/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-shrink order-last-lg">
+							<div class="col-inner">
+								<ul class="nav-mini-right">
+									<li>
+										<button class="btn btn-toggle collapsed" data-toggle="collapse" data-target="#mobileMenu"></button>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+                    <div class="col-12 col-auto order-last-lg">
+                        <div class="navbar-wrapper">
+                            <div class="navbar navbar-expand-lg">
+                                <div id="mobileMenu" class="collapse navbar-collapse">
+                                    <nav class="main-nav-menu main-menu-nav navbar-arrow">
+                                        <jcms:module:menu/>
+                                    </nav><!--/.nav-collapse -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- start Header -->
+
+    <!-- start Main Wrapper -->
+    <div class="main-wrapper scrollspy-container">
+        <section class="page-wrapper page-detail">
+            
+            <div class="page-title mb-0 about-banner about-gallery-banner">
+                <div class="container">
+                    <div class="row gap-15 align-items-center bread123">
+                        <div class="col-12 col-md-7 about-bread">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="http://www.abcandebcnepaltrekking.com/project/home"><i class="fas fa-home"></i></a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Enquiry Form</li>
+                                </ol>
+                            </nav>
+                            <!--<h4 class="mt-0 line-125 title-breadcrum">About Us</h4>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="page-title mb-0 about-bannerr">-->
+            <!--    <div class="container">-->
+            <!--        <div class="row gap-15 align-items-center">-->
+            <!--            <div class="col-12 col-md-7">-->
+            <!--                <nav aria-label="breadcrumb">-->
+            <!--                    <ol class="breadcrumb">-->
+            <!--                        <li class="breadcrumb-item"><a href="../../home"><i class="fas fa-home"></i></a></li>-->
+            <!--                        <li class="breadcrumb-item active" aria-current="page">Enquiry Form</li>-->
+            <!--                    </ol>-->
+            <!--                </nav>-->
+            <!--                <h4 class="mt-0 line-125 title-breadcrum">Enquiry Form</h4>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+
+            <div class="container pt-30">
+                <div class="row gap-20 gap-lg-40">
+                    <div class="col-md-offset-2 col-12 col-lg-7">
+                        <div class="content-wrapper">
+                            <div class="form-draft-payment">
+                                <jcms:module:enquiry/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    <!-- end Main Wrapper -->
+
+
+    <!-- start Footer Wrapper -->
+    <jcms:module:footer/>
+    <!-- start Footer Wrapper -->
+
+</div>
+<!-- end Body Inner -->
+
+<!-- start Back To Top -->
+<a id="back-to-top" href="#" class="back-to-top" role="button" title="Click to return to top" data-toggle="tooltip"
+   data-placement="left"><i class="elegent-icon-arrow_carrot-up"></i></a>
+<!-- end Back To Top -->
+
+
+<!-- JS -->
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/custom-core.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script>
+    $( document ).ready(function() {
+        $('.datepicker-here').datepicker({
+            language: 'en',
+            minDate: new Date(),
+            dateFormat: 'yyyy-mm-dd'
+        })
+    });
+
+    var base_url = $('base').attr('url');
+    jQuery('#enquiry_form').validate({
+        errorElement: 'span',
+        errorClass: 'validate-has-error',
+        rules: {
+            trip_date:{
+                required: true
+            },
+            pax:{
+                required: true
+            },
+            full_name: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            phone:{
+                required: true
+            },
+            city:{
+                required: true
+            },
+            country:{
+                required: true
+            },
+            message: {
+                required: true
+            }
+        },
+        messages: {
+            trip_date:{
+                required: "Please select a date"
+            },
+            pax:{
+                required: "Please select Number of Pax"
+            },
+            full_name: {
+                required: "Please enter your Full Name"
+            },
+            email: {
+                required: "Please enter your Email Address",
+                email: "Enter Correct Email!"
+            },
+            phone:{
+                required: "Please enter your Phone Number"
+            },
+            city:{
+                required: "Please enter your City"
+            },
+            country:{
+                required: "Please select your country"
+            },
+            message: {
+                required: "Please enter your Question."
+            }
+        },
+        submitHandler: function (form) {
+            var Frmval = jQuery("form#enquiry_form").serialize();
+            jQuery("button#submit").attr("disabled", "true").text('Processing...');
+            jQuery.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: base_url + "enquiry_package_mail.php",
+                data: "action=forEnquiry&" + Frmval,
+                success: function (data) {
+                    var msg = eval(data);
+                    if (msg.action == 'success') {
+                        jQuery("button#submit").removeAttr("disabled").text('Submit');
+                        jQuery('div#msg').removeClass("alert alert-danger").addClass("alert alert-success").html(msg.message).css('display', 'block').fadeOut(10000);
+                        jQuery("form#enquiry_form")[0].reset();
+                    }
+                    if (msg.action == 'unsuccess') {
+                        jQuery("button#submit").removeAttr("disabled").text('Submit');
+                        jQuery('div#msg').removeClass("alert alert-success").addClass("alert alert-danger").html(msg.message).css('display', 'block').fadeOut(10000);
+                    }
+                }
+            });
+            return false;
+        }
+    })
+</script>
+</body>
+</html>

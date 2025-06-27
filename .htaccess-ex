@@ -1,0 +1,65 @@
+RewriteEngine On
+#RewriteCond %{HTTP_HOST} !^www.seanskytours.com$ [NC]
+#RewriteRule ^(.*)$ https://www.seanskytours.com/$1 [L,R=301]
+
+RewriteRule ^home/?$ index.php [L]
+
+RewriteRule ^sitemap$ sitemap.php [L]
+
+RewriteRule ^contact-us$ contact.php [L]
+RewriteRule ^customize$ customize.php [L]
+
+#RewriteRule ^enquiry$ enquiry.php [L]
+RewriteRule ^enquiry/package/([a-zA-Z0-9-]+)/?$ enquiry.php?slug=$1 [L]
+
+#For all the dynamically created Article pages.
+RewriteRule ^pages/([a-zA-Z0-9-]+)$ inner.php?slug=$1 [L]
+
+#For all the dynamically created Package pages.
+RewriteRule ^package/([a-zA-Z0-9-]+)$ package.php?slug=$1 [L]
+RewriteRule ^package/download/([a-zA-Z0-9-]+)$ fdownload.php?filename=$1 [L]
+
+#For search list page
+RewriteRule ^searchlist/?$ search.php [L]
+RewriteRule ^searchlist/page/([0-9]+)$ search.php?pageno=$1 [L]
+RewriteRule ^destination/([a-zA-Z0-9-]+)$ search.php?gdestination_slug=$1 [L]
+RewriteRule ^activity/([a-zA-Z0-9-]+)$ search.php?gactivity_slug=$1 [L]
+
+#For all the dynamically destination pages.
+#RewriteRule ^destination/([a-zA-Z0-9-]+)$ destination.php?slug=$1 [L]
+RewriteRule ^destination-list$ destination.php [L]
+RewriteRule ^activity-list/([a-zA-Z0-9-]+)$ activities.php?slug=$1 [L]
+
+#For all the dynamically activities pages.
+RewriteRule ^activities/([a-zA-Z0-9-]+)/([a-zA-Z0-9-]+)$ activities.php?dslug=$1&slug=$2 [L]
+
+#For all the dynamically created blog pages.
+RewriteRule ^blog$ bloglist.php [L]
+RewriteRule ^blog/page/([0-9]+)$ bloglist.php?pageno=$1 [L]
+RewriteRule ^blog/([a-zA-Z0-9-]+)$ blog.php?slug=$1 [L]
+
+#For Gallery Information
+RewriteRule ^gallery/([a-zA-Z0-9-]+)/?$ gallery.php?slug=$1 [L]
+RewriteRule ^gallery$ gallery.php [L]
+
+#For booking page
+RewriteRule ^book/package/([a-zA-Z0-9-]+)/?$ booking.php?slug=$1 [L]
+
+#For testimonial list page
+RewriteRule ^testimonial/?$ testimonial.php [L]
+
+#For activity wise package list page
+RewriteRule ^packagelist/([a-zA-Z0-9-]+)/?$ packagelist.php?slug=$1 [L]
+
+#For fixed depature
+RewriteRule ^fixed-departure$ fix_dept.php [L]
+
+#For transaction page
+RewriteRule ^payment-transaction/([a-zA-Z]+)$ transaction.php?paytype=$1 [L]
+RewriteRule ^success/([a-zA-Z0-9-]+)$ success.php?order_id=$1 [L]
+RewriteRule ^success$ success.php [L]
+RewriteRule ^unsuccess$ unsuccess.php [L]
+
+#For hotels page
+RewriteRule ^hotels/([a-zA-Z0-9-]+)/?$ hotels.php?slug=$1 [L]
+RewriteRule ^hotels/?$ hotels.php [L]

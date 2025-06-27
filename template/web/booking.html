@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Title Of Site -->
+    <jcms:site:seotitle/>
+
+    <!-- Fav and Touch Icons -->
+    <jcms:site:fevicon/>
+
+    <!-- Font face -->
+    <link href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS Plugins -->
+    <!--<link href="css/font-icons.css" rel="stylesheet">-->
+    <!--<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+    <!--<link href="css/animate.html" rel="stylesheet">-->
+    <!--<link href="css/main.css" rel="stylesheet">-->
+    <!--<link href="css/plugin.css" rel="stylesheet">-->
+
+    <!-- CSS Custom -->
+    <!--<link href="css/style.css" rel="stylesheet">-->
+
+    <!-- CSS Custom -->
+    <!--<link href="css/overlay.css" rel="stylesheet">-->
+    <!--<link href="css/your-style.css" rel="stylesheet">-->
+    <link href="css/bundle.css" rel="stylesheet">
+</head>
+
+<body class="with-waypoint-sticky">
+    <!-- start Body Inner -->
+    <div class="body-inner">
+        <!-- start Header -->
+        <header id="header-waypoint-sticky" class="header-main header-mobile-menu with-absolute-navbar">
+            <div class="container">
+                <div class="header-outer clearfix">
+                    <div class="row shrink-auto-lg gap-0 align-items-center">
+                        <div class="col-9 col-shrink z-in-1111">
+                            <div class="col-inner">
+                                <div class="main-logo">
+                                    <jcms:site:logo/>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-3 col-shrink order-last-lg">
+                            <div class="col-inner">
+                                <ul class="nav-mini-right">
+                                    <li>
+                                        <button class="btn btn-toggle collapsed" data-toggle="collapse"
+                                                data-target="#mobileMenu"></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <div class="col-12 col-auto order-last-lg">
+                            <div class="navbar-wrapper">
+                                <div class="navbar navbar-expand-lg">
+                                    <div id="mobileMenu" class="collapse navbar-collapse">
+                                        <nav class="main-nav-menu main-menu-nav navbar-arrow">
+                                            <jcms:module:menu/>
+                                        </nav><!--/.nav-collapse -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- start Header -->
+
+    <!-- start Main Wrapper -->
+    <div class="main-wrapper scrollspy-container">
+        <section class="page-wrapper page-detail">
+            <div class="page-title mb-0 about-banner about-gallery-banner">
+                <div class="container">
+                    <div class="row gap-15 align-items-center bread123">
+                        <div class="col-12 col-md-7 about-bread">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="http://www.abcandebcnepaltrekking.com/project/home"><i class="fas fa-home"></i></a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Booking</li>
+                                </ol>
+                            </nav>
+                            <!--<h4 class="mt-0 line-125 title-breadcrum">About Us</h4>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="page-title border-bottom pt-25 mb-0 border-bottom-0">-->
+            <!--    <div class="container">-->
+            <!--        <div class="row gap-15 align-items-center">-->
+            <!--            <div class="col-12 col-md-7">-->
+            <!--                <nav aria-label="breadcrumb">-->
+            <!--                    <ol class="breadcrumb">-->
+            <!--                        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>-->
+            <!--                        <li class="breadcrumb-item active" aria-current="page">Booking</li>-->
+            <!--                    </ol>-->
+            <!--                </nav>-->
+            <!--            </div>-->
+            <!--        </div>-->
+            <!--    </div>-->
+            <!--</div>-->
+            <div class="container customize-inner">
+                <div class="row gap-20 gap-lg-40">
+                    
+                    <div class="col-12 col-lg-5 order-lg-2 order-md-1">
+                        <jcms:module:trip-booking-info/>
+                    </div>
+                    <div class="col-12 col-lg-7 mt-5 order-lg-1 order-md-2">
+                        <div class="content-wrapper">
+                            <div class="form-draft-payment">
+                                <jcms:module:trip-booking-form/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- end Main Wrapper -->
+
+    <!-- start Footer Wrapper -->
+    <jcms:module:footer/>
+    <!-- start Footer Wrapper -->
+</div>
+<!-- end Body Inner -->
+
+
+<!-- start Login modal -->
+<div class="modal fade modal-with-tabs form-login-modal" id="loginFormTabInModal" aria-labelledby="modalWIthTabsLabel"
+     tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content shadow-lg">
+
+            <nav class="d-none">
+                <ul class="nav external-link-navs clearfix">
+                    <li><a class="active" data-toggle="tab" href="#loginFormTabInModal-login">Sign-in</a></li>
+                    <li><a data-toggle="tab" href="#loginFormTabInModal-register">Register </a></li>
+                    <li><a data-toggle="tab" href="#loginFormTabInModal-forgot-pass">Forgot Password </a></li>
+                </ul>
+            </nav>
+
+            <div class="tab-content">
+
+                <div role="tabpanel" class="tab-pane active" id="loginFormTabInModal-login">
+
+                    <div class="form-login">
+
+                        <div class="form-header">
+                            <h4>Welcome Back to SiteName</h4>
+                            <p>Sign in to your account to continue using SiteName</p>
+                        </div>
+
+                        <div class="form-body">
+
+                            <form method="post" action="#">
+
+                                <div class="d-flex flex-column flex-lg-row align-items-stretch">
+
+                                    <div class="flex-md-grow-1 bg-primary-light">
+
+                                        <div class="form-inner">
+                                            <div class="form-group">
+                                                <label>Email adress/username</label>
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <input type="password" class="form-control"/>
+                                            </div>
+                                            <div class="d-flex flex-column flex-md-row mt-25">
+                                                <div class="flex-shrink-0">
+                                                    <a href="#" class="btn btn-primary btn-wide">Sign-in</a>
+                                                </div>
+                                                <div class="ml-0 ml-md-15 mt-15 mt-md-0">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                               id="loginFormTabInModal-rememberMe">
+                                                        <label class="custom-control-label"
+                                                               for="loginFormTabInModal-rememberMe">Remember me</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#loginFormTabInModal-forgot-pass"
+                                               class="tab-external-link block mt-25 font600">Forgot password?</a>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-login-socials">
+                                        <div class="login-socials-inner">
+                                            <h5 class="mb-20">Or sign-up with your socials</h5>
+                                            <button class="btn btn-login-with btn-facebook btn-block"><i
+                                                    class="fab fa-facebook"></i> facebook
+                                            </button>
+                                            <button class="btn btn-login-with btn-google btn-block"><i
+                                                    class="fab fa-google"></i> google
+                                            </button>
+                                            <button class="btn btn-login-with btn-twitter btn-block"><i
+                                                    class="fab fa-twitter"></i> google
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        <div class="form-footer">
+                            <p>Not a member yet? <a href="#loginFormTabInModal-register"
+                                                    class="tab-external-link font600">Sign up</a> for free</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade in" id="loginFormTabInModal-register">
+
+                    <div class="form-login">
+
+                        <div class="form-header">
+                            <h4>Join SiteName for Free</h4>
+                            <p>Access thousands of online classes in design, business, and more!</p>
+                        </div>
+
+                        <div class="form-body">
+
+                            <form method="post" action="#">
+
+                                <div class="d-flex flex-column flex-lg-row align-items-stretch">
+
+                                    <div class="flex-grow-1 bg-primary-light">
+
+                                        <div class="form-inner">
+                                            <div class="form-group">
+                                                <label>Full name</label>
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Email adress</label>
+                                                <input type="text" class="form-control"/>
+                                            </div>
+                                            <div class="row cols-2 gap-10">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Password</label>
+                                                        <input type="password" class="form-control"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label>Confirm password</label>
+                                                        <input type="password" class="form-control"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-login-socials">
+                                        <div class="login-socials-inner">
+                                            <h5 class="mb-20">Or sign-in with your socials</h5>
+                                            <button class="btn btn-login-with btn-facebook btn-block"><i
+                                                    class="fab fa-facebook"></i> facebook
+                                            </button>
+                                            <button class="btn btn-login-with btn-google btn-block"><i
+                                                    class="fab fa-google"></i> google
+                                            </button>
+                                            <button class="btn btn-login-with btn-twitter btn-block"><i
+                                                    class="fab fa-twitter"></i> google
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="d-flex flex-column flex-md-row mt-30 mt-lg-10">
+                                    <div class="flex-shrink-0">
+                                        <a href="#" class="btn btn-primary btn-wide mt-5">Sign-up</a>
+                                    </div>
+                                    <div class="pt-1 ml-0 ml-md-15 mt-15 mt-md-0">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="loginFormTabInModal-acceptTerm">
+                                            <label class="custom-control-label line-145"
+                                                   for="loginFormTabInModal-acceptTerm">By clicking this, you are agree
+                                                to to our <a href="#">terms of use</a> and <a href="#">privacy
+                                                    policy</a> including the use of cookies</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        <div class="form-footer">
+                            <p>Already a member? <a href="#loginFormTabInModal-login" class="tab-external-link font600">Sign
+                                in</a></p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div role="tabpanel" class="tab-pane fade in" id="loginFormTabInModal-forgot-pass">
+
+                    <div class="form-login">
+
+                        <div class="form-header">
+                            <h4>Lost your password?</h4>
+                            <p>Please provide your detail.</p>
+                        </div>
+
+                        <div class="form-body">
+                            <form method="post" action="#">
+                                <p class="line-145">We'll send password reset instructions to the email address associated with your account.</p>
+                                <div class="row">
+                                    <div class="col-12 col-md-10 col-lg-8">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="password"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary mt-5">Retreive password</button>
+                            </form>
+                        </div>
+
+                        <div class="form-footer">
+                            <p>Back to <a href="#loginFormTabInModal-login" class="tab-external-link font600">Sign
+                                in</a> or <a href="#loginFormTabInModal-register" class="tab-external-link font600">Sign
+                                up</a></p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="text-center pb-20">
+                <button type="button" class="close" data-dismiss="modal" aria-labelledby="Close">
+                    <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Login modal -->
+
+<!-- start Back To Top -->
+<a id="back-to-top" href="#" class="back-to-top" role="button" title="Click to return to top" data-toggle="tooltip"
+   data-placement="left"><i class="elegent-icon-arrow_carrot-up"></i></a>
+<!-- end Back To Top -->
+
+<!-- JS -->
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/custom-core.js"></script>
+<jcms:module:trip-booking-info-script/>
+<script src="js/jquery.validate.js"></script>
+<script>
+   $(document).ready(function () {
+    // Initialize datepicker
+    // Calculate date 7 days from today
+    var oneWeekLater = new Date();
+    oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+
+    // Initialize datepicker with minDate set to 7 days from today
+    var myDatepicker = $('.datepicker-here').datepicker({
+        language: 'en',
+        minDate: oneWeekLater,
+        dateFormat: 'yyyy-mm-dd',
+    autoClose: true
+    });
+
+    // Dynamic guest info form rendering
+    $(".bootstrap-touchspin-up,.bootstrap-touchspin-down").on("click", function () {
+        var total = $(".touch-spin-03").val();
+        var result = "";
+
+        for (var i = 1; i <= total; i++) {
+            var isFirst = (i === 1);
+            result += '<div class="collapse-item">\
+                <div class="collapse-header" id="faqAccordion_03_g1-heading' + i + '">\
+                    <h5 class="collapse-title">\
+                        <a class="collapse-link ' + (isFirst ? '' : 'collapsed') + '" data-toggle="collapse" data-target="#faqAccordion_03_g1-collapse' + i + '" aria-expanded="' + (isFirst ? 'true' : 'false') + '" aria-controls="faqAccordion_03_g1-collapse' + i + '">Additional Information for Guest ' + i + '</a>\
+                    </h5>\
+                </div>\
+                <div id="faqAccordion_03_g1-collapse' + i + '" class="collapse ' + (isFirst ? 'show' : '') + '" aria-labelledby="faqAccordion_03_g1-heading' + i + '" data-parent="#faqAccordion_03_g1">\
+                    <div class="collapse-body">\
+                        <div class="collapse-inner">\
+                            <div class="row gap-15 mb-15">\
+                                <div class="col-6 col-md-12">\
+                                    <div class="form-group">\
+                                        <label>Full Name</label>\
+                                        <input type="text" class="form-control" name="additional_name[]" placeholder="Full name"/>\
+                                    </div>\
+                                </div>\
+                                <div class="col-6 col-md-6">\
+                                    <div class="form-group">\
+                                        <label>Phone</label>\
+                                        <input type="text" class="form-control phone" name="additional_phone[]" placeholder="Phone number"/>\
+                                    </div>\
+                                </div>\
+                                <div class="col-6 col-md-6">\
+                                    <div class="form-group">\
+                                        <label>Address</label>\
+                                        <input type="text" class="form-control" name="additional_address[]" placeholder="Address"/>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>\
+                    </div>\
+                </div>\
+            </div>';
+        }
+
+        $('#faqAccordion_03_g1').html(result);
+    });
+
+    // Add phone validation method
+    $.validator.addMethod("validFullPhone", function (value) {
+        if (!value) return false;
+        const cleaned = value.replace(/\s+/g, '');
+        return /^\+\d{1,4}\d{4,15}$/.test(cleaned);
+    }, "Please enter a valid phone number.");
+
+    // On country select change, insert country code into phone field
+    document.querySelectorAll('.countrySelect').forEach(function (selectElement) {
+        selectElement.addEventListener('change', function () {
+            const contactValue = this.options[this.selectedIndex].getAttribute('contact-value');
+            const phoneInput = this.closest('form')?.querySelector('.phone') || this.parentElement.querySelector('.phone');
+            if (phoneInput) {
+                phoneInput.value = contactValue ? contactValue + ' ' : '';
+            }
+        });
+    });
+
+    // Initialize jQuery Validate once
+    validateFormCustom();
+
+    // Submit button click
+    $('#submit').on('click', function (e) {
+        e.preventDefault();
+        const dateVal = $('#datepicker-here').val();
+        if (!dateVal) {
+            $('div.error-message-date')
+                .addClass("alert alert-danger")
+                .html("Please Select Date")
+                .show()
+                .fadeOut(8000);
+
+            $('html, body').animate({
+                scrollTop: $(".booking-box").offset().top - 70
+            }, 500);
+        } else {
+            $('#booking_form').submit(); // trigger validation and submitHandler
+        }
+    });
+
+    // Validation setup
+    function validateFormCustom() {
+        var base_url = $('base').attr('url');
+        $('#booking_form').validate({
+            errorElement: 'span',
+            errorClass: 'validate-has-error',
+            rules: {
+                full_name: { required: true },
+                email: { required: true, email: true },
+                phone: { required: true, validFullPhone: true },
+                address1: { required: true },
+                zipcode: { required: true, number: true },
+                paxx: { required: true, number: true },
+                country: { required: true },
+                message: { required: true },
+                terms: { required: true },
+                trip_date: { required: true }, // ensures date is validated
+                "additional_name[]": { required: true }, // ensures date is validated
+                "additional_phone[]": { required: true, validFullPhone: true }, // ensures date is validated
+                "additional_address[]": { required: true } // ensures date is validated
+            },
+            messages: {
+                full_name: { required: "Please enter your full name" },
+                email: {
+                    required: "Please enter your email address",
+                    email: "Enter correct email!"
+                },
+                phone: { required: "Please enter your phone number" },
+                address1: { required: "Please enter your address" },
+                zipcode: {
+                    required: "Please enter zipcode",
+                    number: "Please enter numbers only"
+                },
+                paxx: {
+                    required: "Please enter your pax",
+                    number: "Please enter numbers only"
+                },
+                country: { required: "Please select your country" },
+                message: { required: "Please enter your message" },
+                terms: { required: "Please accept the terms and conditions." },
+                trip_date: { required: "Please select a trip date" }
+            },
+            submitHandler: function (form) {
+                const Frmval = $(form).serialize();
+                $("button#submit").attr("disabled", true).text('Processing...');
+                const trip_date = $('input[name="trip_date"]').val();
+                const pax = $('input[name="trip_pax"]').val();
+                const paxx = $('input[name="paxx"]').val();
+
+                const queryString = 'action=request_inquiry&date=' + trip_date + '&paxx=' + paxx + '&pax=' + pax + '&' + Frmval;
+
+                $.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: base_url + 'includes/controllers/ajax.bookinginfo.php',
+                    data: queryString,
+                    success: function (data) {
+                        const msg = data;
+                        $("button#submit").removeAttr("disabled").text('Book Now');
+
+                        if (msg.action === 'success') {
+                            $('#msg').removeClass("alert-danger").addClass("alert alert-success").html(msg.message).show().fadeOut(10000);
+                            $('#booking_form')[0].reset();
+                        } else if (msg.action === 'error') {
+                            $('#msg').removeClass("alert-success").addClass("alert alert-danger").html(msg.message).show().fadeOut(10000);
+                        }
+                    }
+                });
+
+                return false;
+            }
+        });
+    }
+});
+
+
+</script>
+
+</body>
+</html>

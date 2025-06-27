@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Title Of Site -->
+    <jcms:site:seotitle/>
+
+    <!-- Fav and Touch Icons -->
+    <jcms:site:fevicon/>
+
+    <!-- Font face -->
+    <link href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS Plugins -->
+    <!--<link href="css/font-icons.css" rel="stylesheet">-->
+    <!--<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+    <!--<link href="css/animate.html" rel="stylesheet">-->
+    <!--<link href="css/main.css" rel="stylesheet">-->
+    <!--<link href="css/plugin.css" rel="stylesheet">-->
+
+    <!-- CSS Custom -->
+    <!--<link href="css/style.css" rel="stylesheet">-->
+
+    <!-- CSS Custom -->
+    <!--<link href="css/overlay.css" rel="stylesheet">-->
+    <!--<link href="css/your-style.css" rel="stylesheet">-->
+    <link href="css/bundle.css" rel="stylesheet">
+</head>
+
+<body class="with-waypoint-sticky">
+    <!-- start Body Inner -->
+    <div class="body-inner">
+        <!-- start Header -->
+        <header id="header-waypoint-sticky" class="header-main header-mobile-menu with-absolute-navbar">
+            <div class="container">
+                <div class="header-outer clearfix">
+                    <div class="row shrink-auto-lg gap-0 align-items-center">
+                        <div class="col-9 col-shrink z-in-1111">
+                            <div class="col-inner">
+                                <div class="main-logo">
+                                    <jcms:site:logo/>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-3 col-shrink order-last-lg">
+                            <div class="col-inner">
+                                <ul class="nav-mini-right">
+                                    <li>
+                                        <button class="btn btn-toggle collapsed" data-toggle="collapse"
+                                                data-target="#mobileMenu"></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <div class="col-12 col-auto order-last-lg">
+                            <div class="navbar-wrapper">
+                                <div class="navbar navbar-expand-lg">
+                                    <div id="mobileMenu" class="collapse navbar-collapse">
+                                        <nav class="main-nav-menu main-menu-nav navbar-arrow">
+                                            <jcms:module:menu/>
+                                        </nav><!--/.nav-collapse -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- start Header -->
+
+        <!-- start Main Wrapper -->
+        <div class="main-wrapper scrollspy-container">
+            <jcms:module:blog:breadcrumb/>
+
+            <section class="page-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-8">
+                            <div class="content-wrapper">
+    
+                                <article class="blog-single-wrapper">
+    
+                                    <jcms:module:blog:details/>
+    
+                                    <jcms:module:blog:comments/>
+    
+                                    <h4 class="heading-title"><span>Leave your comment</span></h4>
+    
+                                    <div class="alert alert-success" id="msg-success" style="display:none;"></div>
+                                    <div class="alert alert-danger" id="msg-unsuccess" style="display:none;"></div>
+    
+                                    <form method="post" action="" id="comment_form" class="comment-form"
+                                          enctype="multipart/form-data">
+                                        <input type="hidden" name="blog_id" value="<jcms:module:blog:id/>">
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="comment-name">Your Name <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="comment-name" name="name">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="comment-email">Your Email <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" id="comment-email" name="email">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="comment-message">Message <span class="text-danger">*</span></label>
+                                                    <textarea name="message" id="comment-message" class="form-control"
+                                                              rows="8"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Upload Image<span class="text-danger">*</span></label>
+                                                    <input type="file" id="img" name="img" accept=".jpg,.jpeg,.png"
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button type="submit" id="submit" class="btn btn-primary btn-wide btn-contact-page">Comment
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+    
+    
+                                </article>
+    
+                            </div>
+    
+                        </div>
+    
+                        <div class="col-12 col-lg-4">
+    
+                            <aside class="sidebar-wrapper pv on-right mb-50 mb-lg-0">
+    
+                                <div class="sidebar-box">
+    
+                                    <div class="box-title"><h5>Recent Travel Blogs</h5></div>
+    
+                                    <div class="box-content">
+                                        <ul class="post-small-list">
+                                            <jcms:module:blog:recent-blogs/>
+                                        </ul>
+                                    </div>
+    
+                                </div>
+    
+                            </aside>
+    
+                        </div>
+    
+                    </div>
+    
+                </div>
+    
+            </section>
+    
+        </div>
+        <!-- end Main Wrapper -->
+    
+        <!-- start Footer Wrapper -->
+        <jcms:module:footer/>
+        <!-- start Footer Wrapper -->
+
+</div>
+
+<!-- start Back To Top -->
+<a id="back-to-top" href="#" class="back-to-top" role="button" title="Click to return to top" data-toggle="tooltip"
+   data-placement="left"><i class="elegent-icon-arrow_carrot-up"></i></a>
+<!-- end Back To Top -->
+
+<!-- JS -->
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+
+<!--Validate form-->
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="js/additional-methods.js"></script>
+<script type="text/javascript">
+    var base_url = jQuery('base').attr('url');
+    jQuery(document).ready(function () {
+        jQuery('#comment_form').validate({
+            errorElement: 'span',
+            errorClass: 'validate-has-error',
+            rules: {
+                name: {
+                    required: true
+                },
+                img: {
+                    required: true,
+                    accept: "jpg,jpeg,png"
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                message: {
+                    required: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "This field is required. Please enter your Full Name."
+                },
+                img: {
+                    required: "This field is required. Please upload your Image.",
+                    accept: "Please upload only jpg, jpeg or png!"
+                },
+                email: {
+                    required: "This field is required. Please enter your Email Address.",
+                    email: "Enter Correct Email!"
+                },
+                message: {
+                    required: "This field is required. Please enter your Comments."
+                }
+
+            },
+            submitHandler: function () {
+                var formVal = $('form#comment_form')[0];
+                var data = new FormData(formVal);
+                $.ajax({
+                    type: "POST",
+                    url: base_url + 'addComment.php',
+                    dataType: 'json',
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    success: function (data) {
+                        var msg = eval(data);
+                        jQuery("button#submit").removeAttr("disabled").text('Comment');
+                        if(msg.action=='success'){
+                            jQuery('div#msg-success').html(msg.message).css('display', 'block').fadeOut(8000);
+                        }
+                        if(msg.action=='unsuccess'){
+                            jQuery('div#msg-unsuccess').html(msg.message).css('display', 'block').fadeOut(8000);
+                        }
+                        jQuery("form#comment_form")[0].reset();
+                    }
+                });
+                return false;
+            }
+        })
+
+    });
+</script>
+
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/custom-core.js"></script>
+
+
+</body>
+</html>

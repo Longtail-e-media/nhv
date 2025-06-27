@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Title Of Site -->
+    <jcms:site:seotitle/>
+
+    <!-- Fav and Touch Icons -->
+    <jcms:site:fevicon/>
+
+    <!-- Font face -->
+    <link href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS Plugins -->
+    <!--<link href="css/font-icons.css" rel="stylesheet">-->
+    <!--<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+    <!--<link href="css/animate.html" rel="stylesheet">-->
+    <!--<link href="css/main.css" rel="stylesheet">-->
+    <!--<link href="css/plugin.css" rel="stylesheet">-->
+
+    <!-- CSS Custom -->
+    <!--<link href="css/style.css" rel="stylesheet">-->
+
+    <!-- CSS Custom -->
+    <!--<link href="css/overlay.css" rel="stylesheet">-->
+    <!--<link href="css/your-style.css" rel="stylesheet">-->
+    <link href="css/bundle.css" rel="stylesheet">
+</head>
+
+<body class="with-waypoint-sticky">
+<!-- start Body Inner -->
+<div class="body-inner">
+    <!-- start Header -->
+    <header id="header-waypoint-sticky" class="header-main header-mobile-menu with-absolute-navbar">
+        <div class="container">
+            <div class="header-outer clearfix">
+                <div class="row shrink-auto-lg gap-0 align-items-center">
+                    <div class="col-9 col-shrink z-in-1111">
+                        <div class="col-inner">
+                            <div class="main-logo">
+                                <jcms:site:logo/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3 col-shrink order-last-lg">
+							<div class="col-inner">
+								<ul class="nav-mini-right">
+									<li>
+										<button class="btn btn-toggle collapsed" data-toggle="collapse" data-target="#mobileMenu"></button>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+                    <div class="col-12 col-auto order-last-lg">
+                        <div class="navbar-wrapper">
+                            <div class="navbar navbar-expand-lg">
+                                <div id="mobileMenu" class="collapse navbar-collapse">
+                                    <nav class="main-nav-menu main-menu-nav navbar-arrow">
+                                        <jcms:module:menu/>
+                                    </nav><!--/.nav-collapse -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- start Header -->
+    
+    <!-- start Main Wrapper -->
+    <div class="main-wrapper scrollspy-container">
+
+        
+
+            <div class="page-title border-bottom pt-25 mb-0  about-banner">
+                <div class="container">
+                    <div class="row gap-15 align-items-center bread123">
+                        <div class="col-12 col-md-7 about-bread">
+                            <jcms:module:destination-list-breadcrumb/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       <section class="page-wrapper page-detail">     
+            
+            <div class="container pt-30 pt-123">
+                <div class="row gap-20 gap-lg-40">
+                    <div class="col-12 col-lg-12">
+                        <div class="content-wrapper">
+                            <div class="row equal-height cols-1 cols-sm-2 cols-lg-3 gap-20 mb-30">
+                                <jcms:module:destination-list/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+    <!-- end Main Wrapper -->
+
+    <!-- start Footer Wrapper -->
+    <jcms:module:footer/>
+    <!-- start Footer Wrapper -->
+
+</div>
+<!-- end Body Inner -->
+
+<!-- start Back To Top -->
+<a id="back-to-top" href="#" class="back-to-top" role="button" title="Click to return to top" data-toggle="tooltip"
+   data-placement="left"><i class="elegent-icon-arrow_carrot-up"></i></a>
+<!-- end Back To Top -->
+
+<!-- JS -->
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/custom-core.js"></script>
+</body>
+</html>

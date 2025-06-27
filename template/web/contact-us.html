@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Title Of Site -->
+    <jcms:site:seotitle/>
+
+    <!-- Fav and Touch Icons -->
+    <jcms:site:fevicon/>
+
+    <!-- Font face -->
+    <link href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS Plugins -->
+    <!--<link href="css/font-icons.css" rel="stylesheet">-->
+    <!--<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+    <!--<link href="css/animate.html" rel="stylesheet">-->
+    <!--<link href="css/main.css" rel="stylesheet">-->
+    <!--<link href="css/plugin.css" rel="stylesheet">-->
+
+    <!-- CSS Custom -->
+    <!--<link href="css/style.css" rel="stylesheet">-->
+
+    <!-- CSS Custom -->
+    <!--<link href="css/overlay.css" rel="stylesheet">-->
+    <!--<link href="css/your-style.css" rel="stylesheet">-->
+    <link href="css/bundle.css" rel="stylesheet">
+</head>
+
+<body class="with-waypoint-sticky">
+<!-- start Body Inner -->
+<div class="body-inner">
+    <!-- start Header -->
+    <header id="header-waypoint-sticky" class="header-main header-mobile-menu with-absolute-navbar">
+        <div class="container">
+            <div class="header-outer clearfix">
+                <div class="row shrink-auto-lg gap-0 align-items-center">
+                    <div class="col-9 col-shrink z-in-1111">
+                        <div class="col-inner">
+                            <div class="main-logo">
+                                <jcms:site:logo/>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-3 col-shrink order-last-lg">
+							<div class="col-inner">
+								<ul class="nav-mini-right">
+									<li>
+										<button class="btn btn-toggle collapsed" data-toggle="collapse" data-target="#mobileMenu"></button>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+                    <div class="col-12 col-auto order-last-lg">
+                        <div class="navbar-wrapper">
+                            <div class="navbar navbar-expand-lg">
+                                <div id="mobileMenu" class="collapse navbar-collapse">
+                                    <nav class="main-nav-menu main-menu-nav navbar-arrow">
+                                        <jcms:module:menu/>
+                                    </nav><!--/.nav-collapse -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- start Header -->
+
+    <!-- start Main Wrapper -->
+    <div class="main-wrapper scrollspy-container">
+        <!--<div class="pt-0 pt-xl-15"></div>-->
+        <jcms:module:location-map/>
+        
+        <section class="page-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-4 ">
+                        <h4 class="heading-title"><span>Contact Information</span></h4>
+                        <jcms:module:contactinfo/>
+
+                        <div class="mb-50"></div>
+
+                        <!--<h4 class="heading-title"><span>Find <span class="font200">us on:</span></span></h4>-->
+
+                        <!--<div class="social-btns-01">-->
+                        <!--	<a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><img src="img/icon/facebook.png"></a>-->
+                        <!--	<a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><img src="img/icon/twitter.png"></a>-->
+                        <!--	<a href="#" data-toggle="tooltip" data-placement="top" title="linkedin"><img src="img/icon/linkedin.png"></a>-->
+                        <!--	<a href="#" data-toggle="tooltip" data-placement="top" title="youtube"><img src="img/icon/youtube.png"></a>-->
+                        <!--</div>-->
+                    </div>
+                    
+                    <div class="col-12 col-lg-8">
+                        <h4 class="heading-title mb-3"><span>Drop us a Message</span></h4>
+                        <p>Let us know your travel preferences, interests, budget, and travel dates. Our team will create a <a href="customize" style="color: #2a97af;"><u>personalized itinerary tailored</u></a> just for you.</p>
+                        <form id="contact_form" method="post" action="">
+
+                            <div class="contact-successful-messages"></div>
+
+                            <div class="contact-inner row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_name">Full Name *</label>
+                                        <input id="form_name" type="text" name="name" class="form-control">
+                                        <div class="help-block with-errors text-danger"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="form_email">Email Address *</label>
+                                        <input id="form_email" type="email" name="email" class="form-control">
+                                        <div class="help-block with-errors text-danger"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="form_message">Message *</label>
+                                        <textarea id="form_message" name="message" class="form-control"
+                                                  rows="7s"></textarea>
+                                        <div class="help-block with-errors text-danger"></div>
+                                    </div>
+                                     <div class="form-group" style="margin: 10px 0px;">
+                                        <div id="g-recaptcha-response" class="g-recaptcha" data-sitekey="6LfnY1orAAAAAIagn4tiJcRjixcGPpxO-ImLCWmo"></div>
+                                    </div>
+                                    <div class="alert alert-success" id="msg" style="display:none;"></div>
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    <button type="submit" id="submit" class="btn btn-primary btn-contact-page btn-wide mt-15">
+                                        Send message
+                                    </button>
+                                </div>
+
+                                <!--<div class="form-group">
+                                    <label for="form_subject">Subject *</label>
+                                    <input id="form_subject" type="text" name="subject" class="form-control">
+                                </div>-->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- end Main Wrapper -->
+
+    <!-- start Footer Wrapper -->
+    <jcms:module:footer/>
+    <!-- start Footer Wrapper -->
+</div>
+<!-- end Body Inner -->
+
+<!-- start Back To Top -->
+<a id="back-to-top" href="#" class="back-to-top" role="button" title="Click to return to top" data-toggle="tooltip"
+   data-placement="left"><i class="elegent-icon-arrow_carrot-up"></i></a>
+<!-- end Back To Top -->
+
+<!-- JS -->
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/custom-core.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>
+<script type="text/javascript">
+    var base_url = jQuery('base').attr('url');
+    jQuery(document).ready(function () {
+        jQuery('#contact_form').validate({
+            errorElement: 'span',
+            errorClass: 'validate-has-error',
+            rules: {
+
+                name: {
+                    required: true
+                },
+                /*subject: {
+                    required: true
+                },*/
+                email: {
+                    required: true,
+                    email: true
+                },
+                message: {
+                    required: true,
+                }
+            },
+            messages: {
+                name: {
+                    required: "Please enter your full name."
+                },
+                /*subject: {
+                    required: "Please enter Subject."
+                },*/
+                email: {
+                    required: "Please enter your email address.",
+                    email: "Enter Correct Email!"
+                },
+                message: {
+                    required: "Please enter your message.",
+                }
+
+            },
+            submitHandler: function (form) {
+                    var recaptcha = $("#g-recaptcha-response").val();
+                    if (recaptcha === "") {
+                        event.preventDefault();
+                        alert("Please check the recaptcha");
+                        return false;
+                    }
+                var Frmval = jQuery("form#contact_form").serialize();
+                jQuery("button#submit").attr("disabled", "true").text('Processing...');
+                jQuery.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: base_url + "enquiry_mail.php",
+                    data: "action=forcoment&" + Frmval,
+                    success: function (data) {
+                        var msg = eval(data);
+                        jQuery("button#submit").removeAttr("disabled").text('Send message');
+                        jQuery('div#msg').html(msg.message).css('display', 'block').fadeOut(8000);
+                        jQuery("form#contact_form")[0].reset();
+                    }
+                });
+                return false;
+            }
+        })
+
+    });
+</script>
+
+</body>
+</html>

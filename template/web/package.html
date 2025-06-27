@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- Title Of Site -->
+    <jcms:site:seotitle/>
+
+    <!-- Fav and Touch Icons -->
+    <jcms:site:fevicon/>
+
+    <!-- Font face -->
+    <link href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS Plugins -->
+    <!--<link href="css/font-icons.css" rel="stylesheet">-->
+    <!--<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+    <!--<link href="css/animate.html" rel="stylesheet">-->
+    <!--<link href="css/main.css" rel="stylesheet">-->
+    <!--<link href="css/plugin.css" rel="stylesheet">-->
+    <link href="css/lightgallery.min.css" rel="stylesheet">
+
+    <!-- CSS Custom -->
+    <!--<link href="css/style.css" rel="stylesheet">-->
+
+    <!-- CSS Custom -->
+    <!--<link href="css/overlay.css" rel="stylesheet">-->
+    <!--<link href="css/your-style.css" rel="stylesheet">-->
+    <link href="css/bundle.css" rel="stylesheet">
+</head>
+
+<body class="with-waypoint-sticky">
+    <!-- start Body Inner -->
+    <div class="body-inner">
+        <!-- start Header -->
+        <header id="header-waypoint-sticky" class="header-main header-mobile-menu with-absolute-navbar">
+            <div class="container">
+                <div class="header-outer clearfix">
+                    <div class="row shrink-auto-lg gap-0 align-items-center">
+                        <div class="col-9 col-shrink z-in-1111">
+                            <div class="col-inner">
+                                <div class="main-logo">
+                                    <jcms:site:logo/>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-3 col-shrink order-last-lg">
+                            <div class="col-inner">
+                                <ul class="nav-mini-right">
+                                    <li>
+                                        <button class="btn btn-toggle collapsed" data-toggle="collapse"
+                                                data-target="#mobileMenu"></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+    
+                        <div class="col-12 col-auto order-last-lg">
+                            <div class="navbar-wrapper">
+                                <div class="navbar navbar-expand-lg">
+                                    <div id="mobileMenu" class="collapse navbar-collapse">
+                                        <nav class="main-nav-menu main-menu-nav navbar-arrow">
+                                            <jcms:module:menu/>
+                                        </nav><!--/.nav-collapse -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- start Header -->
+
+    <!-- start Main Wrapper -->
+    <div class="main-wrapper scrollspy-container">
+        <jcms:module:package-detail/>
+    </div>
+    <!-- end Main Wrapper -->
+
+    <!-- start Footer Wrapper -->
+    <jcms:module:footer/>
+    <!-- start Footer Wrapper -->
+
+</div>
+<!-- end Body Inner -->
+
+<!-- start Login modal -->
+<jcms:module:package-ask-question-modal/>
+<!-- end Login modal -->
+
+<!--email a friend modal-->
+<jcms:module:package-email-friend/>
+<!--end email a friend modal-->
+
+<!--review modal-->
+<jcms:module:package-review-modal/>
+<!--end review modal-->
+
+
+<!-- start Back To Top -->
+<a id="back-to-top" href="#" class="back-to-top" role="button" title="Click to return to top" data-toggle="tooltip"
+   data-placement="left"><i class="elegent-icon-arrow_carrot-up"></i></a>
+<!-- end Back To Top -->
+
+<!-- JS -->
+<script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/custom-multiply-sticky.js"></script>
+<script type="text/javascript" src="js/custom-core.js"></script>
+<script type="text/javascript" src='<jcms:site:baseurl/>assets/uploadify/jquery.uploadify.min.js'></script>
+<script src="js/jquery.validate.js"></script>
+<script type="text/javascript">
+    var base_url = $('base').attr('url');
+    $(document).ready(function () {
+        //Image upload for Review
+        $('#review_img').uploadify({
+            'swf': base_url + 'assets/uploadify/uploadify.swf',
+            'uploader': base_url + 'assets/uploadify/uploadify.php',
+            'formData': {
+                PROJECT: '<jcms:site:folder/>',
+                targetFolder: 'images/package/review/',
+                thumb_width: 200,
+                thumb_height: 200
+            },
+            'method': 'post',
+            'cancelImg': base_url + 'uploadify/cancel.png',
+            'auto': true,
+            'multi': false,
+            'hideButton': false,
+            'buttonText': 'Upload Image',
+            'width': 125,
+            'height': 30,
+            'removeCompleted': true,
+            'progressData': 'speed',
+            'uploadLimit': 100,
+            'fileTypeExts': '*.gif; *.jpg; *.jpeg;  *.png; *.GIF; *.JPG; *.JPEG; *.PNG;',
+            'buttonClass': 'button formButtons',
+            /* 'checkExisting' : '/uploadify/check-exists.php',*/
+            'onUploadSuccess': function (file, data, response) {
+                var filename = data;
+                $.post(base_url + 'apanel/package/uploaded_image2.php', {imagefile: filename}, function (msg) {
+                    $('#preview_Image').html(msg).show();
+                });
+
+            },
+            'onDialogOpen': function (event, ID, fileObj) {
+            },
+            'onUploadError': function (file, errorCode, errorMsg, errorString) {
+                alert(errorMsg);
+            },
+            'onUploadComplete': function (file) {
+                //alert('The file ' + file.name + ' was successfully uploaded');
+            }
+        });
+    });
+    
+     // Add phone validation method
+    $.validator.addMethod("validFullPhone", function (value) {
+        if (!value) return false;
+        const cleaned = value.replace(/\s+/g, '');
+        return /^\+\d{1,4}\d{4,15}$/.test(cleaned);
+    }, "Please enter a valid phone number.");
+
+    // On country select change, insert country code into phone field
+    document.querySelectorAll('.countrySelect').forEach(function (selectElement) {
+        selectElement.addEventListener('change', function () {
+            const contactValue = this.options[this.selectedIndex].getAttribute('contact-value');
+            const phoneInput = this.closest('form')?.querySelector('.phone') || this.parentElement.querySelector('.phone');
+            if (phoneInput) {
+                phoneInput.value = contactValue ? contactValue + ' ' : '';
+            }
+        });
+    });
+//     $.validator.addMethod("validPhone", function(value, element) {
+//     return this.optional(element) || /^\+?[0-9\s\-()]{7,20}$/.test(value);
+// }, "Please enter a valid phone number.");
+    jQuery(document).ready(function () {
+        // Review form validation
+        jQuery('#review_form').validate({
+            errorElement: 'span',
+            errorClass: 'validate-has-error',
+            rules: {
+                full_name: {
+                    required: true
+                },
+                gender: {
+                    required: true
+                },
+                country: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                phone: {
+                    required: true,
+                    validFullPhone: true
+                },
+                overall_rating: {
+                    required: true
+                },
+                pre_trip_rating: {
+                    required: true
+                },
+                transportation_rating: {
+                    required: true
+                },
+                accommodation_rating: {
+                    required: true
+                },
+                meals_rating: {
+                    required: true
+                },
+                staffs_rating: {
+                    required: true
+                },
+                money_rating: {
+                    required: true
+                },
+                message: {
+                    required: true
+                }
+            },
+            messages: {
+                full_name: {
+                    required: "Please enter your Full Name."
+                },
+                gender: {
+                    required: "Please select your Gender."
+                },
+                country: {
+                    required: "Please select your Country."
+                },
+                email: {
+                    required: "Please enter your Email Address.",
+                    email: "Enter Correct Email!"
+                },
+                phone: {
+                    required: "Please enter your Phone Number."
+                },
+                overall_rating: {
+                    required: "Please select Overall Rating"
+                },
+                pre_trip_rating: {
+                    required: "Please select Pre-Trip Info Rating"
+                },
+                transportation_rating: {
+                    required: "Please select Transportation Rating"
+                },
+                accommodation_rating: {
+                    required: "Please select Accommodation Rating"
+                },
+                meals_rating: {
+                    required: "Please select Meals Rating"
+                },
+                staffs_rating: {
+                    required: "Please select Staff Rating"
+                },
+                money_rating: {
+                    required: "Please select Value for Money Rating"
+                },
+                message: {
+                    required: "Please enter your message."
+                }
+
+            },
+            submitHandler: function (form) {
+                var Frmval = jQuery("form#review_form").serialize();
+                jQuery("button#submit").attr("disabled", "true").text('Processing...');
+                jQuery.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: base_url + "includes/controllers/ajax.package.php",
+                    data: "action=addReviewFront&" + Frmval,
+                    success: function (data) {
+                        var msg = eval(data);
+                        if (msg.action == 'success') {
+                            jQuery("button#submit").removeAttr("disabled").text('Submit');
+                            jQuery('div#msg').removeClass("alert alert-danger").addClass("alert alert-success").html(msg.message).css('display', 'block').fadeOut(10000);
+                            jQuery("form#review_form")[0].reset();
+                            jQuery('#preview_Image').html("");
+                        }
+                        if (msg.action == 'warning') {
+                            jQuery("button#submit").removeAttr("disabled").text('Submit');
+                            jQuery('div#msg').removeClass("alert alert-success").addClass("alert alert-danger").html(msg.message).css('display', 'block').fadeOut(10000);
+                        }
+                    }
+                });
+                return false;
+            }
+        })
+
+        // Email a friend form validation
+        jQuery('#email_a_friend').validate({
+            errorElement: 'span',
+            errorClass: 'validate-has-error',
+            rules: {
+                primary_email: {
+                    required: true,
+                    email: true
+                },
+                message: {
+                    required: true
+                }
+            },
+            messages: {
+                primary_email: {
+                    required: "Please enter an Email Address.",
+                    email: "Enter Correct Email!"
+                },
+                message: {
+                    required: "Please enter your message."
+                }
+            },
+            submitHandler: function (form) {
+                var Frmval = jQuery("form#email_a_friend").serialize();
+                jQuery("button#submit").attr("disabled", "true").text('Processing...');
+                jQuery.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: base_url + "friend_mail.php",
+                    data: "action=forfriendmail&" + Frmval,
+                    success: function (data) {
+                        var msg = eval(data);
+                        if (msg.action == 'success') {
+                            jQuery("button#submit").removeAttr("disabled").text('Submit');
+                            jQuery('div#msg').removeClass("alert alert-danger").addClass("alert alert-success").html(msg.message).css('display', 'block').fadeOut(10000);
+                            jQuery("form#email_a_friend")[0].reset();
+                        }
+                        if (msg.action == 'unsuccess') {
+                            jQuery("button#submit").removeAttr("disabled").text('Submit');
+                            jQuery('div#msg').removeClass("alert alert-success").addClass("alert alert-danger").html(msg.message).css('display', 'block').fadeOut(10000);
+                        }
+                    }
+                });
+                return false;
+            }
+        })
+
+        // Ask a question form validation
+        jQuery('#ask_question_form').validate({
+            errorElement: 'span',
+            errorClass: 'validate-has-error',
+            rules: {
+                full_name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                message: {
+                    required: true
+                }
+            },
+            messages: {
+                full_name: {
+                    required: "Please enter your Full Name"
+                },
+                email: {
+                    required: "Please enter your Email Address.",
+                    email: "Enter Correct Email!"
+                },
+                message: {
+                    required: "Please enter your Question."
+                }
+            },
+            submitHandler: function (form) {
+                var Frmval = jQuery("form#ask_question_form").serialize();
+                jQuery("button#submit").attr("disabled", "true").text('Processing...');
+                jQuery.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: base_url + "ask_a_question.php",
+                    data: "action=forQuestion&" + Frmval,
+                    success: function (data) {
+                        var msg = eval(data);
+                        if (msg.action == 'success') {
+                            jQuery("button#submit").removeAttr("disabled").text('Submit');
+                            jQuery('div#msgg').removeClass("alert alert-danger").addClass("alert alert-success").html(msg.message).css('display', 'block').fadeOut(10000);
+                            jQuery("form#ask_question_form")[0].reset();
+                        }
+                        if (msg.action == 'unsuccess') {
+                            jQuery("button#submit").removeAttr("disabled").text('Submit');
+                            jQuery('div#msgg').removeClass("alert alert-success").addClass("alert alert-danger").html(msg.message).css('display', 'block').fadeOut(10000);
+                        }
+                    }
+                });
+                return false;
+            }
+        })
+    });
+</script>
+
+<script type="text/javascript" src="js/function.js"></script>
+<script src="js/lightbox-plus-jquery.min.js"></script>
+
+<!-- lightgallery plugins -->
+<script src="js/lightgallery.min.js"></script>
+<script src="js/lg-share.min.js"></script>
+<script src="js/lg-fullscreen.min.js"></script>
+<script src="js/lg-zoom.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#gallery').lightGallery({
+            selector: 'a', // only pick <a> inside #gallery
+            thumbnail: true,
+        });
+    });
+</script>
+
+</body>
+</html>

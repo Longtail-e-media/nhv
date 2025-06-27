@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+
+<head>
+
+ 
+
+    <meta charset="utf-8">  
+
+    
+
+    <title><jcms:site:title/></title> <!--insert your title here-->  
+
+    <meta name="description" content="Sony Nepal..."> <!--insert your description here-->  
+
+    <meta name="author" content="nicDark"> <!--insert your name here-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--meta responsive-->
+
+    
+
+  	<!--START CSS--> 
+
+    <jcms:frontCss/>  
+
+    <!--END CSS-->
+
+    
+
+    <!--google fonts-->
+
+    <link href='http://fonts.googleapis.com/css?family=Signika:400,300,600,700' rel='stylesheet' type='text/css'>
+
+    
+
+    <!--[if lt IE 9]>  
+
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+
+    <![endif]-->  
+
+    
+
+    <!--FAVICONS-->
+
+    <jcms:site:fevicon/>
+
+    <!--END FAVICONS-->      
+
+</head>  
+
+<body id="startpage">
+
+<div base_url="<jcms:baseurl/>"></div>  
+
+<!--start header-->
+
+<header id="navigationmenu" class="fade-down animate1 navigationmenulight">
+
+	    
+
+    <!--start container-->
+
+    <div class="container">    
+
+        <!--start navigation-->
+
+    	<div class="grid_12 gridnavigation">        
+
+        	<jcms:site:logo/>  
+
+        	<!--start navigation-->
+
+        	<jcms:module:menu/>
+
+			<!--end navigationmenu-->	            
+
+        </div>
+
+        <!--end navigation-->
+
+    </div>
+
+    <!--end container-->
+
+    
+
+    <!-- <div class="rightsearchclose">
+
+        <img alt="" src="img/header/rightsearch.png">
+
+    </div>  -->
+
+</header>
+
+<section class="sectionhome fade-down">    
+
+    <!--start rev slider-->
+
+    <div class="tp-banner-container">
+
+        <div class="tp-banner banner-img">
+
+            <!-- Start slideshow -->
+
+            <img src='../css/front/img/header-page/gallery.jpg' class="img-responsive">
+
+            <!-- End slideshow -->
+
+            <div class="tp-bannertimer"></div>
+
+        </div>
+
+    </div>
+
+    <!--end rev slider-->    
+
+</section>
+
+
+
+<!--end header-->
+
+
+
+<div class="container clearfix">
+
+    <br>
+
+    <div class="grid_12" style="text-align:center;"><br> <div style="border-bottom:1px solid #e0e0e0;padding-bottom:25px;"><p> Are you new to website and don't have account. Please register you account for free.
+
+        <a href="register.php">Register</a></p></div><br><div class="login-msg text-center" style="margin:auto;width:400px;"></div><br></div>
+
+<div class="clearfix"></div>
+
+
+<div class="grid_6" >
+
+         <div style="padding-left:100px;"><img  src="../../../images/instruction.png" /></div>
+
+    </div>
+
+
+
+    <div class="grid_6" >
+
+        <div style="padding-right:200px;">
+
+            <h1>Login</h1>
+
+            <p style="font-size:15px;">Login your account </p>
+
+        
+
+         
+
+       
+
+        <!--  <p style="font-size:15px;">Here you can register your sony products and get online help for the product you bought. </p>
+
+         <p>&nbsp;</p>
+
+         <p style="font-size:15px;">Just you need to create your account and register details of product. Register unlimited products. </p> -->
+
+
+
+         <div class="titlesection green">
+
+            
+
+            
+
+            <form class="contactform" id="frm_login">                               
+
+                <div class="dividerheight20"></div>                
+
+                <ul>
+
+                    <li class="filterinputicon"><div class="inputicon inputemail"></div></li>
+
+                    <li><input placeholder="Email Address" name="mailaddress" id="mailaddress" type="text" class="validate[required,custom[email]]"></li>
+
+                </ul>                
+
+                <div class="dividerheight20"></div>                
+
+                <ul>
+
+                    <li class="filterinputicon"><div class="inputicon inputpassword"></div></li>
+
+                    <li><input placeholder="Password" name="upassword" id="upassword" type="password" class="validate[required]"></li>
+
+                </ul>                             
+
+                <div class="dividerheight20"></div>                
+
+                <input value="LOGIN" type="submit" id="submit_login">  
+
+
+
+            </form>
+
+            <div class="clear" style="clear:both"></div>  
+
+        </div> 
+
+        <p style="border-top:1px solid #e0e0e0;font-size:13px;"><a href="#" data-toggle="modal" data-target=".bs-example-modal-sm"> Forgot Password?</a></p>
+
+
+
+      
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-sm">
+
+    <div class="modal-content">
+
+        <div class="modal-body">
+
+       <div class="titlesection orange">
+
+        <br>
+
+            <h2 class="titlewithborder"><span>FORGET PASSWORD</span></h2> 
+
+            <div class="forget-msg"></div>
+
+            <form class="contactform" id="forget_password">                               
+
+                <div class="dividerheight20"></div> 
+
+                <p class="text-left" style="font-size:14px;line-height:15px;padding-bottom:15px;">Enter your registered email address. We will send you password reset url. </p>           
+
+                <ul>
+
+                    <li class="filterinputicon"><div class="inputicon inputemail"></div></li>
+
+                    <li><input placeholder="Email Address" name="mailaddress" id="mailaddress" type="text" class="validate[required,custom[email]]"></li>
+
+                </ul>                            
+
+                <div class="dividerheight20"></div>                
+
+                <input value="SEND" type="submit" id="submit_forget">  
+
+
+
+            </form>
+
+            <div class="clearfix"></div> 
+
+        </div>
+
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+       
+
+      <div class="dividerheight20"></div>  
+
+      <div class="dividerheight20"></div>  
+
+      <div class="dividerheight20"></div>  
+
+       
+
+    </div>
+
+    </div>
+
+    
+
+    
+
+</div>
+
+   
+
+            
+
+</div>
+
+
+
+<!--start page-->
+
+<!--end internal page-->
+
+	<jcms:module:footer/> 
+
+    <jcms:module:autocomplete/>
+
+ 	</body>  
+
+</html>

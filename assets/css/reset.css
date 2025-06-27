@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* DEFAULT CSS Document */
+
+/* For User login dashboard */
+.header-wrapper{left:0; position:fixed; top:0; width:100%; z-index:1050; background:none repeat scroll 0 0 #37485D;}
+.wel-come{font-weight:700; color:#FFF; padding-right:10px;}
+.user-action{font-weight:700; color:#FFF; padding-right:10px;}
+.page-breadcrumb-wrapper{margin-top:42px !important;}
+.stepContainer{height:auto !important;}
