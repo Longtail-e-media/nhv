@@ -1,0 +1,8 @@
+.idea
+/images
+/includes/config.php
+/includes/initialize.php
+error_log
+.htaccess
+*.mov
+*.mp4
