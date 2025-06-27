@@ -2,6 +2,7 @@
 /images
 /includes/config.php
 /includes/initialize.php
+/includes/google
 error_log
 .htaccess
 *.mov
