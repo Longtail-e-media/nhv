@@ -366,6 +366,10 @@ function serclearImages($tablename = "", $folder = "", $field = "image")
     endforeach;
 }
 
+function isMobile() {
+    return preg_match('/(android|iphone|ipad|ipod|blackberry|webos|windows phone|symbian|opera mini|iemobile|mobile|tablet|kindle|silk|playbook)/i', $_SERVER['HTTP_USER_AGENT']);
+}
+
 // For frontend templating
 function template($filename, $vars, $current="orion")
 {

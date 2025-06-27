@@ -29,10 +29,18 @@ class Activities extends DatabaseObject
         $sql = "SELECT id, title,slug,image FROM " . self::$table_name . " WHERE status=1 ORDER BY sortorder DESC ";
         return self::find_by_sql($sql);
     }
-     public static function get_activities_parent()
+
+    public static function get_activities_parent()
     {
         global $db;
         $sql = "SELECT id, title,slug,image FROM " . self::$table_name . " WHERE status=1 AND parentOf=0 ORDER BY sortorder DESC ";
+        return self::find_by_sql($sql);
+    }
+
+    public static function get_activities_by_destination($destinationId = 0)
+    {
+        global $db;
+        $sql = "SELECT id, title,slug,image FROM " . self::$table_name . " WHERE status=1 AND destinationId='{$destinationId}' AND parentOf=0 ORDER BY sortorder DESC ";
         return self::find_by_sql($sql);
     }
 
