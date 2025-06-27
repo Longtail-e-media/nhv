@@ -8,7 +8,14 @@ if (isset($_GET['page']) && $_GET['page'] == "package" && isset($_GET['mode']) &
     clearImages($moduleTablename, $moduleFoldername);
     clearImages($moduleTablename, $moduleFoldername . "/thumbnails");
 
+    clearImages($moduleTablename, $moduleFoldername . "/map", "mapimage");
+    clearImages($moduleTablename, $moduleFoldername . "/map/thumbnails", "mapimage");
 
+    serclearImages($moduleTablename, $moduleFoldername . "/banner", "banner_image");
+    serclearImages($moduleTablename, $moduleFoldername . "/banner/thumbnails", "banner_image");
+
+    serclearImages($moduleTablename, $moduleFoldername . "/gallery", "gallery");
+    serclearImages($moduleTablename, $moduleFoldername . "/gallery/thumbnails", "gallery");
     ?>
     <h3>
         List Package
@@ -692,7 +699,7 @@ if (isset($_GET['page']) && $_GET['page'] == "package" && isset($_GET['mode']) &
                 <!--   <h3>Gallery</h3>
             <div class="form-row add-image">                                
                 <?php if (!empty($packageInfo->gallery)):
-                    $imgall = unserialize($packageInfo->gallery);
+                        $imgall = unserialize($packageInfo->gallery);
                     if (is_array($imgall)) {
                         foreach ($imgall as $imgk => $imgv) { ?>
                     <div class="col-md-3" id="removeSavedimg<?php echo 'G00' . $imgk; ?>">

@@ -9,6 +9,8 @@ $settings = json_decode($slideRec);
 if (isset($_GET['page']) && $_GET['page'] == "slideshow" && isset($_GET['mode']) && $_GET['mode'] == "list"):
     clearImages($moduleTablename, "slideshow");
     clearImages($moduleTablename, "slideshow/thumbnails");
+
+    clearImages($moduleTablename, "slideshow/video", "source");
     ?>
     <h3>
         List Slideshow

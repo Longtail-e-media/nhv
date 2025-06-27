@@ -7,6 +7,9 @@ $moduleFoldername = "activities";        // Image folder name
 if (isset($_GET['page']) && $_GET['page'] == "activities" && isset($_GET['mode']) && $_GET['mode'] == "list"):
     clearImages($moduleTablename, $moduleFoldername);
     clearImages($moduleTablename, $moduleFoldername . "/thumbnails");
+
+    clearImages($moduleTablename, $moduleFoldername . "/banner", "banner_image");
+    clearImages($moduleTablename, $moduleFoldername . "/banner/thumbnails", "banner_image");
     ?>
     <h3>
         List Activities

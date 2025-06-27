@@ -2,6 +2,8 @@
 $Tablename = "tbl_review"; // Database table name
 if (isset($_GET['page']) && $_GET['page'] == "package" && isset($_GET['mode']) && $_GET['mode'] == "reviewlist"):
     $id = intval(addslashes($_GET['id']));
+    clearImages($Tablename, "package/review");
+    clearImages($Tablename, "package/review/thumbnails");
     ?>
     <h3>
         List Review ["<?php echo Package::field_by_id($id, 'title'); ?>"]

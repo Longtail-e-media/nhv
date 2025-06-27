@@ -8,6 +8,12 @@ $moduleFoldername = "combinednews";        // Image folder name
 if (isset($_GET['page']) && $_GET['page'] == "combinednews" && isset($_GET['mode']) && $_GET['mode'] == "list"):
     clearImages($moduleTablename, $moduleFoldername);
     clearImages($moduleTablename, $moduleFoldername . "/thumbnails");
+
+    clearImages($moduleTablename, $moduleFoldername . "/banner", "banner_image");
+    clearImages($moduleTablename, $moduleFoldername . "/banner/thumbnails", "banner_image");
+
+    serclearImages($moduleTablename, $moduleFoldername . "/gallery", "gallery");
+    serclearImages($moduleTablename, $moduleFoldername . "/gallery/thumbnails", "gallery");
     ?>
     <style>
         .divContent a {

@@ -1,7 +1,9 @@
 <?php
 $ItineraryTablename  = "tbl_itinerary"; // Database table name
 if(isset($_GET['page']) && $_GET['page'] == "package" && isset($_GET['mode']) && $_GET['mode']=="itinerarylist"):
-$id = intval(addslashes($_GET['id']));  
+$id = intval(addslashes($_GET['id']));
+    clearImages($ItineraryTablename, "package/itinerary");
+    clearImages($ItineraryTablename, "package/itinerary/thumbnails");
 ?>
 <h3>
 List Itinerary ["<?php echo Package::field_by_id($id, 'title');?>"]

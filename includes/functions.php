@@ -333,6 +333,39 @@ function JsonclearImages($tablename="", $folder="", $field="image"){
 	endforeach;
 }
 
+function serclearImages($tablename = "", $folder = "", $field = "image")
+{
+    global $db;
+
+    $DirHandle = @opendir("../images/" . $folder . "/") or die($folder . " could not be opened.");
+
+    $FolderArr = $dbArr = array();
+
+    while ($filename = readdir($DirHandle)) {
+        if ($filename == "." || $filename == ".." || $filename == ".htaccess" || $filename == ".gitignore") {
+            continue;
+        }
+        $FolderArr[] = $filename;
+    }
+
+    $sql = "SELECT {$field} FROM {$tablename}";
+    //$result = Subpackage::find_by_sql($query);
+    $query = $db->query($sql);
+    while ($row = $db->fetch_array($query)) {
+        $record = unserialize($row[$field]);
+        if ($record) {
+            foreach ($record as $imgName) {
+                $dbArr[] = $imgName;
+            }
+        }
+    }
+
+    $final = array_diff($FolderArr, $dbArr);
+    foreach ($final as $k => $v):
+        @unlink("../images/{$folder}/" . $v);
+    endforeach;
+}
+
 // For frontend templating
 function template($filename, $vars, $current="orion")
 {
