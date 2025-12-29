@@ -123,7 +123,7 @@ if ($menuRec):
                     function googleTranslateElementInit() {
                         new google.translate.TranslateElement({
                             pageLanguage:\'en\',
-                            includedLanguages: \'en,ne,zh-CN,zh-TW,fr,de,pl,es,ru,it,ar,ko\',
+                            includedLanguages: \'en,ne,zh-CN,zh-TW,fr,de,pl,es,ru,it,ar,ko,el\',
                         }, \'google_translate_element\');
                     }
                 </script>
