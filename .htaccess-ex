@@ -9,6 +9,8 @@ RewriteRule ^sitemap$ sitemap.php [L]
 RewriteRule ^contact-us$ contact.php [L]
 RewriteRule ^customize$ customize.php [L]
 
+RewriteRule ^faq$ faq.php [L]
+
 #RewriteRule ^enquiry$ enquiry.php [L]
 RewriteRule ^enquiry/package/([a-zA-Z0-9-]+)/?$ enquiry.php?slug=$1 [L]
 

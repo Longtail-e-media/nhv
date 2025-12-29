@@ -100,7 +100,7 @@ if ($menuRec):
                     color: #fff;
                     border-radius: 7px;
                     margin-left: 18px;
-                    margin-right: -48px;
+                    margin-right: -54px;
                     color: transparent;
                     height: 37px;
                     margin-top: 4px;

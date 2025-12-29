@@ -425,7 +425,7 @@ if (defined('SEARCH_PAGE')) {
             ';
         } else {
             $bread_title .= '
-                <h2><span><span style="color:#3a3838">Tour Packages in ' . $destt->title . '</span></span></h2>
+                <h2>Tour Packages in ' . $destt->title . '</h2>
             ';
         }
         $brief = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', $destt->content);
@@ -442,47 +442,47 @@ if (defined('SEARCH_PAGE')) {
         if (!empty($destt->content)) {
             $bread_text_extra .= '
                <!-- <h4>' . $destt->title . '</h4>-->
-                    ' . $content . '
+                    ' .  $content . '
             ';
         }
-        $relateddetails = Articles::find_all_category($destt->id);
-        if (!empty($relateddetails)) {
-            $realtedarticle .= '
+         $relateddetails=Articles::find_all_category($destt->id);
+        if(!empty($relateddetails)){
+            $realtedarticle .='
             <div class="section-title search-title1">
                     
-                <h2><span><span style="color:#3a3838">Top Destination in  ' . $destt->title . '</span></span></h2>
+                <h2>Top Destination in  '. $destt->title . '</h2>
             
                 </div>';
-            $realtedarticle .= '
+                 $realtedarticle .='
                  <div class="">
                     <div class="row">
                         <div class="col-md-12 popular1 article-below">
                             <div class="row d-flex equal-height cols-1 cols-sm-2 cols-lg-3 gap-20 mb-30">';
-            foreach ($relateddetails as $relateddetail) {
-                $imgNm = '';
-                $file_path = SITE_ROOT . 'images/articles/' . $relateddetail->image;
-                if (file_exists($file_path) and !empty($relateddetail->image)) {
-                    $imgNm .= IMAGE_PATH . 'articles/' . $relateddetail->image;
-                } else {
-                    $imgNm .= IMAGE_PATH . 'static/article-banner.jpg';
-                }
-                $realtedarticle .= '<div class="col">
+            foreach($relateddetails as $relateddetail){
+          $imgNm = '';
+        $file_path = SITE_ROOT . 'images/articles/' . $relateddetail->image;
+        if (file_exists($file_path) and !empty($relateddetail->image)) {
+            $imgNm .= IMAGE_PATH . 'articles/' . $relateddetail->image;
+        } else {
+            $imgNm .= IMAGE_PATH . 'static/article-banner.jpg';
+        }
+          $realtedarticle .= '<div class="col">
                     <figure class="tour-grid-item-01" style="width:100%">
-                        <a href="' . BASE_URL . 'pages/' . $relateddetail->slug . '">
+                        <a href="' . BASE_URL  .'pages/'. $relateddetail->slug . '">
                             
                                     <div class="image">
-                                        <img src="' . $imgNm . '" alt="' . $relateddetail->title . '"/>
+                                        <img src="'.$imgNm.'" alt="' . $relateddetail->title . '"/>
                                     </div>
                               
                                     <figcaption class="content">
-                                        <h5 class="">' . $relateddetail->title . ' </h5>
+                                        <h5 class="">' .$relateddetail->title. ' </h5>
                              </a>           
                
                     </div>
                 ';
 
             }
-            $realtedarticle .= '</div>
+            $realtedarticle .='</div>
                         </div>
                     </div>
             </div>';
@@ -501,7 +501,7 @@ if (defined('SEARCH_PAGE')) {
                 </nav>
                 <!--<h4 class="mt-0 line-125 title-breadcrum">' . $total . ' Trip Packages in Nepal</h4>-->
         ';
-
+        
         } else {
             $destt = Destination::find_by_id($qdestination[0]);
             $total = Package::get_total_destination_packages($destt->id);
@@ -528,64 +528,64 @@ if (defined('SEARCH_PAGE')) {
                 ';
             } else {
                 $bread_title .= '
-                <h2><span><span style="color:#3a3838">Tour Packages in ' . $destt->title . '</span></span></h2>
+                <h2>Tour Packages in ' . $destt->title . '</h2>
                 ';
             }
             $brief = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', $destt->content);
-            $content = !empty($brief[1]) ? $brief[1] : $brief[0];
-            $bread_text .= '
+        $content = !empty($brief[1]) ? $brief[1] : $brief[0];
+        $bread_text .= '
                 <h2>' . $destt->title . '</h2>';
-            if (!empty($destt->title_brief)) {
-                $bread_text .= '
+        if (!empty($destt->title_brief)) {
+            $bread_text .= '
                 <p>' . $destt->title_brief . '
                     <!--<a href="#" id="read_more">Read More</a>-->
                 </p>
             ';
-            }
-            if (!empty($destt->content)) {
-                $bread_text_extra .= '
-         <!--       <h4>' . $destt->title . '</h4>-->
-                    ' . $content . '
-            ';
-            }
         }
-        $relateddetails = Articles::find_all_category($destt->id);
-        if (!empty($relateddetails)) {
-            $realtedarticle .= '<div class="section-title search-title1"><h4>Top Destination in  ' . $destt->title . '</h4></div>';
-            $realtedarticle .= '
+        if (!empty($destt->content)) {
+            $bread_text_extra .= '
+         <!--       <h4>' . $destt->title . '</h4>-->
+                    ' .  $content . '
+            ';
+        }
+        }
+            $relateddetails=Articles::find_all_category($destt->id);
+        if(!empty($relateddetails)){
+            $realtedarticle .='<div class="section-title search-title1"><h4>Top Destination in  '. $destt->title . '</h4></div>';
+             $realtedarticle .='
                  <div class="">
                     <div class="row">
                         <div class="col-md-12 popular1 article-below">
                             <div class="row d-flex equal-height cols-1 cols-sm-2 cols-lg-3 gap-20 mb-30">';
-            foreach ($relateddetails as $relateddetail) {
-                $imgNm = '';
-                $file_path = SITE_ROOT . 'images/articles/' . $relateddetail->image;
-                if (file_exists($file_path) and !empty($relateddetail->image)) {
-                    $imgNm .= IMAGE_PATH . 'articles/' . $relateddetail->image;
-                } else {
-                    $imgNm .= IMAGE_PATH . 'static/article-banner.jpg';
-                }
-                $realtedarticle .= '<div class="col-md-4">
+            foreach($relateddetails as $relateddetail){
+          $imgNm = '';
+        $file_path = SITE_ROOT . 'images/articles/' . $relateddetail->image;
+        if (file_exists($file_path) and !empty($relateddetail->image)) {
+            $imgNm .= IMAGE_PATH . 'articles/' . $relateddetail->image;
+        } else {
+            $imgNm .= IMAGE_PATH . 'static/article-banner.jpg';
+        }
+          $realtedarticle .= '<div class="col-md-4">
                     <figure class="tour-grid-item-01">
-                        <a href="' . BASE_URL . $relateddetail->slug . '">
+                        <a href="' . BASE_URL  . $relateddetail->slug . '">
                             
                                     <div class="image">
-                                        <img src="' . $imgNm . '" alt="' . $relateddetail->title . '"/>
+                                        <img src="'.$imgNm.'" alt="' . $relateddetail->title . '"/>
                                     </div>
                               
                                     <figcaption class="content">
-                                        <h5 class="">' . $relateddetail->title . ' </h5>
+                                        <h5 class="">' .$relateddetail->title. ' </h5>
                              </a>           
                
                     </div>
                 ';
 
-            }
-            $realtedarticle .= '</div>
+        }
+         $realtedarticle .='</div>
                         </div>
                     </div>
             </div>';
-        }
+    }
     }
     if (!empty($gactivity_slug)) {
         $totalIds = Activities::get_id_by_slug($gactivity_slug);
@@ -614,9 +614,9 @@ if (defined('SEARCH_PAGE')) {
         $bread_title .= '
             <h2><span><span style="color:#3a3838">' . $actt->title . ' Packages</span></span></h2>
         ';
-
-
-        $brief = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', $actt->content);
+       
+        
+                $brief = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', $actt->content);
         $content = !empty($brief[1]) ? $brief[1] : $brief[0];
         $bread_text .= '
                 <h2>' . $actt->title . '</h2>';
@@ -630,7 +630,7 @@ if (defined('SEARCH_PAGE')) {
         if (!empty($destt->content)) {
             $bread_text_extra .= '
              <!--   <h4>' . $actt->title . '</h4>-->
-                    ' . $content . '
+                    ' .  $content . '
             ';
         }
 
@@ -658,7 +658,7 @@ if (defined('SEARCH_PAGE')) {
                 $rating_floor = floor($rating_float);
                 $rating = ($rating_float <= ($rating_floor + 0.5)) ? ($rating_floor + 0.5) : (ceil($rating_float));
                 $days = ($rows['days'] == 1) ? 'day' : 'days';
-
+                
                 $price_text = '';
                 if (!empty($rows['price']) and (empty($rows['offer_price']))) {
                     $price_text = '<p class="home-price">Starting USD ' . $rows['price'] . '</p>';
@@ -666,7 +666,7 @@ if (defined('SEARCH_PAGE')) {
                 if (!empty($rows['offer_price'])) {
                     $price_text = '<p class="home-price">Starting USD <del>' . $rows['price'] . '</del> ' . $rows['offer_price'] . '</p>';
                 }
-
+        
                 $respkglist .= '<div class="col-md-4">
                     <figure class="tour-grid-item-01">
                         <a href="' . BASE_URL . 'package/' . $rows['slug'] . '">
@@ -677,7 +677,7 @@ if (defined('SEARCH_PAGE')) {
                                     </div>
                               
                                     <figcaption class="content">
-                                        <h5 class="">' . substr($rows['title'], 0, 45) . ' </h5>
+                                        <h5 class="">' .substr($rows['title'] , 0, 45). ' </h5>
                                         <ul class="item-meta mt-15">
                                             <li>
                                                 <!--<i class="elegent-icon-pin_alt text-warning"></i>-->
@@ -694,13 +694,13 @@ if (defined('SEARCH_PAGE')) {
                                                     </div>
                                                 </div>
                                             </li>-->
-                                            <li ><span class="font700 h6" ><i class="far fa-hourglass"></i> ' . $rows['days'] . ' ' . $days . ' </span ></li >
+                                            <li ><i class="far fa-hourglass pr-2"></i> ' . $rows['days'] . ' ' . $days . ' </li >
                                         </ul>
                                         <!--<p>' . $rows['breif'] . ' </p >-->
                                         
                                     </figcaption >';
                 if (!empty($rows['accomodation'])) {
-                    $respkglist .= '<p class="featured-trip1">';
+                    $respkglist .= '<p class="featured-trip1 d-none">';
                     $routes = explode(',', $rows['accomodation']);
                     $limitedRouts = array_slice($routes, 0, 4);
                     foreach ($limitedRouts as $route) {
@@ -763,7 +763,6 @@ if (defined('SEARCH_PAGE')) {
         redirect_to($url);
     }*/
 }
-
 $jVars['module:search-searchform'] = $resisearch;
 $jVars['module:package-search-breadcrumb'] = $bread;
 $jVars['module:package-search-breadcrumb-title'] = $bread_title;
@@ -772,3 +771,4 @@ $jVars['module:package-search-breadcrumb-extra'] = $bread_text_extra;
 $jVars['module:package-search-related-extra'] = $realtedarticle;
 $jVars['module:package-searchlist'] = $respkglist;
 $jVars['module:package-navigation'] = $navigation;
+?>

@@ -42,7 +42,7 @@ $jVars["module:home-destination"] = $home_destination;
 
 /* Package Display Using Home Flag */
 $reshome = $grade = $destination_name = $rating = '';
-$homeRec = Package::get_databy_display('homepage', 1, 8);
+$homeRec = Package::get_databy_display('homepage', 1, 6);
 if (!empty($homeRec)) {
     foreach ($homeRec as $RecRow) {
         $img = $tag = '';
@@ -76,10 +76,10 @@ if (!empty($homeRec)) {
                             <figcaption class="content ">
                                 '. $tag .'
                                 <h5 class="">' .substr($RecRow->title, 0, 45). '</h5>
-                                <ul class="item-meta mt-15">
+                                <ul class="item-meta mt-10">
                                     <li>
                                         <!--<i class="elegent-icon-pin_alt text-warning"></i>-->
-                                        <i class="far fa-map pr-2"></i>' . $destination_name . '
+                                        <i class="far fa-map pr-2" style="color: #f39949;"></i> ' . $destination_name . '
                                     </li>
                                     <!--<li>
                                         <div class="rating-item rating-sm rating-inline clearfix">
@@ -93,7 +93,7 @@ if (!empty($homeRec)) {
                                         </div>
                                     </li>-->
                                     <li>
-                                        <span class="font700 h6"><i class="far fa-hourglass"></i>' . $RecRow->days . ' Days</span>
+                                        <i class="far fa-hourglass pr-2" style="color: #f39949;"></i> ' . $RecRow->days . ' Days
                                         <!--<span class="font700 h6">
                                             <p class="mt-3">Price from <span
                                                     class="h6 line-1 text-primary font16">$ ' . $RecRow->price . '</span> <span
@@ -103,7 +103,7 @@ if (!empty($homeRec)) {
                                 </ul>
                             </figcaption>';
         if (!empty($RecRow->accomodation)) {
-            $reshome .= '<p class="featured-trip1">';
+            $reshome .= '<p class="featured-trip1 d-none">';
             $routes = explode(',', $RecRow->accomodation);
             $limitedRouts = array_slice($routes, 0, 4);
             foreach ($limitedRouts as $route) {
@@ -168,7 +168,7 @@ if (!empty($featureRec)) {
         
         $resfeature .= '
             <div class="col-md-4">
-                <figure class="tour-grid-item-01">
+                <figure class="tour-grid-item-01 aw">
                     <a href="' . BASE_URL . 'package/' . $fetRow->slug . '">
                         <style>
                             .hgt-230{height:230px !important;}
@@ -183,10 +183,10 @@ if (!empty($featureRec)) {
                         <figcaption class="content ">
                             ' . $tag . '
                             <h5 class="">' .substr($fetRow->title, 0, 48). '</h5>
-                            <ul class="item-meta mt-15">
+                            <ul class="item-meta mt-10">
                                 <li>
                                     <!--<i class="elegent-icon-pin_alt text-warning"></i>--> 
-                                    <i class="far fa-map pr-2"></i>' . $destination_name . '
+                                    <i class="far fa-map pr-2" style="color: #f39949;"></i>' . $destination_name . '
                                 </li>
                                 <!--<li>
                                     <div class="rating-item rating-sm rating-inline clearfix">
@@ -198,12 +198,12 @@ if (!empty($featureRec)) {
                                         </div>
                                     </div>
                                 </li>-->
-                                <li><span class="font700 h6"><i class="far fa-hourglass"></i>' . $fetRow->days . ' Days</span></li>
+                                <li><i class="far fa-hourglass pr-2" style="color: #f39949;"></i>' . $fetRow->days . ' Days</li>
                             </ul>
                             
                         </figcaption>';
      if (!empty($fetRow->accomodation)) {
-    $resfeature .= '<p class="featured-trip1">';
+    $resfeature .= '<p class="featured-trip1 d-none">';
     $routes = explode(',', $fetRow->accomodation);
     $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
     $lastRoute = end($limitedRoutes);
@@ -339,7 +339,7 @@ if ($totl > 0) {
         
         $resfix .= '
             <div class="col">
-                <figure class="tour-grid-item-01">
+                <figure class="tour-grid-item-01 aw">
                     <a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
                         <style>
                             .hgt-230{height:230px !important;}
@@ -420,7 +420,7 @@ if ($totl > 0) {
                             </ul>-->
                         </figcaption>';
      if (!empty($FixRow->accomodation)) {
-    $resfix .= '<p class="featured-trip1">';
+    $resfix .= '<p class="featured-trip1 d-none">';
     $routes = explode(',', $FixRow->accomodation);
     $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
     $lastRoute = end($limitedRoutes);
@@ -1272,7 +1272,7 @@ if (!empty($sliderImages)) {
                 <div class="row mt-25">
                     <div class="col-12 col-md-8 col-lg-9">
                         <div class="col-inner">
-                            <a href="#askquestions" data-toggle="modal" data-target="#loginFormTabInModal" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-wide btn-contact-page">Ask a question</a>
+                            <a href="#exampleModalfaq" data-toggle="modal" data-target="#exampleModalfaq" data-backdrop="static" data-keyboard="false" class="btn btn-primary btn-wide btn-contact-page">Ask a question</a>
                         </div>
                     </div>
                 </div>
@@ -1312,10 +1312,10 @@ if (!empty($sliderImages)) {
                                         </div>
                                         <figcaption class="content">
                                             <h5 class="">' .substr($similarTour->title, 0, 45) . '</h5>
-                                            <ul class="item-meta mt-15 detailul">
+                                            <ul class="item-meta mt-10 detailul">
                                                 <li class="a123">
                                                     <!--<i class="elegent-icon-pin_alt text-warning"></i>--> 
-                                                    <i class="far fa-map pr-2"></i>' . $dsRec->title . '
+                                                    <i class="far fa-map pr-2"style="color: #f39949;"></i>' . $dsRec->title . '
                                                 </li>
                                                 <!--<li>
                                                     <div class="rating-item rating-sm rating-inline clearfix">
@@ -1324,17 +1324,17 @@ if (!empty($sliderImages)) {
                                                         </div>
                                                     </div>
                                                 </li>-->
-                                                <li><span class="font700 h6"><i class="far fa-hourglass"></i>' . $similarTour->days . ' days</span></li>
+                                                <li><i class="far fa-hourglass pr-2" style="color: #f39949;"></i>' . $similarTour->days . ' days</li>
                                             </ul>
                                             <!--<ul class="item-meta mt-15">
-                                                <li><span class="font700 h6">' . $similarTour->days . ' days</span></li>
+                                                <li><span class="font700 h6" >' . $similarTour->days . ' days</span></li>
                                                 <li>
                                                     <p class="mt-3">Price from <span class="h6 line-1 text-primary font16">$ ' . $similarTour->price . '</span> <span class="text-muted mr-5"></span></p>
                                                 </li>
                                             </ul>-->
                                         </figcaption>';
                         if (!empty($similarTour->accomodation)) {
-                            $respkg_detail .= '<p class="featured-trip1">';
+                            $respkg_detail .= '<p class="featured-trip1 d-none">';
                             $routes = explode(',', $similarTour->accomodation);
                             $limitedRouts = array_slice($routes, 0, 4);
                             foreach ($limitedRouts as $route) {
@@ -1876,7 +1876,49 @@ if (!empty($sliderImages)) {
 
         //Ask a Question
         $ask_question .= '
-            <div class="modal fade modal-with-tabs form-login-modal" id="loginFormTabInModal" aria-labelledby="modalWIthTabsLabel"
+        
+           <div class="modal fade" id="exampleModalfaq" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+     aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Ask a Question</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                          <form method="post" action="" id="ask_question_form">
+                                            <div class="d-flex flex-column flex-lg-row align-items-stretch">
+                                                <div class="flex-md-grow-1 bg-primary-light">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-12 col-lg-12">
+                                                        <div class="" id="msgg" style="display:none;"></div>
+                                                            <div class="form-group">
+                                                                <label>Full name</label>
+                                                                <input type="text" name="full_name" class="form-control"/>
+                                                                <input type="hidden" name="package_name" value="' . $pkgRec->title . '"/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Email adress</label>
+                                                                <input type="text" name="email" class="form-control"/>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Question</label>
+                                                                <textarea name="message" id="comment-message" class="form-control" rows="6"></textarea>
+                                                            </div>
+                                                            <button type="submit" id="submit" class="btn btn-primary btn-wide btn-contact-page">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!--<div class="modal fade modal-with-tabs form-login-modal" id="loginFormTabInModal" aria-labelledby="modalWIthTabsLabel"
      tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content shadow-lg">
@@ -1934,10 +1976,10 @@ if (!empty($sliderImages)) {
                                     </div>
                                 </div>
             
-                            </div>';
+                            </div> -->';
 
         $ask_question .= '
-                            <div role="tabpanel" class="tab-pane fade in" id="emailfriend">
+                           <!-- <div role="tabpanel" class="tab-pane fade in" id="emailfriend">
             
                                 <div class="form-login">
             
@@ -2064,7 +2106,7 @@ if (!empty($sliderImages)) {
                         
                     </div>
                 </div>
-            </div>
+            </div>-->
         ';
 
     } else {
@@ -2258,7 +2300,7 @@ if ($totl > 0) {
                             </ul>-->
                         </figcaption>';
      if (!empty($row->accomodation)) {
-    $reshfix .= '<p class="featured-trip1">';
+    $reshfix .= '<p class="featured-trip1 d-none">';
     $routes = explode(',', $row->accomodation);
     $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
     $lastRoute = end($limitedRoutes);

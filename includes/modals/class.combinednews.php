@@ -68,7 +68,8 @@ class CombinedNews extends DatabaseObject
     {
         global $db;
         $cond = !empty($limit) ? ' LIMIT ' . $limit : '';
-        return self::find_by_sql("SELECT * FROM " . self::$table_name . " WHERE status=1 ORDER BY event_stdate DESC $cond");
+        // return self::find_by_sql("SELECT * FROM " . self::$table_name . " WHERE status=1 ORDER BY event_stdate DESC $cond");
+        return self::find_by_sql("SELECT * FROM " . self::$table_name . " WHERE status=1 ORDER BY sortorder DESC $cond");
     }
 
     //Get sortorder by id

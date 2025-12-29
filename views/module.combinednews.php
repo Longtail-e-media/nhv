@@ -61,7 +61,7 @@ if (defined("BLOGLIST_PAGE")) {
     ';
 
     $page = (isset($_REQUEST["pageno"]) and !empty($_REQUEST["pageno"])) ? $_REQUEST["pageno"] : 1;
-    $sql = "SELECT * FROM tbl_conbined_news WHERE status='1' ORDER BY event_stdate DESC";
+    $sql = "SELECT * FROM tbl_conbined_news WHERE status='1' ORDER BY sortorder DESC";
 
     $limit = 4;
     $total = $db->num_rows($db->query($sql));
@@ -136,7 +136,7 @@ if (defined("BLOG_PAGE")) {
         }
 
         $blog_breadcrumb .= '
-            <div class="page-title mb-0 about-banner search-banner" style="background:linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)), url(' . $banner_img . ');">
+            <div class="page-title mb-0 about-banner" style="background:linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.22)), url(' . $banner_img . ');">
                 <div class="container">
                     <div class="row gap-15 align-items-center bread123">
                         <div class="col-12 col-md-7 search-bread">

@@ -4,7 +4,8 @@
  
  
  */
- @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+     @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
  .fa,.fab,.fal,.far,.fas {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
@@ -16609,6 +16610,7 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 	position: relative;
 	margin-bottom: 0;
 	vertical-align: top;
+	font-family: "Work Sans", sans-serif;
 }
 
 .custom-control-label::before {
@@ -23179,7 +23181,7 @@ a.text-dark:focus,a.text-dark:hover {
 }
 
 html {
-	font-family: 'Raleway',sans-serif;
+font-family: "Work Sans", sans-serif;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 }
@@ -23416,6 +23418,7 @@ h1:last-child,h2:last-child,h3:last-child,h4:last-child,h5:last-child,h6:last-ch
 
 p {
 	margin-bottom: 15px;
+	font-family: "Work Sans", sans-serif;
 }
 
 p:last-child {
@@ -23462,7 +23465,7 @@ hr.hr-lg {
 }
 
 body {
-	font-family: 'Raleway',sans-serif;
+	 font-family: "Libre Baskerville", serif;
 	color: #636363;
 	font-weight: 400;
 	font-size: 13px;
@@ -23470,7 +23473,7 @@ body {
 }
 
 h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6,.btn,label {
-	font-family: 'Raleway',sans-serif;
+ font-family: "Libre Baskerville", serif;
 	color: #212121;
 }
 
@@ -31259,7 +31262,7 @@ ul.list-inline-block li:last-child {
 	padding: 12px 12px 10px;
 	font-weight: 500;
 	margin: 0 0 2px;
-	font-family: 'Raleway',sans-serif;
+font-family: "Work Sans", sans-serif;
 	color: #dc221a;
 	background-color: transparent;
 }
@@ -32158,7 +32161,7 @@ ul.list-inline-block li:last-child {
 }
 
 .bt-collapse-wrapper .collapse-header [data-toggle=collapse]:not(.collapsed),.bt-collapse-wrapper .collapse-header [data-toggle=collapse]:not(.collapsed):after {
-	color: #ff1944;
+	color: #222222;
 }
 
 .bt-collapse-wrapper .collapse-header h3,.bt-collapse-wrapper .collapse-header h4,.bt-collapse-wrapper .collapse-header h5,.bt-collapse-wrapper .collapse-header h6 {
@@ -32460,11 +32463,12 @@ ul.list-inline-block li:last-child {
 
 .rating-item {
 	line-height: 1.25;
+    margin-bottom: 10px;
 }
 
 .rating-item .rating-icon {
 	font-size: 14px;
-	color: #10c47f;
+	color: #f19038;
 }
 
 .rating-item .rating-symbol {
@@ -32497,7 +32501,7 @@ ul.list-inline-block li:last-child {
 }
 
 .rating-item.rating-sm .rating-icon[class*=ri] {
-	font-size: 12px;
+	font-size: 17px;
 }
 
 .rating-item.rating-lg .rating-icon[class*=ri] {
@@ -36176,11 +36180,12 @@ ul.horizon-sticky-nav>li.active a {
 }
 
 .hero-banner .hero-inner {
-	position: relative;
+	position: absolute;
     text-align: center;
     width: 100%;
-    margin-top: -251px;
+    /* margin-top: -251px; */
     padding: 0px 250px;
+    bottom: 200px;
 }
 
 .hero-banner .hero-flex {
@@ -36740,7 +36745,7 @@ ul.horizon-sticky-nav>li.active a {
 
 .section-title p {
 	font-size: 16px;
-	letter-spacing: 1px;
+	letter-spacing: 0px;
 	line-height: 29px;
 	text-align:Center;
 }
@@ -36879,7 +36884,7 @@ ul.horizon-sticky-nav>li.active a {
 
 @media(min-width:992px) {
 	.sidebar-wrapper.pv {
-		padding-top: 50px;
+		padding-top: 30px;
 		padding-bottom: 50px;
 	}
 
@@ -37937,7 +37942,7 @@ ul.itinerary-list>li+li {
 	position: absolute;
 	left: -28px;
 	top: 25px;
-	color: #BBB;
+	color: #2a97af;
 	text-transform: uppercase;
 	font-size: 20px;
 	letter-spacing: 1px;
@@ -38517,10 +38522,11 @@ ul.post-small-list li .recent-post-sm-meta {
 
 .collapse-style-04 .collapse-header .collapse-title>a {
 	display: block;
-	line-height: 1;
-	padding: 22px 25px 18px;
-	font-weight: 700;
-	color: #333;
+    line-height: 1;
+    padding: 20px;
+    font-weight: 600;
+    color: #333;
+    font-size: 16px;
 }
 
 .collapse-style-04 .collapse-header [data-toggle=collapse]:not(.collapsed) .collapse-title {
@@ -38528,12 +38534,12 @@ ul.post-small-list li .recent-post-sm-meta {
 }
 
 .collapse-style-04 .collapse-body {
-	padding: 30px;
+	padding: 20px;
 	border-bottom: 1px solid #dee2e6;
 }
 
 .collapse-style-04 .collapse-inner {
-	padding-left: 15px;
+	padding-left: 0px;
 }
 
 .collapse-style-04 .collapse-header [data-toggle=collapse]:not(.collapsed) {
@@ -38541,7 +38547,7 @@ ul.post-small-list li .recent-post-sm-meta {
 }
 
 .collapse-style-04 .collapse-header [data-toggle=collapse]:hover {
-	color: #ff1944;
+	color: #222222;
 }
 
 .collapse-style-04 .collapse-header [data-toggle=collapse]:not(.collapsed):after {
@@ -38700,7 +38706,9 @@ ul.category-list li a span {
     font-size: 15px;
     line-height: 1.6;
     letter-spacing: 0px;
-    color: #000000;
+    color: #222222;
+    height:150px;
+    overflow:auto;
 }
 
 .testimonial-grid-01 .image {
@@ -38720,10 +38728,11 @@ ul.category-list li a span {
 }
 
 .testimonial-grid-01 .testimonial-cite {
-	font-style: italic;
 	letter-spacing: 2px;
-	font-weight: 600;
-	font-size: 13px;
+    font-weight: 400;
+    font-size: 13px;
+    height: auto;
+    color: #333;
 }
 
 .testimonial-grid-wrapper {
@@ -39179,6 +39188,7 @@ ul.contact-list-01 li .icon-font i{
 #detail-content-sticky-nav-04 ul li{
     list-style-type: circle;
     list-style-position: inside;
+    font-family: "Work Sans", sans-serif;
 }
 
 .about-top ul li{
@@ -39284,6 +39294,7 @@ ul.review-list>li .review-content {
 
 	.header-main .main-nav {
 		margin-left: 15px;
+		 margin-top: 15px;
 	}
 
 	.header-main .main-nav li a {
@@ -39341,6 +39352,10 @@ ul.review-list>li .review-content {
 		box-shadow: 0 3px 8px -6px rgba(0,0,0,0.43);
 		min-height:70px;
 	}
+	
+	.header-waypoint-sticky.header-main .main-nav {
+        margin-top: 0px;
+    }
 
 	.header-waypoint-sticky.header-main .header-inner {
 		padding-top: 0;
@@ -39570,7 +39585,7 @@ ul.review-list>li .review-content {
 	-webkit-transition: -webkit-transform .35s;
 	transition: transform .35s;
 	-webkit-transform: translate3d(0,100%,0);
-	font-family: 'Raleway',sans-serif;
+font-family: "Work Sans", sans-serif;
 }
 
 .hovereffect img {
@@ -39592,7 +39607,6 @@ ul.review-list>li .review-content {
 	position: relative;
 	font-size: 17px;
 	margin-top: -22px;
-	font-family: 'Raleway',sans-serif;
 }
 
 .hovereffect h3 {
@@ -39602,7 +39616,7 @@ ul.review-list>li .review-content {
 	position: relative;
 	font-size: 17px;
 	margin-top: -22px;
-	/*font-family: "Libre Baskerville", serif;*/
+	font-family: "Work Sans", sans-serif;
 }
 
 .hovereffect p {
@@ -39669,7 +39683,7 @@ ul.review-list>li .review-content {
 .hovereffect:hover .overlay,.hovereffect:hover h2,.hovereffect:hover p.icon-links a {
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
-	font-family: 'Raleway',sans-serif;
+	font-family: "Work Sans", sans-serif;
 }
 
 .hovereffect:hover h2 {
@@ -39735,7 +39749,7 @@ ul.review-list>li .review-content {
     padding-right: 0;
     padding-top: 18px;
     z-index: 1111;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Work Sans", sans-serif;
     display:flex;
 }
 
@@ -39883,8 +39897,9 @@ ul.review-list>li .review-content {
 }
 
 .hero-inner h1 {
-	font-weight: 700;
-    font-size: 47px;
+	font-weight: 400;
+    font-size: 35px;
+    text-transform: capitalize;
 }
 
 .search-home {
@@ -39912,19 +39927,22 @@ ul.review-list>li .review-content {
     background: #ffffff;
     color: #000000 !important;
     border-color: #fff;
-    letter-spacing: 2px;
-    font-weight: 600;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-family: "Work Sans", sans-serif;
 }
 
 .new-img {
 	position: absolute;
-	top: 546px;
+    bottom: 291px;
+    width: 562px;
 }
 
 .new-img1 {
-	width: 396px;
-	position: absolute;
-	left: -3%;
+	    width: 350px;
+    position: absolute;
+    right: 0px;
+    bottom: -129px;
 }
 
 .new-img2 {
@@ -40004,7 +40022,7 @@ ul.review-list>li .review-content {
     color: #fff;
 }
 .recomend-trip1 {
-	font-family: Raleway;
+	font-family: "Work Sans", sans-serif;
     font-weight: 300;
     font-size: 16px;
     line-height: 26px;
@@ -40014,7 +40032,8 @@ ul.review-list>li .review-content {
     padding: 0px 219px;
 }
 .trips-home{
-    padding:80px 0px;
+    padding: 80px 0px;
+    position: relative;
 }
 .trips-home p{
     color:#fff;
@@ -40030,14 +40049,14 @@ ul.review-list>li .review-content {
 }
 
 .section-title h2 {
-	font-weight: 700;
+	font-weight: 600;
     line-height: 1.15;
     font-size: 31px;
     margin: 0;
     text-transform: capitalize;
     text-align: center;
     margin-bottom: 20px;
-    color:#235E70;
+    color:#f19038;
     font-family: "Libre Baskerville", serif;
 }
 
@@ -40047,8 +40066,8 @@ ul.review-list>li .review-content {
 
 .sherpa1 {
 	padding: 0px 219px;
-    color: #636363;
-    font-family: Raleway;
+    color: #222222;
+    font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 29px;
@@ -40073,7 +40092,7 @@ ul.review-list>li .review-content {
 }
 
 .tour-grid-item-01 ul.item-meta li {
-	display: block;
+    display: inline-block;
     position: relative;
 }
 
@@ -40087,15 +40106,15 @@ ul.review-list>li .review-content {
 }
 
 .info-home{
-    font-family: Raleway;
+   font-family: "Work Sans", sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 29px;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
     text-align: center;
     vertical-align: middle;
     color:#000000;
-    padding: 70px 198px 0px;
+    padding: 80px 193px 0px;
 }
 .deals1-inner1{
     padding:0px 80px;
@@ -40127,7 +40146,7 @@ ul.review-list>li .review-content {
 .tour-packages1 {
 	margin-bottom: 0;
 	background: #fff;
-	padding-bottom: 80px;
+	padding-bottom: 0px;
 	padding-top: 80px;
 	position: relative;
 }
@@ -40159,7 +40178,7 @@ ul.review-list>li .review-content {
 .tour-grid-item-01 h5 {
 	line-height: 25px;
     margin: 0;
-    color: #235E70;
+    color: #333333;
     font-family: "Libre Baskerville", serif;
     font-size: 16px;
     min-height: 50px;
@@ -40190,7 +40209,7 @@ ul.review-list>li .review-content {
     font-family: inherit;
     font-size: inherit;
     color: #fff;
-    background: #f0903a;
+    background: #2a97af;
     cursor: pointer;
     padding: 7px 20px;
     display: inline-block;
@@ -40217,6 +40236,7 @@ ul.review-list>li .review-content {
 
 .deals1 {
 	padding: 80px 0;
+	position:relative;
 }
 
 .customis-cover {
@@ -40225,7 +40245,7 @@ ul.review-list>li .review-content {
 }
 
 .customis {
-	padding-bottom: 70px;
+	/*padding-bottom: 70px;*/
 }
 
 .banner_2 {
@@ -40235,7 +40255,7 @@ ul.review-list>li .review-content {
 	-o-background-size: cover;
 	background-size: cover;
 	width: 100%;
-	height: 507px;
+	height: 431px;
 	position: relative;
 }
 
@@ -40256,10 +40276,10 @@ ul.review-list>li .review-content {
 
 .banner_2 .wrapper h3 {
 	color: #fff;
-    font-size: 27px;
+    font-size: 24px;
     text-transform: capitalize;
-    font-weight: 700;
-    line-height: 55px;
+    font-weight: 400;
+    line-height: 45px;
 }
 
 .banner_2 .wrapper p {
@@ -40273,13 +40293,14 @@ ul.review-list>li .review-content {
 }
 
 .travel-vlog p {
-    font-family: Raleway;
+    font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 17px;
     line-height: 24.65px;
-    letter-spacing: 1px;
+    letter-spacing: 0px;
     text-align: center;
-    padding: 0px 132px;
+    padding: 0px 170px;
+    color: #222222;
 }
 
 .travel-blog1 {
@@ -40345,6 +40366,7 @@ a.box_news ul li {
 	color: #000;
 	font-size: 13px;
 	margin-right: 5px;
+	font-family: "Work Sans", sans-serif;
 }
 
 a.box_news h4 {
@@ -40399,8 +40421,8 @@ a.box_news h4 {
 }
 
 .testimonial-grid-01 .man .image {
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
 	display: inline-block;
 	vertical-align: middle;
@@ -40431,7 +40453,6 @@ a.box_news h4 {
 }
 
 .testimonial-grid-wrapper h2{
-    font-family: Raleway;
     font-weight: 700;
     font-size: 31px;
     line-height: 35.65px;
@@ -40441,7 +40462,7 @@ a.box_news h4 {
     color:#F0903A;
 }
 .testimonial-grid-wrapper .revie3{
-    font-family: Raleway;
+    font-family: "Work Sans", sans-serif;
     font-weight: 300;
     font-size: 14px;
     line-height: 1px;
@@ -40498,7 +40519,7 @@ a.box_news h4 {
 	padding-left: 22px;
 	padding-right: 0;
 	padding-top: 25px;
-	font-family: 'Raleway',sans-serif;
+    font-family: "Work Sans", sans-serif;
 }
 
 .header-main2 .main-logo img {
@@ -40513,7 +40534,10 @@ a.box_news h4 {
 
 .about-banner {
 	background: linear-gradient(180deg,rgba(0,0,0,0.22),rgba(0,0,0,0.22)),url('../img/destination.jpg');
-	height: 422px;
+	background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    	height: 422px;
 }
 
 .search-banner {
@@ -40529,7 +40553,7 @@ a.box_news h4 {
 }
 
 .about-bread {
-	left: 43%;
+	/*left: 43%;*/
 }
 
 .bread123 .breadcrumb-item {
@@ -40798,7 +40822,6 @@ a:hover {
 }
 
 .featured-icon-horizontal-01 h5,.featured-icon-horizontal-01 h6 {
-	font-family: 'Raleway', sans-serif;
     font-size: 19px;
     margin-bottom: 8px;
     color: #235E70;
@@ -40807,7 +40830,7 @@ a:hover {
 
 .featured-icon-horizontal-01 .content p {
 	font-size: 16px;
-	letter-spacing: 1px;
+	letter-spacing: 0px;
 	color: #000 !important;
 }
 
@@ -40824,7 +40847,7 @@ a:hover {
 
 .two-column-css {
 	text-align: justify;
-	font-family: 'Raleway',sans-serif;
+	font-family: "Work Sans", sans-serif;
 	line-height: 1.7;
 	font-size: 15px;
 	letter-spacing: 1px;
@@ -40835,7 +40858,7 @@ a:hover {
 	line-height: 1.25;
 	margin: 10px 0 10px;
 	font-weight: 600;
-	font-family: 'Raleway',sans-serif;
+	 font-family: "Libre Baskerville", serif;
 	font-size: 17px;
 }
 
@@ -40889,7 +40912,7 @@ a:hover {
 .footer-copy-right {
 	font-size: 14px;
 	color: #ffffff;
-	font-family: 'Raleway',sans-serif;
+	font-family: "Work Sans", sans-serif;
 	/*text-align: left;*/
 }
 
@@ -40898,7 +40921,7 @@ a:hover {
 	font-size: 11px;
 	letter-spacing: 0;
 	color: #c7c1c1;
-	font-family: 'Raleway',sans-serif;
+	font-family: "Work Sans", sans-serif;
 }
 
 .footer-socials img {
@@ -40982,7 +41005,7 @@ a:hover {
 }
 
 .detailul .a123 {
-	margin-right: 185px !important;
+	/*margin-right: 185px !important;*/
 }
 .new-img3.ulnew-img3{
     display:none;
@@ -41122,17 +41145,17 @@ a:hover {
 }
 
 .gallery-bread {
-	margin-left: 42%;
+	/*margin-left: 42%;*/
 }
 
 .search-bread {
-	margin-left: 39%;
-    margin-top: -13%;
+	/*margin-left: 39%;*/
+ /*   margin-top: -13%;*/
 }
 
 .detail-bread {
-	margin-left: 35%;
-    margin-top: -17%;
+	/*margin-left: 35%;*/
+ /*   margin-top: -17%;*/
 }
 
 .detail-bread .breadcrumb-item {
@@ -41158,7 +41181,11 @@ a:hover {
 }
 
 .search-title1 {
-	margin-top: 50px;
+	margin-top: 30px;
+}
+
+.section-title.search-title1 h2{
+    text-align:left;
 }
 
 .destination1-text {
@@ -41254,7 +41281,7 @@ ul.horizon-sticky-nav>li a {
 	display: block;
 	width: 1.5em;
 	height: 1.5em;
-	background: url('../img/star-on.svg');
+	background: url('../img/star.png');
 	background-size: contain;
 	opacity: 0;
 	transition: opacity .2s linear;
@@ -41290,7 +41317,7 @@ ul.horizon-sticky-nav>li a {
 	display: block;
 	width: 1.5em;
 	height: 1.5em;
-	background: url('../img/star-on.svg');
+	background: url('../img/star.png');
 	background-size: contain;
 	opacity: 0;
 	transition: opacity .2s linear;
@@ -41507,16 +41534,30 @@ footer {
 	/*background: url(../img/mt.png) repeat 0 0;*/
 	background: url(../img/footer_bg.jpg) repeat 0 0;
     color: #fff;
-    padding: 80px 0px 40px;
+    padding: 230px 0px 40px;
     background-color: #3893AE;
+    position:relative;
+}
+
+footer:before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: #0000001a;
+    
 }
 
 footer h3 {
-    font-size: 19px;
+        font-size: 19px;
     color: #fff;
     margin-top: 20px;
-    font-family: 'Raleway', sans-serif;
     font-weight: 600;
+    position: relative;
+    z-index: 11;
 }
 
 a#phone {
@@ -41528,6 +41569,8 @@ footer ul {
 	margin: 0;
 	padding: 0 0 10px 0;
 	list-style: none;
+	    position: relative;
+    z-index: 11;
 }
 
 .affilation-footer {
@@ -41552,12 +41595,15 @@ footer ul {
 footer a, footer a:hover {
 	color: #EDEDED;
     font-size: 15px;
+    font-family: "Work Sans", sans-serif;
 }
 
 footer p {
 	font-size: 15px;
     color: #ffffff;
     margin-bottom: 10px;
+        position: relative;
+    z-index: 11;
 }
 
 .footer1 {
@@ -41773,6 +41819,10 @@ footer p {
     padding: 4px 10px;
     border-radius: 4px;
 }
+
+.ratz .text-danger{
+    color:#fff !important;
+} 
 .form-group .ratz  label{
     color:#fff;
     margin-bottom:0px;
