@@ -32,8 +32,8 @@ if (defined('BOOKTRIP_PAGE')) {
                     </div>
                     <div class="col-6 col-md-6">
                         <div class="form-group">
-                            <label>Zipcode *</label>
-                            <input type="text" name="zipcode" class="form-control" placeholder="Zipcde"/>
+                            <label>Zipcode</label>
+                            <input type="text" name="zipcode" class="form-control" placeholder="Zipcode"/>
                         </div>
                     </div>
                     <div class="col-6 col-md-6">
@@ -51,8 +51,8 @@ if (defined('BOOKTRIP_PAGE')) {
                     </div>
                     <div class="col-6 col-md-6">
                         <div class="form-group">
-                            <label>Phone *</label>
-                            <input type="text" name="phone" class="form-control phone" placeholder="Phone number"/>
+                            <label>Whatsapp *</label>
+                            <input type="text" name="phone" class="form-control phone" placeholder="Whatsapp"/>
                         </div>
                     </div>
                     <div class="col-12 col-md-12">
@@ -89,7 +89,7 @@ if (defined('BOOKTRIP_PAGE')) {
             } else {
                 $max = (!empty($max_pax)) ? $max_pax : $pkgRec->group_size;
             }
-        }else{
+        } else {
             $max = (!empty($max_pax)) ? $max_pax : $pkgRec->group_size;
         }
         if ($max > 0) {
@@ -152,7 +152,7 @@ if (defined('BOOKTRIP_PAGE')) {
                 <div class="custom-control custom-checkbox">
                     <input id="terms" name="terms" type="checkbox" class="custom-control-input" value="acceptTerms"/>
                     <label class="custom-control-label" for="terms">By submitting
-                        a booking request, you accept our <a href="'.BASE_URL.'pages/terms-and-conditions" target="_blank">terms and conditions.</label>
+                        a booking request, you accept our <a href="' . BASE_URL . 'pages/terms-and-conditions" target="_blank">terms and conditions.</label>
                 </div>
                 <div id="msg" style="display: none;"></div>
                 <div class="row mt-20">
@@ -183,19 +183,19 @@ if (defined('BOOKTRIP_PAGE')) {
         if (!empty($pkgRec->difficulty)) {
             switch ($pkgRec->difficulty) {
                 case 'Easy':
-                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/1.png" title="'.$pkgRec->difficulty.'" class="new-img4  "></span></span>';
+                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/1.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
                     break;
                 case 'Moderate':
-                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/2.png" title="'.$pkgRec->difficulty.'" class="new-img4  "></span></span>';
+                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/2.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
                     break;
                 case 'Moderate To Strenous':
-                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/3.png" title="'.$pkgRec->difficulty.'" class="new-img4  "></span></span>';
+                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/3.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
                     break;
                 case 'Strenous':
-                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/4.png" title="'.$pkgRec->difficulty.'" class="new-img4  "></span></span>';
+                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/4.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
                     break;
                 case 'Very Strenous':
-                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/5.png" title="'.$pkgRec->difficulty.'" class="new-img4  "></span></span>';
+                    $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/5.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
                     break;
             }
         }
@@ -216,12 +216,12 @@ if (defined('BOOKTRIP_PAGE')) {
         }
         $side_info_bar .= '
                         </div>';
-             if ($max == 0) {           
-        $side_info_bar .= '<span class="font600">Travellers to go</span>
+        if ($max == 0) {
+            $side_info_bar .= '<span class="font600">Travellers to go</span>
         <div class="form-group form-spin-group mt-10">
-        <input type="number" class="form-control" name="paxx"  placeholder="No. of pax"/>
+        <input type="number" class="form-control" name="paxx"  placeholder="No. of pax" min="1" step="1" value="1"/>
         </div>';
-             }
+        }
         if ($max > 0) {
             $side_info_bar .= '
                         <div class="form-group form-spin-group  mt-15 ">
@@ -230,19 +230,19 @@ if (defined('BOOKTRIP_PAGE')) {
                         </div>
             ';
         }
-           $siteRegulars = Config::find_by_id(1);
+        $siteRegulars = Config::find_by_id(1);
 
-    $tellinked = '';
-    $telno = explode(",", $siteRegulars->contact_info);
-    $lastElement = array_shift($telno);
-    $tellinked .= '<a href="tel:' . $lastElement . '" target="_blank">' . $lastElement . '</a>';
-    foreach ($telno as $tel) {
-        
-        $tellinked .= ',<a href="tel:+977-' . $tel . '" target="_blank">' . $tel . '</a>';
-        if(end($telno)!= $tel){
-        $tellinked .= '';
-        }   
-}
+        $tellinked = '';
+        $telno = explode(",", $siteRegulars->contact_info);
+        $lastElement = array_shift($telno);
+        $tellinked .= '<a href="tel:' . $lastElement . '" target="_blank">' . $lastElement . '</a>';
+        foreach ($telno as $tel) {
+
+            $tellinked .= ',<a href="tel:+977-' . $tel . '" target="_blank">' . $tel . '</a>';
+            if (end($telno) != $tel) {
+                $tellinked .= '';
+            }
+        }
         $side_info_bar .= '
                         <!--<ul class="border-top mt-20 pt-15">
                             <li class="clearfix">$3550 x 2 guests<span class="float-right">$251.98</span>
@@ -262,7 +262,7 @@ if (defined('BOOKTRIP_PAGE')) {
                     </div>
                     <div class="box-bottom">
                         <h6 class="">We are the best tour operator</h6>
-                        <p class="font-sm" style="color:#fff;font-size:14px;">For custom tour program, direct call <span class=""> '.$tellinked.'</span>.
+                        <p class="font-sm" style="color:#fff;font-size:14px;">For custom tour program, direct call <span class=""> ' . $tellinked . '</span>.
                         </p>
                     </div>
                 </div>

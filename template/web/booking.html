@@ -10,12 +10,14 @@
 
     <!-- Font face -->
     <link href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' rel="stylesheet">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous"
+          referrerpolicy="no-referrer"/>
 
     <!-- CSS Plugins -->
     <!--<link href="css/font-icons.css" rel="stylesheet">-->
@@ -34,48 +36,47 @@
 </head>
 
 <body class="with-waypoint-sticky">
-    <!-- start Body Inner -->
-    <div class="body-inner">
-        <!-- start Header -->
-        <header id="header-waypoint-sticky" class="header-main header-mobile-menu with-absolute-navbar">
-            <div class="container">
-                <div class="header-outer clearfix">
-                    <div class="row shrink-auto-lg gap-0 align-items-center">
-                        <div class="col-9 col-shrink z-in-1111">
-                            <div class="col-inner">
-                                <div class="main-logo">
-                                    <jcms:site:logo/>
-                                </div>
+<!-- start Body Inner -->
+<div class="body-inner">
+    <!-- start Header -->
+    <header id="header-waypoint-sticky" class="header-main header-mobile-menu with-absolute-navbar">
+        <div class="container">
+            <div class="header-outer clearfix">
+                <div class="row shrink-auto-lg gap-0 align-items-center">
+                    <div class="col-9 col-shrink z-in-1111">
+                        <div class="col-inner">
+                            <div class="main-logo">
+                                <jcms:site:logo/>
                             </div>
                         </div>
-    
-                        <div class="col-3 col-shrink order-last-lg">
-                            <div class="col-inner">
-                                <ul class="nav-mini-right">
-                                    <li>
-                                        <button class="btn btn-toggle collapsed" data-toggle="collapse"
-                                                data-target="#mobileMenu"></button>
-                                    </li>
-                                </ul>
-                            </div>
+                    </div>
+
+                    <div class="col-3 col-shrink order-last-lg">
+                        <div class="col-inner">
+                            <ul class="nav-mini-right">
+                                <li>
+                                    <button class="btn btn-toggle collapsed" data-toggle="collapse" data-target="#mobileMenu"></button>
+                                </li>
+                            </ul>
                         </div>
-    
-                        <div class="col-12 col-auto order-last-lg">
-                            <div class="navbar-wrapper">
-                                <div class="navbar navbar-expand-lg">
-                                    <div id="mobileMenu" class="collapse navbar-collapse">
-                                        <nav class="main-nav-menu main-menu-nav navbar-arrow">
-                                            <jcms:module:menu/>
-                                        </nav><!--/.nav-collapse -->
-                                    </div>
+                    </div>
+
+                    <div class="col-12 col-auto order-last-lg">
+                        <div class="navbar-wrapper">
+                            <div class="navbar navbar-expand-lg">
+                                <div id="mobileMenu" class="collapse navbar-collapse">
+                                    <nav class="main-nav-menu main-menu-nav navbar-arrow">
+                                        <jcms:module:menu/>
+                                    </nav><!--/.nav-collapse -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- start Header -->
+        </div>
+    </header>
+    <!-- start Header -->
 
     <!-- start Main Wrapper -->
     <div class="main-wrapper scrollspy-container">
@@ -86,7 +87,7 @@
                         <div class="col-12 col-md-7 about-bread">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="http://www.abcandebcnepaltrekking.com/project/home"><i class="fas fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="./home"><i class="fas fa-home"></i></a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Booking</li>
                                 </ol>
                             </nav>
@@ -111,7 +112,7 @@
             <!--</div>-->
             <div class="container customize-inner">
                 <div class="row gap-20 gap-lg-40">
-                    
+
                     <div class="col-12 col-lg-5 order-lg-2 order-md-1">
                         <jcms:module:trip-booking-info/>
                     </div>
@@ -373,28 +374,28 @@
 <jcms:module:trip-booking-info-script/>
 <script src="js/jquery.validate.js"></script>
 <script>
-   $(document).ready(function () {
-    // Initialize datepicker
-    // Calculate date 7 days from today
-    var oneWeekLater = new Date();
-    oneWeekLater.setDate(oneWeekLater.getDate() + 7);
+    $(document).ready(function () {
+        // Initialize datepicker
+        // Calculate date 7 days from today
+        var oneWeekLater = new Date();
+        oneWeekLater.setDate(oneWeekLater.getDate() + 7);
 
-    // Initialize datepicker with minDate set to 7 days from today
-    var myDatepicker = $('.datepicker-here').datepicker({
-        language: 'en',
-        minDate: oneWeekLater,
-        dateFormat: 'yyyy-mm-dd',
-    autoClose: true
-    });
+        // Initialize datepicker with minDate set to 7 days from today
+        var myDatepicker = $('.datepicker-here').datepicker({
+            language: 'en',
+            minDate: oneWeekLater,
+            dateFormat: 'yyyy-mm-dd',
+            autoClose: true
+        });
 
-    // Dynamic guest info form rendering
-    $(".bootstrap-touchspin-up,.bootstrap-touchspin-down").on("click", function () {
-        var total = $(".touch-spin-03").val();
-        var result = "";
+        // Dynamic guest info form rendering
+        $(".bootstrap-touchspin-up,.bootstrap-touchspin-down").on("click", function () {
+            var total = $(".touch-spin-03").val();
+            var result = "";
 
-        for (var i = 1; i <= total; i++) {
-            var isFirst = (i === 1);
-            result += '<div class="collapse-item">\
+            for (var i = 1; i <= total; i++) {
+                var isFirst = (i === 1);
+                result += '<div class="collapse-item">\
                 <div class="collapse-header" id="faqAccordion_03_g1-heading' + i + '">\
                     <h5 class="collapse-title">\
                         <a class="collapse-link ' + (isFirst ? '' : 'collapsed') + '" data-toggle="collapse" data-target="#faqAccordion_03_g1-collapse' + i + '" aria-expanded="' + (isFirst ? 'true' : 'false') + '" aria-controls="faqAccordion_03_g1-collapse' + i + '">Additional Information for Guest ' + i + '</a>\
@@ -427,126 +428,125 @@
                     </div>\
                 </div>\
             </div>';
-        }
+            }
 
-        $('#faqAccordion_03_g1').html(result);
-    });
+            $('#faqAccordion_03_g1').html(result);
+        });
 
-    // Add phone validation method
-    $.validator.addMethod("validFullPhone", function (value) {
-        if (!value) return false;
-        const cleaned = value.replace(/\s+/g, '');
-        return /^\+\d{1,4}\d{4,15}$/.test(cleaned);
-    }, "Please enter a valid phone number.");
+        // Add phone validation method
+        $.validator.addMethod("validFullPhone", function (value) {
+            if (!value) return false;
+            const cleaned = value.replace(/\s+/g, '');
+            return /^\+\d{1,4}\d{4,15}$/.test(cleaned);
+        }, "Please enter a valid whatsapp number.");
 
-    // On country select change, insert country code into phone field
-    document.querySelectorAll('.countrySelect').forEach(function (selectElement) {
-        selectElement.addEventListener('change', function () {
-            const contactValue = this.options[this.selectedIndex].getAttribute('contact-value');
-            const phoneInput = this.closest('form')?.querySelector('.phone') || this.parentElement.querySelector('.phone');
-            if (phoneInput) {
-                phoneInput.value = contactValue ? contactValue + ' ' : '';
+        // On country select change, insert country code into phone field
+        document.querySelectorAll('.countrySelect').forEach(function (selectElement) {
+            selectElement.addEventListener('change', function () {
+                const contactValue = this.options[this.selectedIndex].getAttribute('contact-value');
+                const phoneInput = this.closest('form')?.querySelector('.phone') || this.parentElement.querySelector('.phone');
+                if (phoneInput) {
+                    phoneInput.value = contactValue ? contactValue + '' : '';
+                }
+            });
+        });
+
+        // Initialize jQuery Validate once
+        validateFormCustom();
+
+        // Submit button click
+        $('#submit').on('click', function (e) {
+            e.preventDefault();
+            const dateVal = $('#datepicker-here').val();
+            if (!dateVal) {
+                $('div.error-message-date')
+                    .addClass("alert alert-danger")
+                    .html("Please Select Date")
+                    .show()
+                    .fadeOut(8000);
+
+                $('html, body').animate({
+                    scrollTop: $(".booking-box").offset().top - 70
+                }, 500);
+            } else {
+                $('#booking_form').submit(); // trigger validation and submitHandler
             }
         });
-    });
 
-    // Initialize jQuery Validate once
-    validateFormCustom();
-
-    // Submit button click
-    $('#submit').on('click', function (e) {
-        e.preventDefault();
-        const dateVal = $('#datepicker-here').val();
-        if (!dateVal) {
-            $('div.error-message-date')
-                .addClass("alert alert-danger")
-                .html("Please Select Date")
-                .show()
-                .fadeOut(8000);
-
-            $('html, body').animate({
-                scrollTop: $(".booking-box").offset().top - 70
-            }, 500);
-        } else {
-            $('#booking_form').submit(); // trigger validation and submitHandler
-        }
-    });
-
-    // Validation setup
-    function validateFormCustom() {
-        var base_url = $('base').attr('url');
-        $('#booking_form').validate({
-            errorElement: 'span',
-            errorClass: 'validate-has-error',
-            rules: {
-                full_name: { required: true },
-                email: { required: true, email: true },
-                phone: { required: true, validFullPhone: true },
-                address1: { required: true },
-                zipcode: { required: true, number: true },
-                paxx: { required: true, number: true },
-                country: { required: true },
-                message: { required: true },
-                terms: { required: true },
-                trip_date: { required: true }, // ensures date is validated
-                "additional_name[]": { required: true }, // ensures date is validated
-                "additional_phone[]": { required: true, validFullPhone: true }, // ensures date is validated
-                "additional_address[]": { required: true } // ensures date is validated
-            },
-            messages: {
-                full_name: { required: "Please enter your full name" },
-                email: {
-                    required: "Please enter your email address",
-                    email: "Enter correct email!"
+        // Validation setup
+        function validateFormCustom() {
+            var base_url = $('base').attr('url');
+            $('#booking_form').validate({
+                errorElement: 'span',
+                errorClass: 'validate-has-error',
+                rules: {
+                    full_name: {required: true},
+                    email: {required: true, email: true},
+                    phone: {required: true, validFullPhone: true},
+                    address1: {required: true},
+                    zipcode: {required: false, number: true},
+                    paxx: {required: true, number: true},
+                    country: {required: true},
+                    message: {required: true},
+                    terms: {required: true},
+                    trip_date: {required: true}, // ensures date is validated
+                    "additional_name[]": {required: true}, // ensures date is validated
+                    "additional_phone[]": {required: true, validFullPhone: true}, // ensures date is validated
+                    "additional_address[]": {required: true} // ensures date is validated
                 },
-                phone: { required: "Please enter your phone number" },
-                address1: { required: "Please enter your address" },
-                zipcode: {
-                    required: "Please enter zipcode",
-                    number: "Please enter numbers only"
+                messages: {
+                    full_name: {required: "Please enter your full name"},
+                    email: {
+                        required: "Please enter your email address",
+                        email: "Enter correct email!"
+                    },
+                    phone: {required: "Please enter your phone number"},
+                    address1: {required: "Please enter your address"},
+                    zipcode: {
+                        required: "Please enter zipcode",
+                        number: "Please enter numbers only"
+                    },
+                    paxx: {
+                        required: "Please enter your pax",
+                        number: "Please enter numbers only"
+                    },
+                    country: {required: "Please select your country"},
+                    message: {required: "Please enter your message"},
+                    terms: {required: "Please accept the terms and conditions."},
+                    trip_date: {required: "Please select a trip date"}
                 },
-                paxx: {
-                    required: "Please enter your pax",
-                    number: "Please enter numbers only"
-                },
-                country: { required: "Please select your country" },
-                message: { required: "Please enter your message" },
-                terms: { required: "Please accept the terms and conditions." },
-                trip_date: { required: "Please select a trip date" }
-            },
-            submitHandler: function (form) {
-                const Frmval = $(form).serialize();
-                $("button#submit").attr("disabled", true).text('Processing...');
-                const trip_date = $('input[name="trip_date"]').val();
-                const pax = $('input[name="trip_pax"]').val();
-                const paxx = $('input[name="paxx"]').val();
+                submitHandler: function (form) {
+                    const Frmval = $(form).serialize();
+                    $("button#submit").attr("disabled", true).text('Processing...');
+                    const trip_date = $('input[name="trip_date"]').val();
+                    const pax = $('input[name="trip_pax"]').val();
+                    const paxx = $('input[name="paxx"]').val();
 
-                const queryString = 'action=request_inquiry&date=' + trip_date + '&paxx=' + paxx + '&pax=' + pax + '&' + Frmval;
+                    const queryString = 'action=request_inquiry&date=' + trip_date + '&paxx=' + paxx + '&pax=' + pax + '&' + Frmval;
 
-                $.ajax({
-                    type: "POST",
-                    dataType: "JSON",
-                    url: base_url + 'includes/controllers/ajax.bookinginfo.php',
-                    data: queryString,
-                    success: function (data) {
-                        const msg = data;
-                        $("button#submit").removeAttr("disabled").text('Book Now');
+                    $.ajax({
+                        type: "POST",
+                        dataType: "JSON",
+                        url: base_url + 'includes/controllers/ajax.bookinginfo.php',
+                        data: queryString,
+                        success: function (data) {
+                            const msg = data;
+                            $("button#submit").removeAttr("disabled").text('Book Now');
 
-                        if (msg.action === 'success') {
-                            $('#msg').removeClass("alert-danger").addClass("alert alert-success").html(msg.message).show().fadeOut(10000);
-                            $('#booking_form')[0].reset();
-                        } else if (msg.action === 'error') {
-                            $('#msg').removeClass("alert-success").addClass("alert alert-danger").html(msg.message).show().fadeOut(10000);
+                            if (msg.action === 'success') {
+                                $('#msg').removeClass("alert-danger").addClass("alert alert-success").html(msg.message).show().fadeOut(10000);
+                                $('#booking_form')[0].reset();
+                            } else if (msg.action === 'error') {
+                                $('#msg').removeClass("alert-success").addClass("alert alert-danger").html(msg.message).show().fadeOut(10000);
+                            }
                         }
-                    }
-                });
+                    });
 
-                return false;
-            }
-        });
-    }
-});
-
+                    return false;
+                }
+            });
+        }
+    });
 
 </script>
 

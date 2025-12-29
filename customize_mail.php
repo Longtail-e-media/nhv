@@ -3,7 +3,7 @@ require_once("includes/initialize.php");
 
 if ($_POST['action'] == "forCustomize"):
 
-	$usermail = User::get_UseremailAddress_byId(1);
+    $usermail = User::get_UseremailAddress_byId(1);
     $ccusermail = User::field_by_id(1, 'optional_email');
     $sitename = Config::getField('sitename', true);
 
@@ -36,7 +36,7 @@ if ($_POST['action'] == "forCustomize"):
                     
                   <p><strong>Fullname</strong> : ' . $full_name . '<br />		
                   <strong>E-mail Address</strong>: ' . $email . '<br />
-                  <strong>Phone Number</strong>: ' . $phone . '<br />
+                  <strong>Whatsapp</strong>: ' . $phone . '<br />
                   <strong>Country</strong>: ' . $country . '<br />
                   <strong>Address</strong>: ' . $address . '<br /><br />
                   
@@ -73,7 +73,7 @@ if ($_POST['action'] == "forCustomize"):
             $rec = explode(';', $ccusermail);
             if ($rec) {
                 foreach ($rec as $row) {
-				$mail->AddCC($row,$sitename);
+                    $mail->AddCC($row, $sitename);
                 }
             }
         }
@@ -85,7 +85,7 @@ if ($_POST['action'] == "forCustomize"):
         if (!$mail->Send()) {
             echo json_encode(array("action" => "unsuccess", "message" => "We could not sent your request at the time. Please try again later."));
         } else {
-            echo json_encode(array("action" => "success", "message" => "Your request has been successfully received, You will be shortly informed through mail with you verified by admin."));
+            echo json_encode(array("action" => "success", "message" => "Your request has been successfully received, You will be shortly informed through mail once verified by admin."));
         }
     }
 

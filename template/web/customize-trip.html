@@ -44,16 +44,16 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-12 col-shrink order-last-lg">
-							<div class="col-inner">
-								<ul class="nav-mini-right">
-									<li>
-										<button class="btn btn-toggle collapsed" data-toggle="collapse" data-target="#mobileMenu"></button>
-									</li>
-								</ul>
-							</div>
-						</div>
+                        <div class="col-inner">
+                            <ul class="nav-mini-right">
+                                <li>
+                                    <button class="btn btn-toggle collapsed" data-toggle="collapse" data-target="#mobileMenu"></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <div class="col-12 col-auto order-last-lg">
                         <div class="navbar-wrapper">
@@ -81,7 +81,7 @@
                         <div class="col-12 col-md-7 about-bread">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="http://www.abcandebcnepaltrekking.com/project/home"><i class="fas fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="./home"><i class="fas fa-home"></i></a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Customize Trip</li>
                                 </ol>
                             </nav>
@@ -141,124 +141,124 @@
 <script type="text/javascript" src="js/custom-core.js"></script>
 <script src="js/jquery.validate.js"></script>
 <script>
-    $( document ).ready(function() {
+    $(document).ready(function () {
         $('.datepicker-here').datepicker({
             language: 'en',
             minDate: new Date(),
             dateFormat: 'yyyy-mm-dd',
-    autoClose: true
+            autoClose: true
         })
     });
 
     var base_url = $('base').attr('url');
-      $( document ).ready(function() {
+    $(document).ready(function () {
 //     $.validator.addMethod("validPhone", function(value, element) {
 //     return this.optional(element) || /^\+?[0-9\s\-()]{7,20}$/.test(value);
 // }, "Please enter a valid phone number.");
-    // Add phone validation method
-    $.validator.addMethod("validFullPhone", function (value) {
-        if (!value) return false;
-        const cleaned = value.replace(/\s+/g, '');
-        return /^\+\d{1,4}\d{4,15}$/.test(cleaned);
-    }, "Please enter a valid phone number.");
+        // Add phone validation method
+        $.validator.addMethod("validFullPhone", function (value) {
+            if (!value) return false;
+            const cleaned = value.replace(/\s+/g, '');
+            return /^\+\d{1,4}\d{4,15}$/.test(cleaned);
+        }, "Please enter a valid whatsapp number.");
 
-    // On country select change, insert country code into phone field
-    document.querySelectorAll('.countrySelect').forEach(function (selectElement) {
-        selectElement.addEventListener('change', function () {
-            const contactValue = this.options[this.selectedIndex].getAttribute('contact-value');
-            const phoneInput = this.closest('form')?.querySelector('.phone') || this.parentElement.querySelector('.phone');
-            if (phoneInput) {
-                phoneInput.value = contactValue ? contactValue + ' ' : '';
-            }
-        });
-    });
-
-    // Ask a question form validation
-    jQuery('#customize_form').validate({
-        errorElement: 'span',
-        errorClass: 'validate-has-error',
-        rules: {
-            trip:{
-                required: true
-            },
-            trip_date:{
-                required: true
-            },
-            pax:{
-                required: true
-            },
-            full_name: {
-                required: true
-            },
-            email: {
-                required: true,
-                email: true
-            },
-                phone: { required: true, validFullPhone: true },
-            address:{
-                required: true
-            },
-            country:{
-                required: true
-            },
-            message: {
-                required: true
-            }
-        },
-        messages: {
-            trip:{
-                required: "Please select a trip"
-            },
-            trip_date:{
-                required: "Please select your trip date"
-            },
-            pax:{
-                required: "Please select Number of pax"
-            },
-            full_name: {
-                required: "Please enter your full name"
-            },
-            email: {
-                required: "Please enter your email address",
-                email: "Enter correct email!"
-            },
-            phone:{
-                required: "Please enter your phone number"
-            },
-            address:{
-                required: "Please enter your address"
-            },
-            country:{
-                required: "Please select your country"
-            },
-            message: {
-                required: "Please enter your requirements."
-            }
-        },
-        submitHandler: function (form) {
-            var Frmval = jQuery("form#customize_form").serialize();
-            jQuery("button#submit").attr("disabled", "true").text('Processing...');
-            jQuery.ajax({
-                type: "POST",
-                dataType: "JSON",
-                url: base_url + "customize_mail.php",
-                data: "action=forCustomize&" + Frmval,
-                success: function (data) {
-                    var msg = eval(data);
-                    if (msg.action == 'success') {
-                        jQuery("button#submit").removeAttr("disabled").text('Submit');
-                        jQuery('div#msg').removeClass("alert alert-danger").addClass("alert alert-success").html(msg.message).css('display', 'block').fadeOut(10000);
-                        jQuery("form#customize_form")[0].reset();
-                    }
-                    if (msg.action == 'unsuccess') {
-                        jQuery("button#submit").removeAttr("disabled").text('Submit');
-                        jQuery('div#msg').removeClass("alert alert-success").addClass("alert alert-danger").html(msg.message).css('display', 'block').fadeOut(10000);
-                    }
+        // On country select change, insert country code into phone field
+        document.querySelectorAll('.countrySelect').forEach(function (selectElement) {
+            selectElement.addEventListener('change', function () {
+                const contactValue = this.options[this.selectedIndex].getAttribute('contact-value');
+                const phoneInput = this.closest('form')?.querySelector('.phone') || this.parentElement.querySelector('.phone');
+                if (phoneInput) {
+                    phoneInput.value = contactValue ? contactValue + '' : '';
                 }
             });
-            return false;
-        }
-    })
+        });
+
+        // Ask a question form validation
+        jQuery('#customize_form').validate({
+            errorElement: 'span',
+            errorClass: 'validate-has-error',
+            rules: {
+                trip: {
+                    required: true
+                },
+                trip_date: {
+                    required: true
+                },
+                pax: {
+                    required: true
+                },
+                full_name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                phone: {required: true, validFullPhone: true},
+                address: {
+                    required: true
+                },
+                country: {
+                    required: true
+                },
+                message: {
+                    required: true
+                }
+            },
+            messages: {
+                trip: {
+                    required: "Please select a trip"
+                },
+                trip_date: {
+                    required: "Please select your trip date"
+                },
+                pax: {
+                    required: "Please select Number of pax"
+                },
+                full_name: {
+                    required: "Please enter your full name"
+                },
+                email: {
+                    required: "Please enter your email address",
+                    email: "Enter correct email!"
+                },
+                phone: {
+                    required: "Please enter your phone number"
+                },
+                address: {
+                    required: "Please enter your address"
+                },
+                country: {
+                    required: "Please select your country"
+                },
+                message: {
+                    required: "Please enter your requirements."
+                }
+            },
+            submitHandler: function (form) {
+                var Frmval = jQuery("form#customize_form").serialize();
+                jQuery("button#submit").attr("disabled", "true").text('Processing...');
+                jQuery.ajax({
+                    type: "POST",
+                    dataType: "JSON",
+                    url: base_url + "customize_mail.php",
+                    data: "action=forCustomize&" + Frmval,
+                    success: function (data) {
+                        var msg = eval(data);
+                        if (msg.action == 'success') {
+                            jQuery("button#submit").removeAttr("disabled").text('Submit');
+                            jQuery('div#msg').removeClass("alert alert-danger").addClass("alert alert-success").html(msg.message).css('display', 'block').fadeOut(10000);
+                            jQuery("form#customize_form")[0].reset();
+                        }
+                        if (msg.action == 'unsuccess') {
+                            jQuery("button#submit").removeAttr("disabled").text('Submit');
+                            jQuery('div#msg').removeClass("alert alert-success").addClass("alert alert-danger").html(msg.message).css('display', 'block').fadeOut(10000);
+                        }
+                    }
+                });
+                return false;
+            }
+        })
     });
 </script>
 </body>

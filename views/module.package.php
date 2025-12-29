@@ -52,16 +52,20 @@ if (!empty($homeRec)) {
 
         // getting tags
         $tag = (!empty($RecRow->tags)) ? '<span class="ribbon_3 ' . $RecRow->color . '">' . $RecRow->tags . '</span>' : '';
-        
+
         // getting destination name
         $destination_name = Destination::field_by_id($RecRow->destinationId, 'title');
 
         // getting avg rating
         $rating = Package::get_avg_rating($RecRow->id);
-        
+
         $price_text = '';
-        if(!empty($RecRow->price) and (empty($RecRow->offer_price))){$price_text = '<p class="home-price">Starting USD '.$RecRow->price.'</p>';}
-        if(!empty($RecRow->offer_price)){$price_text = '<p class="home-price">Starting USD <del>'.$RecRow->price.'</del> '.$RecRow->offer_price.'</p>';}
+        if (!empty($RecRow->price) and (empty($RecRow->offer_price))) {
+            $price_text = '<p class="home-price">Starting USD ' . $RecRow->price . '</p>';
+        }
+        if (!empty($RecRow->offer_price)) {
+            $price_text = '<p class="home-price">Starting USD <del>' . $RecRow->price . '</del> ' . $RecRow->offer_price . '</p>';
+        }
 
         $reshome .= '
                 <div class="col-md-4">
@@ -70,12 +74,12 @@ if (!empty($homeRec)) {
                             <div class="image">
                                 <img src="' . $img . '" alt="' . $RecRow->title . '"/>
                                 
-                                    '.$price_text.'
+                                    ' . $price_text . '
                                 
                             </div>
                             <figcaption class="content ">
-                                '. $tag .'
-                                <h5 class="">' .substr($RecRow->title, 0, 45). '</h5>
+                                ' . $tag . '
+                                <h5 class="">' . substr($RecRow->title, 0, 45) . '</h5>
                                 <ul class="item-meta mt-10">
                                     <li>
                                         <!--<i class="elegent-icon-pin_alt text-warning"></i>-->
@@ -114,19 +118,19 @@ if (!empty($homeRec)) {
         if (!empty($RecRow->difficulty)) {
             switch ($RecRow->difficulty) {
                 case 'Easy':
-                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3" title="'.$RecRow->difficulty.'" alt="Difficulty">';
+                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3" title="' . $RecRow->difficulty . '" alt="Difficulty">';
                     break;
                 case 'Moderate':
-                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3" title="'.$RecRow->difficulty.'" alt="Difficulty">';
+                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3" title="' . $RecRow->difficulty . '" alt="Difficulty">';
                     break;
                 case 'Moderate To Strenous':
-                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3" title="'.$RecRow->difficulty.'" alt="Difficulty">';
+                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3" title="' . $RecRow->difficulty . '" alt="Difficulty">';
                     break;
                 case 'Strenous':
-                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3" title="'.$RecRow->difficulty.'" alt="Difficulty">';
+                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3" title="' . $RecRow->difficulty . '" alt="Difficulty">';
                     break;
                 case 'Very Strenous':
-                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3" title="'.$RecRow->difficulty.'" alt="Difficulty">';
+                    $reshome .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3" title="' . $RecRow->difficulty . '" alt="Difficulty">';
                     break;
             }
         }
@@ -163,9 +167,13 @@ if (!empty($featureRec)) {
         $rating = Package::get_avg_rating($fetRow->id);
 
         $price_text = '';
-        if(!empty($fetRow->price) and (empty($fetRow->offer_price))){$price_text = '<p class="home-price">Starting USD '.$fetRow->price.'</p>';}
-        if(!empty($fetRow->offer_price)){$price_text = '<p class="home-price">Starting USD <del>'.$fetRow->price.'</del> '.$fetRow->offer_price.'</p>';}
-        
+        if (!empty($fetRow->price) and (empty($fetRow->offer_price))) {
+            $price_text = '<p class="home-price">Starting USD ' . $fetRow->price . '</p>';
+        }
+        if (!empty($fetRow->offer_price)) {
+            $price_text = '<p class="home-price">Starting USD <del>' . $fetRow->price . '</del> ' . $fetRow->offer_price . '</p>';
+        }
+
         $resfeature .= '
             <div class="col-md-4">
                 <figure class="tour-grid-item-01 aw">
@@ -176,13 +184,13 @@ if (!empty($featureRec)) {
                         </style>
                         <div class="image">
                             <img src="' . $img . '" alt="' . $fetRow->title . '" class="hgt-230"/>
-                            '.$price_text.'
+                            ' . $price_text . '
                             
                             
                         </div>
                         <figcaption class="content ">
                             ' . $tag . '
-                            <h5 class="">' .substr($fetRow->title, 0, 48). '</h5>
+                            <h5 class="">' . substr($fetRow->title, 0, 48) . '</h5>
                             <ul class="item-meta mt-10">
                                 <li>
                                     <!--<i class="elegent-icon-pin_alt text-warning"></i>--> 
@@ -202,34 +210,34 @@ if (!empty($featureRec)) {
                             </ul>
                             
                         </figcaption>';
-     if (!empty($fetRow->accomodation)) {
-    $resfeature .= '<p class="featured-trip1 d-none">';
-    $routes = explode(',', $fetRow->accomodation);
-    $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
-    $lastRoute = end($limitedRoutes);
+        if (!empty($fetRow->accomodation)) {
+            $resfeature .= '<p class="featured-trip1 d-none">';
+            $routes = explode(',', $fetRow->accomodation);
+            $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
+            $lastRoute = end($limitedRoutes);
 
-    foreach ($limitedRoutes as $route) {
-        $resfeature .= ($lastRoute == $route) ? $route : $route . ' -> ';
-    }
+            foreach ($limitedRoutes as $route) {
+                $resfeature .= ($lastRoute == $route) ? $route : $route . ' -> ';
+            }
 
-    $resfeature .= '</p>';
-}
+            $resfeature .= '</p>';
+        }
         if (!empty($fetRow->difficulty)) {
             switch ($fetRow->difficulty) {
                 case 'Easy':
-                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="'.$fetRow->difficulty.'" alt="Difficulty">';
+                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="' . $fetRow->difficulty . '" alt="Difficulty">';
                     break;
                 case 'Moderate':
-                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="'.$fetRow->difficulty.'" alt="Difficulty">';
+                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="' . $fetRow->difficulty . '" alt="Difficulty">';
                     break;
                 case 'Moderate To Strenous':
-                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="'.$fetRow->difficulty.'" alt="Difficulty">';
+                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="' . $fetRow->difficulty . '" alt="Difficulty">';
                     break;
                 case 'Strenous':
-                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="'.$fetRow->difficulty.'" alt="Difficulty">';
+                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="' . $fetRow->difficulty . '" alt="Difficulty">';
                     break;
                 case 'Very Strenous':
-                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="'.$fetRow->difficulty.'" alt="Difficulty">';
+                    $resfeature .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="' . $fetRow->difficulty . '" alt="Difficulty">';
                     break;
             }
         }
@@ -249,7 +257,7 @@ $resfix = '';
 // INNER JOIN tbl_package AS p ON pd.package_id = p.id 
 // WHERE 
 // p.status='1' AND pd.status='1' AND package_date>=CURDATE() GROUP BY pd.package_id ORDER BY package_date ASC ";
- $sql = "SELECT 
+$sql = "SELECT 
     MAX(pd.package_currency) AS package_currency,
     MAX(pd.package_rate) AS package_rate,
     MIN(pd.package_date) AS package_date,
@@ -284,13 +292,13 @@ HAVING remaining_seats > 0
 ORDER BY package_date ASC;";
 $query = $db->query($sql);
 $totl = $db->num_rows($query);
-if(defined('FIXED_DEPATURE')){
-if ($totl > 0) {
-    while ($FixRow = $db->fetch_object($query)) {
-        $file_path = SITE_ROOT . 'images/package/' . $FixRow->image;
-        if (file_exists($file_path) and !empty($FixRow->title)) {
-            $activity = Activities::field_by_id($FixRow->activityId, 'title');
-            $resfix .= '
+if (defined('FIXED_DEPATURE')) {
+    if ($totl > 0) {
+        while ($FixRow = $db->fetch_object($query)) {
+            $file_path = SITE_ROOT . 'images/package/' . $FixRow->image;
+            if (file_exists($file_path) and !empty($FixRow->title)) {
+                $activity = Activities::field_by_id($FixRow->activityId, 'title');
+                $resfix .= '
             <!--<div class="col-md-4">
             <div class="to-ho-hotel-con"><a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
                 <div class="to-ho-hotel-con-1">
@@ -319,25 +327,29 @@ if ($totl > 0) {
             </div>
         </div>-->
         ';
-        $img = $tag = '';
-        // getting image
-        $file_path = SITE_ROOT . "images/package/" . $FixRow->image;
-        $img = (!empty($FixRow->image) and file_exists($file_path)) ? IMAGE_PATH . "package/" . $FixRow->image : $img = IMAGE_PATH . "static/home-featured.jpg";
+                $img = $tag = '';
+                // getting image
+                $file_path = SITE_ROOT . "images/package/" . $FixRow->image;
+                $img = (!empty($FixRow->image) and file_exists($file_path)) ? IMAGE_PATH . "package/" . $FixRow->image : $img = IMAGE_PATH . "static/home-featured.jpg";
 
-        // getting tags
-        $tag = (!empty($FixRow->tags)) ? '<span class="ribbon_3 ' . $FixRow->color . '">' . $FixRow->tags . '</span>' : '';
+                // getting tags
+                $tag = (!empty($FixRow->tags)) ? '<span class="ribbon_3 ' . $FixRow->color . '">' . $FixRow->tags . '</span>' : '';
 
-        // getting destination
-        $destination_name = Destination::field_by_id($FixRow->destinationId, 'title');
+                // getting destination
+                $destination_name = Destination::field_by_id($FixRow->destinationId, 'title');
 
-        // getting avg rating
-        $rating = Package::get_avg_rating($FixRow->id);
+                // getting avg rating
+                $rating = Package::get_avg_rating($FixRow->id);
 
-        $price_text = '';
-        if(!empty($FixRow->price) and (empty($FixRow->offer_price))){$price_text = '<p class="home-price">Starting USD '.$FixRow->price.'</p>';}
-        if(!empty($FixRow->offer_price)){$price_text = '<p class="home-price">Starting USD <del>'.$FixRow->price.'</del> '.$FixRow->offer_price.'</p>';}
-        
-        $resfix .= '
+                $price_text = '';
+                if (!empty($FixRow->price) and (empty($FixRow->offer_price))) {
+                    $price_text = '<p class="home-price">Starting USD ' . $FixRow->price . '</p>';
+                }
+                if (!empty($FixRow->offer_price)) {
+                    $price_text = '<p class="home-price">Starting USD <del>' . $FixRow->price . '</del> ' . $FixRow->offer_price . '</p>';
+                }
+
+                $resfix .= '
             <div class="col">
                 <figure class="tour-grid-item-01 aw">
                     <a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
@@ -347,32 +359,32 @@ if ($totl > 0) {
                         </style>
                         <div class="image">
                             <img src="' . $img . '" alt="' . $FixRow->title . '" class="hgt-230"/>
-                            '.$price_text.'
+                            ' . $price_text . '
                             
                             
                         </div>
                         <figcaption class="content ">
                             ' . $tag . '
-                            <h5 class="">' .substr($FixRow->title, 0, 48). '</h5>';
-                                         $fixeddata= packagedate::get_package_date_home($FixRow->id);
-                                        //  pr($fixeddata);
-                                if(!empty($fixeddata)){
-                                    $start_date = date('F d, Y', strtotime($fixeddata->package_date));
-                                    $end_date = date('F d, Y', strtotime($fixeddata->package_date . ' + ' . $FixRow->days . ' days'));
-                                    // $count=packagedate::getTotalSub($FixRow->id);
-                                    // $total = !empty($count) ? $count : 0;
-                                    //  @$diff = $fixeddata->package_seats - $total;
-                                        $sqla = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$FixRow->id AND fixed_date_id=$fixeddata->id";
-                $resa = $db->fetch_array($db->query($sqla));
-                $totala = !empty($resa['total']) ? $resa['total'] : 0;
-                // pr($diffa);
-                @$diffa = $fixeddata->package_seats - $totala;
-                // pr($FixRow);
-                $difffa = $diffa - 1;
-                if ($diffa > 0) {
-                                    $resfix .= '  
+                            <h5 class="">' . substr($FixRow->title, 0, 48) . '</h5>';
+                $fixeddata = packagedate::get_package_date_home($FixRow->id);
+                //  pr($fixeddata);
+                if (!empty($fixeddata)) {
+                    $start_date = date('F d, Y', strtotime($fixeddata->package_date));
+                    $end_date = date('F d, Y', strtotime($fixeddata->package_date . ' + ' . $FixRow->days . ' days'));
+                    // $count=packagedate::getTotalSub($FixRow->id);
+                    // $total = !empty($count) ? $count : 0;
+                    //  @$diff = $fixeddata->package_seats - $total;
+                    $sqla = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$FixRow->id AND fixed_date_id=$fixeddata->id";
+                    $resa = $db->fetch_array($db->query($sqla));
+                    $totala = !empty($resa['total']) ? $resa['total'] : 0;
+                    // pr($diffa);
+                    @$diffa = $fixeddata->package_seats - $totala;
+                    // pr($FixRow);
+                    $difffa = $diffa - 1;
+                    if ($diffa > 0) {
+                        $resfix .= '  
                             <ul class="item-meta mt-15">
-                                <li><span class="font700 h6">Start/End Trip:</span> <span class="font400 h6">'.$start_date.' - '.$end_date.'</span></li>
+                                <li><span class="font700 h6">Start/End Trip:</span> <span class="font400 h6">' . $start_date . ' - ' . $end_date . '</span></li>
                                
                             </ul>
                            
@@ -397,10 +409,10 @@ if ($totl > 0) {
                                     </ul>
                                     
                                 </div>';
-                                    
-                               $resfix .= '<div class="col-md-6">
+
+                        $resfix .= '<div class="col-md-6">
                                 <ul class="item-meta mt-15">
-                                    <li><span class="font700 h6">seats left:</span> <span class="font400 h6">'.$diffa.'</span></li>
+                                    <li><span class="font700 h6">seats left:</span> <span class="font400 h6">' . $diffa . '</span></li>
                                 </ul>
                                <form method="post" action="' . BASE_URL . 'book/package/' . $FixRow->slug . '">
                                     <input type="hidden" name="date" value="' . date('Y-m-d', strtotime($fixeddata->package_date)) . '">
@@ -409,8 +421,8 @@ if ($totl > 0) {
                                     <input type="hidden" name="max_pax" value="' . $difff . '">
                                     <button type="submit" class="btn btn-primary btn-block btn-sm mt-3 btn-contact-page">Book now</button>
                                 </form></div></div>';
-                                }
-                                $resfix .= '
+                    }
+                    $resfix .= '
                             <!-- <ul class="item-meta mt-15">
                                 <li><span class="font700 h6">' . $FixRow->days . ' Days</span></li>
                                 <li>
@@ -419,46 +431,46 @@ if ($totl > 0) {
                                 </li>
                             </ul>-->
                         </figcaption>';
-     if (!empty($FixRow->accomodation)) {
-    $resfix .= '<p class="featured-trip1 d-none">';
-    $routes = explode(',', $FixRow->accomodation);
-    $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
-    $lastRoute = end($limitedRoutes);
+                    if (!empty($FixRow->accomodation)) {
+                        $resfix .= '<p class="featured-trip1 d-none">';
+                        $routes = explode(',', $FixRow->accomodation);
+                        $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
+                        $lastRoute = end($limitedRoutes);
 
-    foreach ($limitedRoutes as $route) {
-        $resfix .= ($lastRoute == $route) ? $route : $route . ' -> ';
-    }
+                        foreach ($limitedRoutes as $route) {
+                            $resfix .= ($lastRoute == $route) ? $route : $route . ' -> ';
+                        }
 
-    $resfix .= '</p>';
-}
-        if (!empty($FixRow->difficulty)) {
-            switch ($FixRow->difficulty) {
-                case 'Easy':
-                    $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="'.$FixRow->difficulty.'" alt="Difficulty">';
-                    break;
-                case 'Moderate':
-                    $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="'.$FixRow->difficulty.'" alt="Difficulty">';
-                    break;
-                case 'Moderate To Strenous':
-                    $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="'.$FixRow->difficulty.'" alt="Difficulty">';
-                    break;
-                case 'Strenous':
-                    $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="'.$FixRow->difficulty.'" alt="Difficulty">';
-                    break;
-                case 'Very Strenous':
-                    $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="'.$FixRow->difficulty.'" alt="Difficulty">';
-                    break;
-            }
-        }
-        $resfix .= '    
+                        $resfix .= '</p>';
+                    }
+                    if (!empty($FixRow->difficulty)) {
+                        switch ($FixRow->difficulty) {
+                            case 'Easy':
+                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                                break;
+                            case 'Moderate':
+                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                                break;
+                            case 'Moderate To Strenous':
+                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                                break;
+                            case 'Strenous':
+                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                                break;
+                            case 'Very Strenous':
+                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                                break;
+                        }
+                    }
+                    $resfix .= '    
                     </a>
                 </figure>
             </div>
         ';
-        }
+                }
+            }
         }
     }
-}
 }
 
 $jVars['module:package-fixed'] = $resfix;
@@ -585,7 +597,7 @@ if (defined('PACKAGE_PAGE')) {
 									</li>
             ';
         }
-        
+
         /*$reviews = Review::find_by_package($pkgRec->id);
         if(!empty($reviews)){*/
         $respkg_detail .= '
@@ -594,16 +606,15 @@ if (defined('PACKAGE_PAGE')) {
 									</li>
             ';
         /*}*/
-        
+
         $respkg_detail .= '
 									<li>
 										<a href="#detail-content-sticky-nav-06">FAQ</a>
 									</li>
 									';
-        
-        
+
+
         $respkg_detail .= '
-        <!--<li><a href="' . BASE_URL . 'book/package/' . $FixRow->slug . '" class="btn btn-primary btn-wide btn-contact-page">Book Now</a></li>-->
 								</ul>
 							</div>
 						</div>
@@ -621,7 +632,7 @@ if (defined('PACKAGE_PAGE')) {
                     <div class="main text-center">
                         <div class="container-fluid" id="gallery">
             ';
-              $imageChunks = array_chunk($sliderImages, 3);
+            $imageChunks = array_chunk($sliderImages, 3);
             // foreach ($sliderImages as $sliderImage) {
 
             //     $respkg_detail .= '
@@ -634,61 +645,61 @@ if (defined('PACKAGE_PAGE')) {
             //             </div>
             //     ';
             // }
-if (!empty($sliderImages)) {
-    $maxVisible = 6;
-    $totalImages = count($sliderImages);
+            if (!empty($sliderImages)) {
+                $maxVisible = 6;
+                $totalImages = count($sliderImages);
 
-    // Limit to max 6, and pad if needed
-    $images = array_slice($sliderImages, 0, $maxVisible);
-    if ($totalImages < $maxVisible) {
-        $lastImage = end($sliderImages);
-        for ($i = $totalImages; $i < $maxVisible; $i++) {
-            $images[] = $lastImage;
-        }
-    }
+                // Limit to max 6, and pad if needed
+                $images = array_slice($sliderImages, 0, $maxVisible);
+                if ($totalImages < $maxVisible) {
+                    $lastImage = end($sliderImages);
+                    for ($i = $totalImages; $i < $maxVisible; $i++) {
+                        $images[] = $lastImage;
+                    }
+                }
 
-    // Split into chunks of 3 for layout
-    $imageChunks = array_chunk($images, 3);
-    $i = 0;
+                // Split into chunks of 3 for layout
+                $imageChunks = array_chunk($images, 3);
+                $i = 0;
 
-    foreach ($imageChunks as $index => $imageGroup) {
-        $rowClass = ($index == 0) ? 'row image-row-1 room-images' : 'row room-images room-next-images';
-        $respkg_detail .= '<div class="' . $rowClass . '">';
+                foreach ($imageChunks as $index => $imageGroup) {
+                    $rowClass = ($index == 0) ? 'row image-row-1 room-images' : 'row room-images room-next-images';
+                    $respkg_detail .= '<div class="' . $rowClass . '">';
 
-        foreach ($imageGroup as $imgIndex => $sliderImage) {
-            $colClass = 'col-md-3';
-            if ($index == 0 && $imgIndex == 2) {
-                $colClass = 'col-md-6';
-            } elseif ($index == 1 && $imgIndex == 0) {
-                $colClass = 'col-md-6';
-            }
+                    foreach ($imageGroup as $imgIndex => $sliderImage) {
+                        $colClass = 'col-md-3';
+                        if ($index == 0 && $imgIndex == 2) {
+                            $colClass = 'col-md-6';
+                        } elseif ($index == 1 && $imgIndex == 0) {
+                            $colClass = 'col-md-6';
+                        }
 
-            // First 6 images are visible
-            if ($i < $maxVisible) {
-                $respkg_detail .= '
+                        // First 6 images are visible
+                        if ($i < $maxVisible) {
+                            $respkg_detail .= '
                     <div class="' . $colClass . ' images" style="display: block;">
                         <a href="' . IMAGE_PATH . 'package/galleryimages/' . $sliderImage->image . '" data-src="' . IMAGE_PATH . 'package/galleryimages/' . $sliderImage->image . '">
                             <img src="' . IMAGE_PATH . 'package/galleryimages/' . $sliderImage->image . '" width="100%" class="img-thumbnail" alt="' . htmlspecialchars($sliderImage->title) . '">
                         </a>
                     </div>
                 ';
-            } else {
-                // Shouldn't happen with maxVisible = 6, but kept for fallback
-                $respkg_detail .= '
+                        } else {
+                            // Shouldn't happen with maxVisible = 6, but kept for fallback
+                            $respkg_detail .= '
                     <div class="d-none images">
                         <a href="' . IMAGE_PATH . 'package/galleryimages/' . $sliderImage->image . '" data-src="' . IMAGE_PATH . 'package/galleryimages/' . $sliderImage->image . '">
                             <img src="' . IMAGE_PATH . 'package/galleryimages/' . $sliderImage->image . '" alt="' . htmlspecialchars($sliderImage->title) . '" />
                         </a>
                     </div>
                 ';
+                        }
+
+                        $i++;
+                    }
+
+                    $respkg_detail .= '</div>'; // end row
+                }
             }
-
-            $i++;
-        }
-
-        $respkg_detail .= '</div>'; // end row
-    }
-}
 
 
             // foreach ($sliderImages as $sliderImage) {
@@ -825,19 +836,19 @@ if (!empty($sliderImages)) {
         if (!empty($pkgRec->difficulty)) {
             switch ($pkgRec->difficulty) {
                 case 'Easy':
-                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" alt="Difficulty" title="'.$pkgRec->difficulty.'" style="width:100px">';
+                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" alt="Difficulty" title="' . $pkgRec->difficulty . '" style="width:100px">';
                     break;
                 case 'Moderate':
-                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" alt="Difficulty" title="'.$pkgRec->difficulty.'" style="width:100px">';
+                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" alt="Difficulty" title="' . $pkgRec->difficulty . '" style="width:100px">';
                     break;
                 case 'Moderate To Strenous':
-                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" alt="Difficulty" title="'.$pkgRec->difficulty.'" style="width:100px">';
+                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" alt="Difficulty" title="' . $pkgRec->difficulty . '" style="width:100px">';
                     break;
                 case 'Strenous':
-                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" alt="Difficulty" title="'.$pkgRec->difficulty.'" style="width:100px">';
+                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" alt="Difficulty" title="' . $pkgRec->difficulty . '" style="width:100px">';
                     break;
                 case 'Very Strenous':
-                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" alt="Difficulty" title="'.$pkgRec->difficulty.'" style="width:100px">';
+                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" alt="Difficulty" title="' . $pkgRec->difficulty . '" style="width:100px">';
                     break;
             }
         }
@@ -857,7 +868,7 @@ if (!empty($sliderImages)) {
         											<div class="col-inner">
         												<h6>Share:</h6>
         												<div class="box-socials clearfix">
-        													<a href="http://www.facebook.com/share.php?caption=' . $pkgRec->slug . '&description=' . $pkgRec->brief . '&u=' . BASE_URL . 'package/' . $pkgRec->slug . '&picture=' . IMAGE_PATH . 'package/' . $pkgRec->image . '/"" class="" target="_blank"><i class="fab fa-facebook-square"></i></a>
+        													<a href="http://www.facebook.com/share.php?caption=' . $pkgRec->slug . '&description=' . $pkgRec->title . '&u=' . BASE_URL . 'package/' . $pkgRec->slug . '&picture=' . IMAGE_PATH . 'package/' . $pkgRec->image . '/"" class="" target="_blank"><i class="fab fa-facebook-square"></i></a>
         													<a href="https://twitter.com/share?url=' . BASE_URL . 'package/' . $pkgRec->slug . '/&text=' . $pkgRec->title . '" class="" target="_blank"><i class="fab fa-twitter-square"></i></a>
         													<a href="https://www.linkedin.com/sharing/share-offsite/?url=' . BASE_URL . 'package/' . $pkgRec->slug . '" class="" target="_blank"><i class="fab fa-linkedin"></i></a>
 
@@ -1181,7 +1192,6 @@ if (!empty($sliderImages)) {
             ';
         }
 
-     
 
         $respkg_detail .= '
           
@@ -1208,7 +1218,7 @@ if (!empty($sliderImages)) {
             								<div class="slick-carousel-inner">
             									<div class="slick-testimonial-grid-arrows">
                         ';
-                        // pr($reviews);
+            // pr($reviews);
             foreach ($reviews as $review) {
                 $linkstart = (!empty($review->linksrc)) ? '<a href="' . $review->linksrc . '" target="_blank">' : '';
                 $linkend = (!empty($review->linksrc)) ? '</a>' : '';
@@ -1279,7 +1289,7 @@ if (!empty($sliderImages)) {
                 <div class="mb-50"></div>
             </div>
         ';
-           // Similar Tours
+        // Similar Tours
         $actSlug = Activities::field_by_id($pkgRec->activityId, 'slug');
         $sql = "SELECT id FROM tbl_activities WHERE slug='$actSlug' AND status=1";
         $query = $db->query($sql);
@@ -1311,7 +1321,7 @@ if (!empty($sliderImages)) {
 
                                         </div>
                                         <figcaption class="content">
-                                            <h5 class="">' .substr($similarTour->title, 0, 45) . '</h5>
+                                            <h5 class="">' . substr($similarTour->title, 0, 45) . '</h5>
                                             <ul class="item-meta mt-10 detailul">
                                                 <li class="a123">
                                                     <!--<i class="elegent-icon-pin_alt text-warning"></i>--> 
@@ -1345,19 +1355,19 @@ if (!empty($sliderImages)) {
                         if (!empty($similarTour->difficulty)) {
                             switch ($similarTour->difficulty) {
                                 case 'Easy':
-                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 ulnew-img3" title="'.$similarTour->difficulty.'" alt="Difficulty">';
+                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 ulnew-img3" title="' . $similarTour->difficulty . '" alt="Difficulty">';
                                     break;
                                 case 'Moderate':
-                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 ulnew-img3" title="'.$similarTour->difficulty.'" alt="Difficulty">';
+                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 ulnew-img3" title="' . $similarTour->difficulty . '" alt="Difficulty">';
                                     break;
                                 case 'Moderate To Strenous':
-                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 ulnew-img3" title="'.$similarTour->difficulty.'" alt="Difficulty">';
+                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 ulnew-img3" title="' . $similarTour->difficulty . '" alt="Difficulty">';
                                     break;
                                 case 'Strenous':
-                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 ulnew-img3" title="'.$similarTour->difficulty.'" alt="Difficulty">';
+                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 ulnew-img3" title="' . $similarTour->difficulty . '" alt="Difficulty">';
                                     break;
                                 case 'Very Strenous':
-                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 ulnew-img3" title="'.$similarTour->difficulty.'" alt="Difficulty">';
+                                    $respkg_detail .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 ulnew-img3" title="' . $similarTour->difficulty . '" alt="Difficulty">';
                                     break;
                             }
                         }
@@ -1407,7 +1417,7 @@ if (!empty($sliderImages)) {
             ';
         }
 
-        
+
         $respkg_detail .= '          
                 </div>
             </div>
@@ -1415,7 +1425,7 @@ if (!empty($sliderImages)) {
                         <aside class="sticky-kit-02 sidebar-wrapper no-border mt-20 mt-lg-0">
         ';
         $price_text = '';
-        if(!empty($pkgRec->price) and empty($pkgRec->offer_price)){
+        if (!empty($pkgRec->price) and empty($pkgRec->offer_price)) {
             $price_text .= '   
                             <div class="book-now-detail">
                                 <p class="price-book">
@@ -1426,8 +1436,8 @@ if (!empty($sliderImages)) {
                             </div>
             ';
         }
-        
-        if(!empty($pkgRec->offer_price)){
+
+        if (!empty($pkgRec->offer_price)) {
             $price_text .= '
                             <div class="book-now-detail">
                                 <p class="price-book">
@@ -1443,18 +1453,18 @@ if (!empty($sliderImages)) {
                             </div>
             ';
         }
-        
+
         $respkg_detail .= '
                             <div class="booking-box">
                                 <div class="box-heading"><h3 class="h6 text-white text-uppercase">Make a booking</h3></div>
                                 <div class="box-content enquiry-box">
-                                    '.$price_text.'
+                                    ' . $price_text . '
                                     <p class="d-none d-xl-block d-lg-block d-xl-none">
                                         <a class="btn btn-primary btn-block btn_map" href="' . BASE_URL . 'enquiry/package/' . $pkgRec->slug . '">Make an Enquiry <br> or <br> contact for group discount</a>
                                     </p>
                                     ';
 
-        if (!empty($pkgRec->group_size_price1) OR !empty($pkgRec->group_size_price2) OR !empty($pkgRec->group_size_price3) OR (!empty($pkgRec->group_size_price4)) OR !empty($pkgRec->group_size_price5)) {
+        if (!empty($pkgRec->group_size_price1) or !empty($pkgRec->group_size_price2) or !empty($pkgRec->group_size_price3) or (!empty($pkgRec->group_size_price4)) or !empty($pkgRec->group_size_price5)) {
             $respkg_detail .= '
                     <a class="showStandardPP">Group Booking Discount </a>
                     <div class="standardPP border-top">
@@ -1471,7 +1481,7 @@ if (!empty($sliderImages)) {
             for ($i = 1; $i <= 5; $i++) {
                 $col_name_size = "group_size_price" . $i;
                 $col_name_discouont = "discount" . $i;
-                if (!empty($pkgRec->$col_name_size) AND !empty($pkgRec->$col_name_discouont)) {
+                if (!empty($pkgRec->$col_name_size) and !empty($pkgRec->$col_name_discouont)) {
                     $discount = $pkgRec->price - ($pkgRec->price * $pkgRec->$col_name_discouont / 100);
                     $respkg_detail .= '
                                         <tr>
@@ -2128,7 +2138,7 @@ $reshfix = '';
 // INNER JOIN tbl_package AS p ON pd.package_id = p.id 
 // WHERE 
 // p.status='1' AND pd.status='1' AND package_date>=CURDATE() GROUP BY pd.package_id ORDER BY package_date ASC LIMIT 6";
- $sql = "SELECT 
+$sql = "SELECT 
     MAX(pd.package_currency) AS package_currency,
     MAX(pd.package_rate) AS package_rate,
     MIN(pd.package_date) AS package_date,
@@ -2203,25 +2213,29 @@ if ($totl > 0) {
             </div>
         </div>-->
         ';
-        $img = $tag = '';
-        // getting image
-        $file_path = SITE_ROOT . "images/package/" . $row->image;
-        $img = (!empty($row->image) and file_exists($file_path)) ? IMAGE_PATH . "package/" . $row->image : $img = IMAGE_PATH . "static/home-featured.jpg";
+            $img = $tag = '';
+            // getting image
+            $file_path = SITE_ROOT . "images/package/" . $row->image;
+            $img = (!empty($row->image) and file_exists($file_path)) ? IMAGE_PATH . "package/" . $row->image : $img = IMAGE_PATH . "static/home-featured.jpg";
 
-        // getting tags
-        $tag = (!empty($row->tags)) ? '<span class="ribbon_3 ' . $row->color . '">' . $row->tags . '</span>' : '';
+            // getting tags
+            $tag = (!empty($row->tags)) ? '<span class="ribbon_3 ' . $row->color . '">' . $row->tags . '</span>' : '';
 
-        // getting destination
-        $destination_name = Destination::field_by_id($row->destinationId, 'title');
+            // getting destination
+            $destination_name = Destination::field_by_id($row->destinationId, 'title');
 
-        // getting avg rating
-        $rating = Package::get_avg_rating($row->id);
+            // getting avg rating
+            $rating = Package::get_avg_rating($row->id);
 
-        $price_text = '';
-        if(!empty($row->price) and (empty($row->offer_price))){$price_text = '<p class="home-price">Starting USD '.$row->price.'</p>';}
-        if(!empty($row->offer_price)){$price_text = '<p class="home-price">Starting USD <del>'.$row->price.'</del> '.$row->offer_price.'</p>';}
-        
-        $reshfix .= '
+            $price_text = '';
+            if (!empty($row->price) and (empty($row->offer_price))) {
+                $price_text = '<p class="home-price">Starting USD ' . $row->price . '</p>';
+            }
+            if (!empty($row->offer_price)) {
+                $price_text = '<p class="home-price">Starting USD <del>' . $row->price . '</del> ' . $row->offer_price . '</p>';
+            }
+
+            $reshfix .= '
             <div class="col">
                 <figure class="tour-grid-item-01">
                     <a href="' . BASE_URL . 'package/' . $row->slug . '">
@@ -2231,18 +2245,18 @@ if ($totl > 0) {
                         </style>
                         <div class="image">
                             <img src="' . $img . '" alt="' . $row->title . '" class="hgt-230"/>
-                            '.$price_text.'
+                            ' . $price_text . '
                             
                             
                         </div>
                         <figcaption class="content ">
                             ' . $tag . '
-                            <h5 class="">' .substr($row->title, 0, 48). '</h5>';
-                                         $fixeddata= packagedate::get_package_date_home($row->id);
-                                if(!empty($fixeddata)){
-                                    $start_date = date('F d, Y', strtotime($fixeddata->package_date));
-                                    $end_date = date('F d, Y', strtotime($fixeddata->package_date . ' + ' . $row->days . ' days'));
-                                       $sqlb = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$row->id AND fixed_date_id=$fixeddata->id";
+                            <h5 class="">' . substr($row->title, 0, 48) . '</h5>';
+            $fixeddata = packagedate::get_package_date_home($row->id);
+            if (!empty($fixeddata)) {
+                $start_date = date('F d, Y', strtotime($fixeddata->package_date));
+                $end_date = date('F d, Y', strtotime($fixeddata->package_date . ' + ' . $row->days . ' days'));
+                $sqlb = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$row->id AND fixed_date_id=$fixeddata->id";
                 $resb = $db->fetch_array($db->query($sqlb));
                 $totalb = !empty($resb['total']) ? $resb['total'] : 0;
                 // pr($total);
@@ -2251,9 +2265,9 @@ if ($totl > 0) {
                 $difffb = $diffb;
                 // pr($difffb);
                 if ($diffb > 0) {
-                                    $reshfix .= '  
+                    $reshfix .= '  
                             <ul class="item-meta mt-15">
-                                <li><span class="font700 h6">Start/End Trip:</span> <span class="font400 h6">'.$start_date.' - '.$end_date.'</span></li>
+                                <li><span class="font700 h6">Start/End Trip:</span> <span class="font400 h6">' . $start_date . ' - ' . $end_date . '</span></li>
                                
                             </ul>
                             
@@ -2277,9 +2291,9 @@ if ($totl > 0) {
                                         </li>-->    <li><span class="font700 h6"><i class="far fa-hourglass"></i>' . $row->days . ' Days</span></li>
                                     </ul>
                                 </div>';
-                               $reshfix .= '<div class="col-md-6">
+                    $reshfix .= '<div class="col-md-6">
                                <ul class="item-meta mt-15">
-                                <li><span class="font700 h6">seats left:</span> <span class="font400 h6">'.$difffb.'</span></li>
+                                <li><span class="font700 h6">seats left:</span> <span class="font400 h6">' . $difffb . '</span></li>
                                
                             </ul>
                                <form method="post" action="' . BASE_URL . 'book/package/' . $row->slug . '">
@@ -2289,8 +2303,8 @@ if ($totl > 0) {
                                     <input type="hidden" name="max_pax" value="' . $difffb . '">
                                     <button type="submit" class="btn btn-primary btn-block btn-sm mt-3 btn-contact-page">Book now</button>
                                 </form></div></div>';
-                                }
-                                $reshfix .= '
+                }
+                $reshfix .= '
                             <!-- <ul class="item-meta mt-15">
                                 <li><span class="font700 h6">' . $row->days . ' Days</span></li>
                                 <li>
@@ -2299,43 +2313,43 @@ if ($totl > 0) {
                                 </li>
                             </ul>-->
                         </figcaption>';
-     if (!empty($row->accomodation)) {
-    $reshfix .= '<p class="featured-trip1 d-none">';
-    $routes = explode(',', $row->accomodation);
-    $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
-    $lastRoute = end($limitedRoutes);
+                if (!empty($row->accomodation)) {
+                    $reshfix .= '<p class="featured-trip1 d-none">';
+                    $routes = explode(',', $row->accomodation);
+                    $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
+                    $lastRoute = end($limitedRoutes);
 
-    foreach ($limitedRoutes as $route) {
-        $reshfix .= ($lastRoute == $route) ? $route : $route . ' -> ';
-    }
+                    foreach ($limitedRoutes as $route) {
+                        $reshfix .= ($lastRoute == $route) ? $route : $route . ' -> ';
+                    }
 
-    $reshfix .= '</p>';
-}
-        if (!empty($row->difficulty)) {
-            switch ($row->difficulty) {
-                case 'Easy':
-                    $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="'.$row->difficulty.'" alt="Difficulty">';
-                    break;
-                case 'Moderate':
-                    $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="'.$row->difficulty.'" alt="Difficulty">';
-                    break;
-                case 'Moderate To Strenous':
-                    $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="'.$row->difficulty.'" alt="Difficulty">';
-                    break;
-                case 'Strenous':
-                    $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="'.$row->difficulty.'" alt="Difficulty">';
-                    break;
-                case 'Very Strenous':
-                    $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="'.$row->difficulty.'" alt="Difficulty">';
-                    break;
-            }
-        }
-        $reshfix .= '    
+                    $reshfix .= '</p>';
+                }
+                if (!empty($row->difficulty)) {
+                    switch ($row->difficulty) {
+                        case 'Easy':
+                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                            break;
+                        case 'Moderate':
+                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                            break;
+                        case 'Moderate To Strenous':
+                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                            break;
+                        case 'Strenous':
+                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                            break;
+                        case 'Very Strenous':
+                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                            break;
+                    }
+                }
+                $reshfix .= '    
                     </a>
                 </figure>
             </div>
         ';
-        }
+            }
         }
     }
 }

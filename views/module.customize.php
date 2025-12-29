@@ -126,6 +126,9 @@ $customizee .= '
     </section>';
 
 
+/**
+ *      Real Customize form
+ */
 $customize .= '
         <form id="customize_form" action="" method="post">
             <h4 class="heading-title"><span>Customize Your Trip</span></h4>
@@ -159,7 +162,7 @@ $customize .= '
                 <div class="col-6 col-md-6 col-md-6">
                     <div class="form-group">
                         <label>No. Of Pax.</label>
-                         <input type="number" class="form-control" name="pax"  placeholder="No. of pax"/>
+                         <input type="number" class="form-control" name="pax"  min="1" step="1" value="1" placeholder="No. of pax"/>
                         <!--<select data-placeholder="Select" name="pax" class="chosen-the-basi form-control" tabindex="2">
                             <option value="">Select</option>
                             <option value="1-4">1-4</option>
@@ -187,13 +190,13 @@ $customize .= '
                         <input type="email" name="email" class="form-control" placeholder="Email address"/>
                     </div>
                 </div>
-<div class="col-6 col-md-6">
+                <div class="col-6 col-md-6">
                     <div class="form-group">
                         <label>Address</label>
                         <input type="text" name="address" class="form-control" placeholder="Address"/>
                     </div>
                 </div>
-   <div class="col-6 col-md-6">
+                <div class="col-6 col-md-6">
                     <div class="form-group">
                         <label>Country</label>
                         <select data-placeholder="Select" name="country" class="chosen-the-basi form-control countrySelect" tabindex="2" id="countrySelect">
@@ -206,15 +209,12 @@ $customize .= '
                         </select>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-5">
+                <div class="col-12 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label>Phone</label>
-                        <input type="text" name="phone" class="form-control phone" placeholder="Phone number"/>
+                        <label>Whatsapp</label>
+                        <input type="text" name="phone" class="form-control phone" placeholder="Whatsapp"/>
                     </div>
                 </div>
-
-                
-             
 
                 <div class="col-6 col-md-12">
                     <div class="form-group">
@@ -233,5 +233,3 @@ $customize .= '
 ';
 
 $jVars['module:customize'] = $customize;
-
-?>

@@ -17,10 +17,12 @@ $body = '
                 <p>
                     <strong>Fullname</strong> : ' . $full_name . '<br/>
                     <strong>E-mail Address</strong>: ' . $email . '<br/>
-                    <strong>Phone</strong> : ' . $phone . '<br/>
+                    <strong>Whatsapp</strong> : ' . $phone . '<br/>
                     <strong>Address</strong> : ' . $address1 . ' / ' . $address2 . '<br/>
-                    <strong>Country</strong> : ' . $country . '<br/>
-                    <strong>Zip Code</strong> : ' . $zipcode . '<br/>';
+                    <strong>Country</strong> : ' . $country . '<br/>';
+if (!empty($zipcode)) {
+    $body .= '    <strong>Zip Code</strong> : ' . $zipcode . '<br/>';
+}
 if (!empty($province)) {
     $body .= '    <strong>Province(City)</strong> : ' . $province . '<br/>';
 }
@@ -28,8 +30,8 @@ if (!empty($state)) {
     $body .= '    <strong>State(Town)</strong> : ' . $state . '<br/>';
 }
 // $pax = $pax + 1;
-if(!empty($paxx) && $paxx !== 'undefined'){
-$body .= '         <strong>Pax</strong> : ' . $paxx . '<br/>';
+if (!empty($paxx) && $paxx !== 'undefined') {
+    $body .= '         <strong>Pax</strong> : ' . $paxx . '<br/>';
 }
 if (!empty($fixed_date_id)) {
     $body .= '    <!--<br><strong>Fixed Departure Id</strong> : ' . $fixed_date_id . '<br/>-->
@@ -42,7 +44,6 @@ $body .= '
                 </p>
             </td>
         </tr>';
-        // pr($additional_name);
 if (!empty($additional_name[0])) {
     $body .= '<tr>
                 <p><strong>Additional Travellers Information</strong></p>
@@ -96,4 +97,3 @@ if (!empty($ccusermail)) {
 $mail->Subject = 'Booking mail from ' . $full_name . ' for ' . $pkgRec->title;
 $mail->MsgHTML($body);
 $mail->Send();
-?>

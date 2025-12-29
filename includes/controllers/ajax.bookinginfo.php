@@ -18,7 +18,7 @@
 	{						
 		case "request_inquiry":
 			foreach($_POST as $key=>$val) { $$key=$val; }
-            // pr($_POST);
+            // pr($_POST,1);
 			// For tbl_bookinginfo
 			$bokRec = new Bookinginfo();
 
@@ -28,7 +28,7 @@
 			$bokRec->trip_date 		= $date;
 			$bokRec->trip_currency  = 'USD';
 //			$bokRec->date_rate 		= $n[1];
-			$bokRec->trip_pax		= $pax + 1;
+			$bokRec->trip_pax		= $paxx;
 //			$bokRec->trip_flight 	= $trip_flight;
 //			$bokRec->accesskey		= $trans_key;
 //			$bokRec->person_title 	= $person_title;
@@ -44,6 +44,7 @@
 			$bokRec->person_city 	= $province;
 			$bokRec->person_postal 	= $state;
 //			$bokRec->person_ctype 	= implode(' / ', $person_ctype); // (!empty($person_ctype[0])?$person_ctype[0]:'').' '.(!empty($person_ctype[1])?$person_ctype[1]:'');
+            $bokRec->person_ctype   = (!empty($zipcode)) ? $zipcode : '';
             $bokRec->person_hear    = (!empty($address2)) ? $address2 : '';
 			$bokRec->person_comment = $message;
 
@@ -55,7 +56,7 @@
 
             $db->begin();
             if ($bokRec->save()) {
-                include(SITE_ROOT.'book_mail.php');
+                include(SITE_ROOT . 'book_mail.php');
                 $db->commit();
                 if (!empty($additional_name)) {
                     $booking_id = $db->insert_id();
