@@ -1,7 +1,7 @@
 <?php
 
 define('HOMEPAGE', 0); // Track homepage.
-define('CONTACTUS_PAGE', 1);// Track Article page.
+define('FAQ_PAGE', 1);// Track Article page.
 define('JCMSTYPE', 0); // Track Current site language.
 
 require_once("includes/initialize.php");
