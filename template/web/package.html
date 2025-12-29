@@ -10,12 +10,14 @@
 
     <!-- Font face -->
     <link href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' rel="stylesheet">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous"
+          referrerpolicy="no-referrer"/>
 
     <!-- CSS Plugins -->
     <!--<link href="css/font-icons.css" rel="stylesheet">-->
@@ -34,49 +36,49 @@
     <link href="css/bundle.css" rel="stylesheet">
 </head>
 
-<body class="with-waypoint-sticky">
-    <!-- start Body Inner -->
-    <div class="body-inner">
-        <!-- start Header -->
-        <header id="header-waypoint-sticky" class="header-main header-mobile-menu with-absolute-navbar">
-            <div class="container">
-                <div class="header-outer clearfix">
-                    <div class="row shrink-auto-lg gap-0 align-items-center">
-                        <div class="col-9 col-shrink z-in-1111">
-                            <div class="col-inner">
-                                <div class="main-logo">
-                                    <jcms:site:logo/>
-                                </div>
+<body class="with-waypoint-sticky no-copy">
+<!-- start Body Inner -->
+<div class="body-inner">
+    <!-- start Header -->
+    <header id="header-waypoint-sticky" class="header-main header-mobile-menu with-absolute-navbar">
+        <div class="container">
+            <div class="header-outer clearfix">
+                <div class="row shrink-auto-lg gap-0 align-items-center">
+                    <div class="col-9 col-shrink z-in-1111">
+                        <div class="col-inner">
+                            <div class="main-logo">
+                                <jcms:site:logo/>
                             </div>
                         </div>
-    
-                        <div class="col-3 col-shrink order-last-lg">
-                            <div class="col-inner">
-                                <ul class="nav-mini-right">
-                                    <li>
-                                        <button class="btn btn-toggle collapsed" data-toggle="collapse"
-                                                data-target="#mobileMenu"></button>
-                                    </li>
-                                </ul>
-                            </div>
+                    </div>
+
+                    <div class="col-3 col-shrink order-last-lg">
+                        <div class="col-inner">
+                            <ul class="nav-mini-right">
+                                <li>
+                                    <button class="btn btn-toggle collapsed" data-toggle="collapse"
+                                            data-target="#mobileMenu"></button>
+                                </li>
+                            </ul>
                         </div>
-    
-                        <div class="col-12 col-auto order-last-lg">
-                            <div class="navbar-wrapper">
-                                <div class="navbar navbar-expand-lg">
-                                    <div id="mobileMenu" class="collapse navbar-collapse">
-                                        <nav class="main-nav-menu main-menu-nav navbar-arrow">
-                                            <jcms:module:menu/>
-                                        </nav><!--/.nav-collapse -->
-                                    </div>
+                    </div>
+
+                    <div class="col-12 col-auto order-last-lg">
+                        <div class="navbar-wrapper">
+                            <div class="navbar navbar-expand-lg">
+                                <div id="mobileMenu" class="collapse navbar-collapse">
+                                    <nav class="main-nav-menu main-menu-nav navbar-arrow">
+                                        <jcms:module:menu/>
+                                    </nav><!--/.nav-collapse -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- start Header -->
+        </div>
+    </header>
+    <!-- start Header -->
 
     <!-- start Main Wrapper -->
     <div class="main-wrapper scrollspy-container">
@@ -115,6 +117,10 @@
 <script type="text/javascript" src="js/custom-multiply-sticky.js"></script>
 <script type="text/javascript" src="js/custom-core.js"></script>
 <script type="text/javascript" src='<jcms:site:baseurl/>assets/uploadify/jquery.uploadify.min.js'></script>
+
+<!-- disable text selection -->
+<script type='text/javascript' src="js/disable-copy-devtools.js"></script>
+
 <script src="js/jquery.validate.js"></script>
 <script type="text/javascript">
     var base_url = $('base').attr('url');
@@ -160,8 +166,8 @@
             }
         });
     });
-    
-     // Add phone validation method
+
+    // Add phone validation method
     $.validator.addMethod("validFullPhone", function (value) {
         if (!value) return false;
         const cleaned = value.replace(/\s+/g, '');
@@ -178,9 +184,9 @@
             }
         });
     });
-//     $.validator.addMethod("validPhone", function(value, element) {
-//     return this.optional(element) || /^\+?[0-9\s\-()]{7,20}$/.test(value);
-// }, "Please enter a valid phone number.");
+    //     $.validator.addMethod("validPhone", function(value, element) {
+    //     return this.optional(element) || /^\+?[0-9\s\-()]{7,20}$/.test(value);
+    // }, "Please enter a valid phone number.");
     jQuery(document).ready(function () {
         // Review form validation
         jQuery('#review_form').validate({

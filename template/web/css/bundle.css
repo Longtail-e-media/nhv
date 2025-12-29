@@ -42690,3 +42690,17 @@ span#overall_rating-error,span#pre_trip_rating-error,span#transportation_rating-
 .cookieAlert.hid {
     display: none !important;
 }
+
+/* basic CSS-level prevention (user-select) */
+.no-copy {
+	-webkit-user-select: none; /* Safari/Chrome */
+	-moz-user-select: none;    /* Firefox */
+	-ms-user-select: none;     /* IE/Edge */
+	user-select: none;
+}
+/* prevent image drag */
+img.no-drag {
+	-webkit-user-drag: none;
+	user-drag: none;
+	pointer-events: auto; /* keep images interactive if you want; remove if not */
+}

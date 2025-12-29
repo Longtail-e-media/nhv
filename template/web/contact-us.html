@@ -10,12 +10,14 @@
 
     <!-- Font face -->
     <link href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' rel="stylesheet">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous"
+          referrerpolicy="no-referrer"/>
 
     <!-- CSS Plugins -->
     <!--<link href="css/font-icons.css" rel="stylesheet">-->
@@ -33,7 +35,7 @@
     <link href="css/bundle.css" rel="stylesheet">
 </head>
 
-<body class="with-waypoint-sticky">
+<body class="with-waypoint-sticky no-copy">
 <!-- start Body Inner -->
 <div class="body-inner">
     <!-- start Header -->
@@ -48,16 +50,16 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-3 col-shrink order-last-lg">
-							<div class="col-inner">
-								<ul class="nav-mini-right">
-									<li>
-										<button class="btn btn-toggle collapsed" data-toggle="collapse" data-target="#mobileMenu"></button>
-									</li>
-								</ul>
-							</div>
-						</div>
+                        <div class="col-inner">
+                            <ul class="nav-mini-right">
+                                <li>
+                                    <button class="btn btn-toggle collapsed" data-toggle="collapse" data-target="#mobileMenu"></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <div class="col-12 col-auto order-last-lg">
                         <div class="navbar-wrapper">
@@ -80,7 +82,7 @@
     <div class="main-wrapper scrollspy-container">
         <!--<div class="pt-0 pt-xl-15"></div>-->
         <jcms:module:location-map/>
-        
+
         <section class="page-wrapper">
             <div class="container">
                 <div class="row">
@@ -99,10 +101,12 @@
                         <!--	<a href="#" data-toggle="tooltip" data-placement="top" title="youtube"><img src="img/icon/youtube.png"></a>-->
                         <!--</div>-->
                     </div>
-                    
+
                     <div class="col-12 col-lg-8">
                         <h4 class="heading-title mb-3"><span>Drop us a Message</span></h4>
-                        <p>Let us know your travel preferences, interests, budget, and travel dates. Our team will create a <a href="customize" style="color: #2a97af;"><u>personalized itinerary tailored</u></a> just for you.</p>
+                        <p>Let us know your travel preferences, interests, budget, and travel dates. Our team will create a <a href="customize"
+                                                                                                                               style="color: #2a97af;"><u>personalized
+                            itinerary tailored</u></a> just for you.</p>
                         <form id="contact_form" method="post" action="">
 
                             <div class="contact-successful-messages"></div>
@@ -115,7 +119,7 @@
                                         <div class="help-block with-errors text-danger"></div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="form_email">Email Address *</label>
@@ -123,7 +127,7 @@
                                         <div class="help-block with-errors text-danger"></div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="form_message">Message *</label>
@@ -131,12 +135,12 @@
                                                   rows="7s"></textarea>
                                         <div class="help-block with-errors text-danger"></div>
                                     </div>
-                                     <div class="form-group" style="margin: 10px 0px;">
+                                    <div class="form-group" style="margin: 10px 0px;">
                                         <div id="g-recaptcha-response" class="g-recaptcha" data-sitekey="6LfnY1orAAAAAIagn4tiJcRjixcGPpxO-ImLCWmo"></div>
                                     </div>
                                     <div class="alert alert-success" id="msg" style="display:none;"></div>
                                 </div>
-                                
+
                                 <div class="col-md-12">
                                     <button type="submit" id="submit" class="btn btn-primary btn-contact-page btn-wide mt-15">
                                         Send message
@@ -171,7 +175,11 @@
 <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript" src="js/plugins.js"></script>
 <script type="text/javascript" src="js/custom-core.js"></script>
+<!-- disable text selection -->
+<script type='text/javascript' src="js/disable-copy-devtools.js"></script>
+
 <script src="js/jquery.validate.js"></script>
+
 <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 <script type="text/javascript">
     var base_url = jQuery('base').attr('url');
@@ -212,12 +220,12 @@
 
             },
             submitHandler: function (form) {
-                    var recaptcha = $("#g-recaptcha-response").val();
-                    if (recaptcha === "") {
-                        event.preventDefault();
-                        alert("Please check the recaptcha");
-                        return false;
-                    }
+                var recaptcha = $("#g-recaptcha-response").val();
+                if (recaptcha === "") {
+                    event.preventDefault();
+                    alert("Please check the recaptcha");
+                    return false;
+                }
                 var Frmval = jQuery("form#contact_form").serialize();
                 jQuery("button#submit").attr("disabled", "true").text('Processing...');
                 jQuery.ajax({
