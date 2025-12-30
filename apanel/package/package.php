@@ -565,7 +565,7 @@ if (isset($_GET['page']) && $_GET['page'] == "package" && isset($_GET['mode']) &
                 <div class="form-row">
                     <div class="form-label col-md-12">
                         <label for="">
-                            FAQ :
+                            Do's and Don'ts :
                         </label>
                         <textarea name="availability" id="availability"
                                   class="large-textarea validate[required]"><?php echo !empty($packageInfo->availability) ? $packageInfo->availability : ""; ?></textarea>

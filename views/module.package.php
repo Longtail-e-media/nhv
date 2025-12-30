@@ -609,7 +609,7 @@ if (defined('PACKAGE_PAGE')) {
 
         $respkg_detail .= '
 									<li>
-										<a href="#detail-content-sticky-nav-06">FAQ</a>
+										<a href="#detail-content-sticky-nav-06">Do\'s & Don\'ts</a>
 									</li>
 									';
 
@@ -1273,8 +1273,8 @@ if (defined('PACKAGE_PAGE')) {
                         </div>
                     </div>
                 </div>
-                  <div id="detail-content-sticky-nav-06" class="fullwidth-horizon-sticky-section">
-                <h4 class="heading-title">FAQ</h4>
+              <div id="detail-content-sticky-nav-06" class="fullwidth-horizon-sticky-section">
+                <h4 class="heading-title">Do\'s & Don\'ts</h4>
                 <div class="faq-item-long-wrapper">
                     ' . $pkgRec->availability . '
                 </div>
