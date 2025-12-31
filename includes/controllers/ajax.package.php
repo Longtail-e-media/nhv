@@ -233,6 +233,14 @@
 			$record = Package::find_by_id($id);
 			log_action("Package  [".$record->title."]".$GLOBALS['basic']['deletedSuccess'],1,6);
 			$db->query("DELETE FROM tbl_package WHERE id='{$id}'");
+            // delete itinerary
+            $db->query("DELETE FROM tbl_itinerary WHERE package_id='{$id}'");
+            // delete fixed date
+            $db->query("DELETE FROM tbl_package_date WHERE package_id='{$id}'");
+            // delete reviews
+            $db->query("DELETE FROM tbl_review WHERE package_id='{$id}'");
+            // delete package images
+            $db->query("DELETE FROM tbl_package_images WHERE packageid='{$id}'");
 			
 			reOrder("tbl_package", "sortorder");			
 			
@@ -294,7 +302,15 @@
 			for($i=1; $i<count($allid); $i++){
 				$record = Package::find_by_id($allid[$i]);
 				log_action("Package  [".$record->title."]".$GLOBALS['basic']['deletedSuccess'],1,6);				
-				$res = $db->query("DELETE FROM tbl_package WHERE id='".$allid[$i]."'");				
+				$res = $db->query("DELETE FROM tbl_package WHERE id='".$allid[$i]."'");
+                // delete itinerary
+                $db->query("DELETE FROM tbl_itinerary WHERE package_id='".$allid[$i]."'");
+                // delete fixed date
+                $db->query("DELETE FROM tbl_package_date WHERE package_id='".$allid[$i]."'");
+                // delete reviews
+                $db->query("DELETE FROM tbl_review WHERE package_id='".$allid[$i]."'");
+                // delete package images
+                $db->query("DELETE FROM tbl_package_images WHERE packageid='".$allid[$i]."'");
 				$return = 1;
 			}
 			if($res)$db->commit();else $db->rollback();
