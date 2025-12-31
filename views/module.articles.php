@@ -115,7 +115,10 @@ if (defined('ARTICLE_PAGE')) {
             </div>
         ';
     } else {
-        $resartcle .= '404';
+        $resartcle .= '
+        <div class="container">
+            <h2 class="text-center mt-100" style="font-weight: 400;color: #000;">404</h2>
+        </div>';
     }
 }
 
