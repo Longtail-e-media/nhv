@@ -421,7 +421,7 @@
 
 <script>
     // Form State Management using Cache API
-    (function() {
+    (function () {
         'use strict';
 
         const CACHE_NAME = 'form-state-cache';
@@ -516,6 +516,91 @@
             });
         }
 
+        // Wait for activities to be populated and stable using MutationObserver
+        function waitForActivitiesPopulated(targetActivity, maxWaitTime = 5000) {
+            return new Promise((resolve) => {
+                let attempts = 0;
+                const startTime = Date.now();
+
+                // If activities are already populated with the right options, set value immediately
+                if (activitySelect.options.length > 1 &&
+                    activitySelect.value !== 'Loading...' &&
+                    !Array.from(activitySelect.options).some(opt => opt.text === 'Loading...')) {
+                    activitySelect.value = targetActivity;
+                    if (activitySelect.value === targetActivity) {
+                        console.log('Activities already populated, value set immediately');
+                        resolve(true);
+                        return;
+                    }
+                }
+
+                // Set up MutationObserver to watch for changes to the select element
+                const observer = new MutationObserver((mutations) => {
+                    attempts++;
+
+                    // Check if we've exceeded max wait time
+                    if (Date.now() - startTime > maxWaitTime) {
+                        console.log('Timeout waiting for activities');
+                        observer.disconnect();
+                        activitySelect.value = targetActivity;
+                        resolve(activitySelect.value === targetActivity);
+                        return;
+                    }
+
+                    // Check if activities are populated (more than 1 option and no "Loading...")
+                    const hasOptions = activitySelect.options.length > 1;
+                    const notLoading = activitySelect.value !== 'Loading...' &&
+                        !Array.from(activitySelect.options).some(opt => opt.text === 'Loading...');
+
+                    if (hasOptions && notLoading) {
+                        console.log('Activities populated after', Date.now() - startTime, 'ms');
+
+                        // Wait a tiny bit more to ensure it's stable
+                        setTimeout(() => {
+                            activitySelect.value = targetActivity;
+
+                            // Verify the value was set
+                            if (activitySelect.value === targetActivity) {
+                                console.log('Activity value successfully set to:', targetActivity);
+                                observer.disconnect();
+                                resolve(true);
+                            } else {
+                                // Try again
+                                console.log('Value not set, retrying...');
+                                setTimeout(() => {
+                                    activitySelect.value = targetActivity;
+                                    observer.disconnect();
+                                    resolve(activitySelect.value === targetActivity);
+                                }, 200);
+                            }
+                        }, 100);
+                    }
+                });
+
+                // Observe changes to the select element's children (options)
+                observer.observe(activitySelect, {
+                    childList: true,
+                    subtree: true,
+                    attributes: true,
+                    characterData: true
+                });
+
+                // Also trigger a manual check after a short delay
+                setTimeout(() => {
+                    const hasOptions = activitySelect.options.length > 1;
+                    const notLoading = !Array.from(activitySelect.options).some(opt => opt.text === 'Loading...');
+
+                    if (hasOptions && notLoading) {
+                        activitySelect.value = targetActivity;
+                        if (activitySelect.value === targetActivity) {
+                            observer.disconnect();
+                            resolve(true);
+                        }
+                    }
+                }, 500);
+            });
+        }
+
         // Restore form state
         async function restoreFormState() {
             const state = await loadFormState();
@@ -529,45 +614,57 @@
                 destinationSelect.value = state.destination;
 
                 // Trigger change event to populate activities (if your code does this)
-                const changeEvent = new Event('change', { bubbles: true });
+                const changeEvent = new Event('change', {bubbles: true});
                 destinationSelect.dispatchEvent(changeEvent);
 
-                // Wait a bit for the activities to populate via your existing code
-                // Then restore the activity options and value
-                setTimeout(() => {
-                    if (state.activityOptions && state.activityOptions.length > 1) {
-                        populateSelect(activitySelect, state.activityOptions);
+                // Wait for activities to be populated and set the value
+                if (state.activity && state.activity !== 'all') {
+                    const success = await waitForActivitiesPopulated(state.activity);
 
-                        if (state.activity) {
+                    if (!success) {
+                        console.warn('Failed to set activity value:', state.activity);
+                        // Try one more time with a longer delay
+                        setTimeout(() => {
                             activitySelect.value = state.activity;
-                        }
+                            console.log('Retry - Activity value:', activitySelect.value);
+                        }, 300);
                     }
+                }
 
-                    // Restore duration
-                    if (state.duration) {
-                        durationSelect.value = state.duration;
-                    }
-                }, 100); // Small delay to let your existing code run first
+                // Restore duration
+                if (state.duration) {
+                    durationSelect.value = state.duration;
+                }
             }
         }
 
-        // Listen for changes and save state
-        destinationSelect.addEventListener('change', function() {
+        // Listen for changes and save state - but ignore "Loading..." state
+        destinationSelect.addEventListener('change', function () {
             // Small delay to let activities populate
-            setTimeout(saveFormState, 500);
+            setTimeout(() => {
+                // Only save if activity is not "Loading..."
+                if (activitySelect.value !== 'Loading...') {
+                    saveFormState();
+                }
+            }, 150);
         });
 
-        activitySelect.addEventListener('change', saveFormState);
+        activitySelect.addEventListener('change', function () {
+            // Only save if activity is not "Loading..."
+            if (this.value !== 'Loading...') {
+                saveFormState();
+            }
+        });
         durationSelect.addEventListener('change', saveFormState);
 
         // Handle form submission - clear cache after successful submission
-        form.addEventListener('submit', async function(e) {
+        form.addEventListener('submit', async function (e) {
             // Save state before submitting (in case user comes back)
             await saveFormState();
         });
 
         // Handle pageshow event (fires when navigating back with browser button)
-        window.addEventListener('pageshow', function(event) {
+        window.addEventListener('pageshow', function (event) {
             // event.persisted is true when page is loaded from bfcache (back/forward cache)
             if (event.persisted || performance.navigation.type === 2) {
                 console.log('Page loaded from cache (back button), restoring state...');
@@ -576,12 +673,12 @@
         });
 
         // Restore state on initial page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             restoreFormState();
         });
 
         // Optional: Clear cache when user explicitly resets or leaves the site
-        window.addEventListener('beforeunload', function() {
+        window.addEventListener('beforeunload', function () {
             // Uncomment the line below if you want to clear cache when leaving the page
             // clearFormState();
         });
