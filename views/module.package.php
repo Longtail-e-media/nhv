@@ -535,13 +535,13 @@ if (defined('PACKAGE_PAGE')) {
     $slug = (isset($_REQUEST['slug']) and !empty($_REQUEST['slug'])) ? addslashes($_REQUEST['slug']) : '';
     $pkgRec = Package::find_by_slug($slug);
 
-    $destslug = Destination::field_by_id($pkgRec->destinationId, 'slug');
-
-    // getting avg rating
-    $rating = Package::get_avg_rating($pkgRec->id);
-    $reviews_total = Package::get_review_num($pkgRec->id);
-
     if (!empty($pkgRec)) {
+        
+        $destslug = Destination::field_by_id($pkgRec->destinationId, 'slug');
+    
+        // getting avg rating
+        $rating = Package::get_avg_rating($pkgRec->id);
+        $reviews_total = Package::get_review_num($pkgRec->id);
 
         $respkg_detail .= '
             <section class="page-wrapper page-detail pt-0">
@@ -584,7 +584,7 @@ if (defined('PACKAGE_PAGE')) {
         if (!empty($pkgRec->incexc)) {
             $respkg_detail .= '
                                     <li>
-										<a href="#detail-content-sticky-nav-04">What\'s included</a>
+										<a href="#detail-content-sticky-nav-04">What\'s included/ Excluded</a>
 									</li>
             ';
         }
@@ -609,7 +609,7 @@ if (defined('PACKAGE_PAGE')) {
 
         $respkg_detail .= '
 									<li>
-										<a href="#detail-content-sticky-nav-06">Do\'s & Don\'ts</a>
+                                        <a href="#detail-content-sticky-nav-06">Do\'s & Don\'ts</a>
 									</li>
 									';
 
@@ -804,6 +804,7 @@ if (defined('PACKAGE_PAGE')) {
 				</div>
             ';
         }
+        
 
         $dsRec = Destination::find_by_slug($destslug);
         $respkg_detail .= '   
@@ -1049,12 +1050,12 @@ if (defined('PACKAGE_PAGE')) {
         if (!empty($pkgRec->incexc)) {
             $respkg_detail .= '
                 <div id="detail-content-sticky-nav-04" class="fullwidth-horizon-sticky-section">
-                    <h4 class="heading-title">What\'s included</h4>
+                    <h4 class="heading-title">What\'s Included</h4>
                     ' . $pkgRec->incexc . '
                 ';
             if (!empty($pkgRec->booking_info)) {
                 $respkg_detail .= '
-                    <h5>Not included</h5>
+                    <h5>Excluded</h5>
                     ' . $pkgRec->booking_info . '
                 ';
             }
@@ -1905,12 +1906,12 @@ if (defined('PACKAGE_PAGE')) {
                                                         <div class="col-12 col-md-12 col-lg-12">
                                                         <div class="" id="msgg" style="display:none;"></div>
                                                             <div class="form-group">
-                                                                <label>Full name</label>
+                                                                <label>Full Name</label>
                                                                 <input type="text" name="full_name" class="form-control"/>
                                                                 <input type="hidden" name="package_name" value="' . $pkgRec->title . '"/>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Email adress</label>
+                                                                <label>Email Address</label>
                                                                 <input type="text" name="email" class="form-control"/>
                                                             </div>
                                                             <div class="form-group">
@@ -1965,12 +1966,12 @@ if (defined('PACKAGE_PAGE')) {
                                                         <div class="col-12 col-md-10 col-lg-8">
                                                         <div class="" id="msgg" style="display:none;"></div>
                                                             <div class="form-group">
-                                                                <label>Full name</label>
+                                                                <label>Full Bame</label>
                                                                 <input type="text" name="full_name" class="form-control"/>
                                                                 <input type="hidden" name="package_name" value="' . $pkgRec->title . '"/>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Email adress</label>
+                                                                <label>Email Address</label>
                                                                 <input type="text" name="email" class="form-control"/>
                                                             </div>
                                                             <div class="form-group">
@@ -2007,11 +2008,11 @@ if (defined('PACKAGE_PAGE')) {
             
                                                     <div class="form-inner">
                                                         <div class="form-group">
-                                                            <label>Full name</label>
+                                                            <label>Full Name</label>
                                                             <input type="text" class="form-control"/>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Email adress</label>
+                                                            <label>Email Address</label>
                                                             <input type="text" class="form-control"/>
                                                         </div>
                                                         <div class="row cols-2 gap-10">

@@ -42202,6 +42202,17 @@ span#overall_rating-error,span#pre_trip_rating-error,span#transportation_rating-
     .hero-banner .hero-inner {
         padding: 15px 34px;
         background: #235e70;
+        bottom:0px;
+    }
+    .header-main .main-nav>li>a img{
+        width:30px;
+    }
+    
+    footer{
+            background-size: cover;
+    }
+    .new-img, .new-img1{
+        display:none;
     }
     .hero-banner{
         position: relative;

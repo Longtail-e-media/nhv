@@ -34,7 +34,7 @@ $moduleFoldername = "";		// Image folder name
                     <input placeholder="City" class="col-md-6" type="text" name="city" id="city" value="<?php echo !empty($locationRow->city)?$locationRow->city:"";?>">
                 </div>                
             </div>
-            <div class="form-row">
+<!--            <div class="form-row">
                 <div class="form-label col-md-2">
                     <label for="">
                         Mail Address :
@@ -43,7 +43,7 @@ $moduleFoldername = "";		// Image folder name
                 <div class="form-input col-md-20">
                     <input placeholder="Mail Address" class="col-md-6" type="text" name="mail_address" id="mail_address" value="<?php echo !empty($locationRow->mail_address)?$locationRow->mail_address:"";?>">
                 </div>                
-            </div>
+            </div>-->
             <div class="form-row">
                 <div class="form-label col-md-2">
                     <label for="">
@@ -54,7 +54,7 @@ $moduleFoldername = "";		// Image folder name
                     <input placeholder="Contact Info" class="col-md-6" type="text" name="contact_info" id="contact_info" value="<?php echo !empty($locationRow->contact_info)?$locationRow->contact_info:"";?>">
                 </div>                
             </div>
-            <div class="form-row">
+<!--            <div class="form-row">
                 <div class="form-label col-md-2">
                     <label for="">
                         Contact Info 2:
@@ -63,7 +63,7 @@ $moduleFoldername = "";		// Image folder name
                 <div class="form-input col-md-20">
                     <input placeholder="Contact Info 2" class="col-md-6" type="text" name="contact_info2" id="contact_info2" value="<?php echo !empty($locationRow->contact_info2)?$locationRow->contact_info2:"";?>">
                 </div>                
-            </div>
+            </div>-->
             <div class="form-row">
                 <div class="form-label col-md-2">
                     <label for="">
@@ -143,14 +143,14 @@ $moduleFoldername = "";		// Image folder name
             	<div id="preview_Image"><input type="hidden" name="imageArrayname" value="" class="" /></div>
             </div>
 
-            <div class="form-row">
+<!--            <div class="form-row">
                 <div class="form-label col-md-12">
                     <label for="">
                         Brief :
                     </label>
-                    <textarea name="breif" id="breif" class="large-textarea"><?php echo !empty($locationRow->breif)?$locationRow->breif:"";?></textarea>                    
+                    <textarea name="breif" id="breif" class="large-textarea"><?php echo !empty($locationRow->brief)?$locationRow->brief:"";?></textarea>                    
                 </div>            
-            </div>
+            </div>-->
                                                
             <button type="submit" name="submit" class="btn large primary-bg text-transform-upr font-bold font-size-11 radius-all-4" id="btn-submit" title="Save">
                 <span class="button-content">

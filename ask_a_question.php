@@ -14,7 +14,7 @@ if(isset($_POST['action']) and ($_POST['action']=='forQuestion')):
 				</td>
 			  </tr>
 			  <tr>
-				<td><p><span style="color:#0065B3; font-size:16px; font-weight:bold">Enquiry Question</span><br />
+				<td><p><span style="color:#0065B3; font-size:16px; font-weight:bold">Question</span><br />
 				  The details provided are:</p>
 				  	<p>
 				  		<strong>Full Name</strong> : '.$full_name.'<br />	
@@ -42,7 +42,7 @@ if(isset($_POST['action']) and ($_POST['action']=='forQuestion')):
             $mail->AddCC($v, $sitename);
         }
     }
-    $mail->Subject    = "Enquiry Question from ".$full_name." on ".$package_name;
+    $mail->Subject    = "Question from ".$full_name." on ".$package_name;
 
     $mail->MsgHTML($body);
 

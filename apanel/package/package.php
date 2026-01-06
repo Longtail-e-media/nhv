@@ -10,7 +10,7 @@ if (isset($_GET['page']) && $_GET['page'] == "package" && isset($_GET['mode']) &
 
     clearImages($moduleTablename, $moduleFoldername . "/map", "mapimage");
     clearImages($moduleTablename, $moduleFoldername . "/map/thumbnails", "mapimage");
-
+    
     clearImages($moduleTablename, $moduleFoldername . "/docs", "itenaryfile");
     clearImages($moduleTablename, $moduleFoldername . "/docs/thumbnails", "itenaryfile");
 

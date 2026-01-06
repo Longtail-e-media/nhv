@@ -52,7 +52,7 @@ if (defined('BOOKTRIP_PAGE')) {
                     <div class="col-6 col-md-6">
                         <div class="form-group">
                             <label>Whatsapp *</label>
-                            <input type="text" name="phone" class="form-control phone" placeholder="Whatsapp"/>
+                            <input type="text" name="phone" class="form-control phone" placeholder="+9779812345678"/>
                         </div>
                     </div>
                     <div class="col-12 col-md-12">

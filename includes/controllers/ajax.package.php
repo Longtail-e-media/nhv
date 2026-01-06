@@ -233,7 +233,7 @@
 			$record = Package::find_by_id($id);
 			log_action("Package  [".$record->title."]".$GLOBALS['basic']['deletedSuccess'],1,6);
 			$db->query("DELETE FROM tbl_package WHERE id='{$id}'");
-            // delete itinerary
+			// delete itinerary
             $db->query("DELETE FROM tbl_itinerary WHERE package_id='{$id}'");
             // delete fixed date
             $db->query("DELETE FROM tbl_package_date WHERE package_id='{$id}'");
@@ -302,8 +302,8 @@
 			for($i=1; $i<count($allid); $i++){
 				$record = Package::find_by_id($allid[$i]);
 				log_action("Package  [".$record->title."]".$GLOBALS['basic']['deletedSuccess'],1,6);				
-				$res = $db->query("DELETE FROM tbl_package WHERE id='".$allid[$i]."'");
-                // delete itinerary
+				$res = $db->query("DELETE FROM tbl_package WHERE id='".$allid[$i]."'");	
+				// delete itinerary
                 $db->query("DELETE FROM tbl_itinerary WHERE package_id='".$allid[$i]."'");
                 // delete fixed date
                 $db->query("DELETE FROM tbl_package_date WHERE package_id='".$allid[$i]."'");
