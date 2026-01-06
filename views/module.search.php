@@ -17,7 +17,7 @@ if (defined('SEARCH_PAGE')) {
     $destinationRec = Destination::get_destination();
 
     // Check if any destination is selected
-    $has_selected = !empty($gdestination_slug) || !empty($qdestination);
+    $has_selected = !empty($gdestination_slug) || !empty($qdestination[0]);
 
     foreach ($destinationRec as $destinationRow) {
         // Determine if current destination is selected
@@ -129,9 +129,9 @@ if (defined('SEARCH_PAGE')) {
         $sel = ($k == @$gprice) ? 'checked' : '';
         $price_filter .= '
             <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input gprice" name="gprice" ' . $sel . ' id="price-' . $k . '" value="' . $k . '">
-                            <label class="custom-control-label d-flex justify-content-between" for="price-' . $k . '">' . $v . ' <span class="checkbox-count">(123)</span></label>
-                        </div>
+                <input type="radio" class="custom-control-input gprice" name="gprice" ' . $sel . ' id="price-' . $k . '" value="' . $k . '">
+                <label class="custom-control-label d-flex justify-content-between" for="price-' . $k . '">' . $v . ' <span class="checkbox-count">(123)</span></label>
+            </div>
         ';
     }
     /* Price Range end*/
@@ -314,7 +314,8 @@ if (defined('SEARCH_PAGE')) {
             INNER JOIN tbl_activities act 
             ON pkg.activityId = act.id
             WHERE pkg.status=1 ";
-    if (@$qdestination[0] != 'all' and !empty($qdestination)) {
+
+    if (!empty($qdestination[0]) and @$qdestination[0] != 'all') {
         foreach ($qdestination as $qdest) {
             if (sizeof($qdestination) > 1) {
                 if (array_values($qdestination)[0] == $qdest) {
@@ -333,7 +334,8 @@ if (defined('SEARCH_PAGE')) {
         $dest = Destination::find_by_slug($gdestination_slug);
         $sql .= " AND pkg.destinationId = $dest->id ";
     }
-    if (@$qactivities[0] != 'all' and !empty($qactivities)) {
+
+    if (!empty($qactivities[0]) and @$qactivities[0] != 'all') {
         foreach ($qactivities as $qact) {
             if (sizeof($qactivities) > 1) {
                 if (array_values($qactivities)[0] == $qact) {
@@ -352,6 +354,7 @@ if (defined('SEARCH_PAGE')) {
         $act = Activities::find_by_slug($gactivity_slug);
         $sql .= " AND pkg.activityId = $act->id ";
     }
+
     if (!empty($gdifficulty)) {
         foreach ($gdifficulty as $gdiff) {
             if (sizeof($gdifficulty) > 1) {
@@ -425,7 +428,7 @@ if (defined('SEARCH_PAGE')) {
             ';
         } else {
             $bread_title .= '
-                <h2>Tour Packages in ' . $destt->title . '</h2>
+                <h2>' . $destt->title . ' Packages</h2>
             ';
         }
         $brief = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', $destt->content);
@@ -528,7 +531,7 @@ if (defined('SEARCH_PAGE')) {
                 ';
             } else {
                 $bread_title .= '
-                <h2>Tour Packages in ' . $destt->title . '</h2>
+                <h2>' . $destt->title . ' Packages</h2>
                 ';
             }
             $brief = explode('<hr id="system_readmore" style="border-style: dashed; border-color: orange;" />', $destt->content);
@@ -643,6 +646,7 @@ if (defined('SEARCH_PAGE')) {
     $startpoint = ($page * $limit) - $limit;
     $start = $startpoint + 1;
     $end = (($startpoint + $limit) > $total_num) ? $total_num : $startpoint + $limit;
+
     $sql .= " ORDER BY pkg.sortorder ASC";
     $sql .= " LIMIT " . $startpoint . "," . $limit;
 
@@ -763,6 +767,7 @@ if (defined('SEARCH_PAGE')) {
         redirect_to($url);
     }*/
 }
+
 $jVars['module:search-searchform'] = $resisearch;
 $jVars['module:package-search-breadcrumb'] = $bread;
 $jVars['module:package-search-breadcrumb-title'] = $bread_title;
@@ -771,4 +776,3 @@ $jVars['module:package-search-breadcrumb-extra'] = $bread_text_extra;
 $jVars['module:package-search-related-extra'] = $realtedarticle;
 $jVars['module:package-searchlist'] = $respkglist;
 $jVars['module:package-navigation'] = $navigation;
-?>

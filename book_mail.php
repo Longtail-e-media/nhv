@@ -30,8 +30,8 @@ if (!empty($state)) {
     $body .= '    <strong>State(Town)</strong> : ' . $state . '<br/>';
 }
 // $pax = $pax + 1;
-if (!empty($paxx) && $paxx !== 'undefined') {
-    $body .= '         <strong>Pax</strong> : ' . $paxx . '<br/>';
+if (!empty($pax) && $pax !== 'undefined') {
+    $body .= '         <strong>Pax</strong> : ' . $pax . '<br/>';
 }
 if (!empty($fixed_date_id)) {
     $body .= '    <!--<br><strong>Fixed Departure Id</strong> : ' . $fixed_date_id . '<br/>-->

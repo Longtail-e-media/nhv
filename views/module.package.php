@@ -380,7 +380,7 @@ if (defined('FIXED_DEPATURE')) {
                     // pr($diffa);
                     @$diffa = $fixeddata->package_seats - $totala;
                     // pr($FixRow);
-                    $difffa = $diffa - 1;
+                    $difffa = $diffa;
                     if ($diffa > 0) {
                         $resfix .= '  
                             <ul class="item-meta mt-15">
@@ -1115,7 +1115,7 @@ if (defined('PACKAGE_PAGE')) {
                 $total = !empty($res['total']) ? $res['total'] : 0;
                 // @$diff = $pkgRec->group_size - $total;
                 @$diff = $fixedDate->package_seats - $total;
-                $difff = $diff - 1;
+                $difff = $diff;
 
                 if ($diff > 0) {
                     $seats_left .= '
@@ -1529,7 +1529,7 @@ if (defined('PACKAGE_PAGE')) {
                 $res = $db->fetch_array($db->query($sql));
                 $total = !empty($res['total']) ? $res['total'] : 0;
                 @$diff = $pkgRec->group_size - $total;
-                $difff = $diff - 1;
+                $difff = $diff;
 
                 //getting days left
                 $date1 = new DateTime();
@@ -2151,6 +2151,7 @@ $sql = "SELECT
     p.image,
     p.accomodation,
     p.tags,
+    p.color,
     p.price,
     p.breif,
     p.days,

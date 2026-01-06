@@ -112,7 +112,7 @@ jQuery(function ($) {
 
     $(".touch-spin-03").TouchSpin({
         min: 1,
-        max: 10,
+        max: 1000,
         buttondown_class: "btn btn-light btn-touch-spin",
         buttonup_class: "btn btn-light btn-touch-spin"
     });

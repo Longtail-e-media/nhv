@@ -28,7 +28,7 @@
 			$bokRec->trip_date 		= $date;
 			$bokRec->trip_currency  = 'USD';
 //			$bokRec->date_rate 		= $n[1];
-			$bokRec->trip_pax		= $paxx;
+			$bokRec->trip_pax		= $pax;
 //			$bokRec->trip_flight 	= $trip_flight;
 //			$bokRec->accesskey		= $trans_key;
 //			$bokRec->person_title 	= $person_title;

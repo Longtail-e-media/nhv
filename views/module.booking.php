@@ -16,7 +16,7 @@ $qsearch = '
                                                 <!--<label>Destination</label>-->
                                                 <select class="form-control form-control-sm qdestination"
                                                         name="qdestination[]" tabindex="2">
-                                                <option value="">Destination <span class="homet" style="font-size:20px;">*</span></option>';
+                                                <option value="">Destination</option>';
 $qsearch .= Destination::get_destination_option();
 $qsearch .= '                                   </select>
                                             </div>
@@ -28,7 +28,7 @@ $qsearch .= '                                   </select>
                                                 <!--<label>Activities</label>-->
                                                 <select class="form-control form-control-sm qactivities"
                                                         name="qactivities[]" tabindex="2">
-                                                    <option value="">Activity*</option>
+                                                    <option value="">Activity</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -39,7 +39,7 @@ $qsearch .= '                                   </select>
                                                 <!--<label>Duration</label>-->
                                                 <select class="form-control form-control-sm"
                                                         name="days" tabindex="2">
-                                                    <option value="">Duration*</option>
+                                                    <option value="">Duration</option>
                                                     <option value="5" >1-5 Days</option>
                                                     <option value="10" >6-10 Days</option>
                                                     <option value="15" >11-15 Days</option>

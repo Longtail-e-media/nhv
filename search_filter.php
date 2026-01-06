@@ -164,7 +164,7 @@ if (isset($_POST['action']) and ($_POST['action'] == 'filter_data')) {
                                         
                                     </figcaption >';
                 if (!empty($rows['accomodation'])) {
-                    $result .= '<p class="featured-trip1">';
+                    $result .= '<p class="featured-trip1 d-none">';
                     $routes = explode(',', $rows['accomodation']);
                     $limitedRouts = array_slice($routes, 0, 4);
                     foreach ($limitedRouts as $route) {

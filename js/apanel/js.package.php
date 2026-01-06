@@ -753,7 +753,7 @@
             prettySelect: true,
             autoHidePrompt: true,
             useSuffix: "_chosen",
-            promptPosition: "bottomLeft",
+            promptPosition: "centerRight",
             scroll: true,
             onValidationComplete: function (form, status) {
                 if (status == true) {

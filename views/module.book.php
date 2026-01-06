@@ -92,7 +92,7 @@ if (defined('BOOKTRIP_PAGE')) {
         } else {
             $max = (!empty($max_pax)) ? $max_pax : $pkgRec->group_size;
         }
-        if ($max > 0) {
+        /*if ($max > 0) {
             $resbook .= '
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="faqAccordionTab03-01">
@@ -143,7 +143,7 @@ if (defined('BOOKTRIP_PAGE')) {
                     </div>
                 </div>
                 <hr class="mv-40">';
-        }
+        }*/
 
         if (!empty($fixed_date_id)) {
             $resbook .= '<input type="hidden" name="fixed_date_id" value="' . $fixed_date_id . '">';
@@ -215,8 +215,13 @@ if (defined('BOOKTRIP_PAGE')) {
             $side_info_bar .= '<input type="text" class="form-control datepicker-here" id="datepicker-here" name="trip_date" data-language="en" placeholder="Choose Date"/>';
         }
         $side_info_bar .= '
-                        </div>';
-        if ($max == 0) {
+                        </div>
+                        <div class="form-group form-spin-group  mt-15 ">
+                            <label class="h6 font-sm">How many travellers?</label>
+                            <input type="text" class="form-control touch-spin-03 form-control-readonly" name="trip_pax" value="1" readonly/>
+                        </div>
+        ';
+        /*if ($max == 0) {
             $side_info_bar .= '<span class="font600">Travellers to go</span>
         <div class="form-group form-spin-group mt-10">
         <input type="number" class="form-control" name="paxx"  placeholder="No. of pax" min="1" step="1" value="1"/>
@@ -229,7 +234,7 @@ if (defined('BOOKTRIP_PAGE')) {
                             <input type="text" class="form-control touch-spin-03 form-control-readonly" name="trip_pax" value="1" readonly/>
                         </div>
             ';
-        }
+        }*/
         $siteRegulars = Config::find_by_id(1);
 
         $tellinked = '';

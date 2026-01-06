@@ -394,19 +394,17 @@
             errorElement: 'span',
             errorClass: 'validate-has-error',
             rules: {
-
                 "qdestination[]": {
-                    required: true
+                    required: false
                 },
                 "qactivities[]": {
-                    required: true,
+                    required: false,
                 },
                 "days": {
-                    required: true,
+                    required: false,
                 }
             },
             messages: {
-
                 "qdestination[]": {
                     required: "Please Select your destination."
                 },
@@ -416,8 +414,6 @@
                 "days": {
                     required: "Please Select your duration.",
                 }
-
-
             }
         })
     });
