@@ -420,6 +420,176 @@
 </script>
 
 <script>
+    // Form State Management using Cache API
+    (function() {
+        'use strict';
+
+        const CACHE_NAME = 'form-state-cache';
+        const CACHE_KEY = '/form-state';
+
+        // Get form elements
+        const destinationSelect = document.querySelector('.qdestination');
+        const activitySelect = document.querySelector('.qactivities');
+        const durationSelect = document.querySelector('select[name="days"]');
+        const form = document.getElementById('home_search');
+
+        // Save state to Cache API
+        async function saveFormState() {
+            try {
+                const state = {
+                    destination: destinationSelect.value,
+                    activity: activitySelect.value,
+                    duration: durationSelect.value,
+                    activityOptions: getSelectOptions(activitySelect),
+                    timestamp: Date.now()
+                };
+
+                const cache = await caches.open(CACHE_NAME);
+                const response = new Response(JSON.stringify(state));
+                await cache.put(CACHE_KEY, response);
+
+                console.log('Form state saved:', state);
+            } catch (error) {
+                console.error('Error saving form state:', error);
+            }
+        }
+
+        // Load state from Cache API
+        async function loadFormState() {
+            try {
+                const cache = await caches.open(CACHE_NAME);
+                const response = await cache.match(CACHE_KEY);
+
+                if (!response) {
+                    console.log('No cached form state found');
+                    return null;
+                }
+
+                const state = await response.json();
+
+                // Check if cache is not too old (e.g., 24 hours)
+                const maxAge = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+                if (Date.now() - state.timestamp > maxAge) {
+                    console.log('Cached state is too old, clearing...');
+                    await clearFormState();
+                    return null;
+                }
+
+                console.log('Form state loaded:', state);
+                return state;
+            } catch (error) {
+                console.error('Error loading form state:', error);
+                return null;
+            }
+        }
+
+        // Clear cached state
+        async function clearFormState() {
+            try {
+                const cache = await caches.open(CACHE_NAME);
+                await cache.delete(CACHE_KEY);
+                console.log('Form state cleared');
+            } catch (error) {
+                console.error('Error clearing form state:', error);
+            }
+        }
+
+        // Get all options from a select element
+        function getSelectOptions(selectElement) {
+            return Array.from(selectElement.options).map(option => ({
+                value: option.value,
+                text: option.text,
+                selected: option.selected
+            }));
+        }
+
+        // Populate select with options
+        function populateSelect(selectElement, options) {
+            // Clear existing options except the first one (placeholder)
+            selectElement.innerHTML = '';
+
+            options.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.value = option.value;
+                optionElement.text = option.text;
+                selectElement.appendChild(optionElement);
+            });
+        }
+
+        // Restore form state
+        async function restoreFormState() {
+            const state = await loadFormState();
+
+            if (!state) {
+                return;
+            }
+
+            // Restore destination first
+            if (state.destination) {
+                destinationSelect.value = state.destination;
+
+                // Trigger change event to populate activities (if your code does this)
+                const changeEvent = new Event('change', { bubbles: true });
+                destinationSelect.dispatchEvent(changeEvent);
+
+                // Wait a bit for the activities to populate via your existing code
+                // Then restore the activity options and value
+                setTimeout(() => {
+                    if (state.activityOptions && state.activityOptions.length > 1) {
+                        populateSelect(activitySelect, state.activityOptions);
+
+                        if (state.activity) {
+                            activitySelect.value = state.activity;
+                        }
+                    }
+
+                    // Restore duration
+                    if (state.duration) {
+                        durationSelect.value = state.duration;
+                    }
+                }, 100); // Small delay to let your existing code run first
+            }
+        }
+
+        // Listen for changes and save state
+        destinationSelect.addEventListener('change', function() {
+            // Small delay to let activities populate
+            setTimeout(saveFormState, 150);
+        });
+
+        activitySelect.addEventListener('change', saveFormState);
+        durationSelect.addEventListener('change', saveFormState);
+
+        // Handle form submission - clear cache after successful submission
+        form.addEventListener('submit', async function(e) {
+            // Save state before submitting (in case user comes back)
+            await saveFormState();
+        });
+
+        // Handle pageshow event (fires when navigating back with browser button)
+        window.addEventListener('pageshow', function(event) {
+            // event.persisted is true when page is loaded from bfcache (back/forward cache)
+            if (event.persisted || performance.navigation.type === 2) {
+                console.log('Page loaded from cache (back button), restoring state...');
+                restoreFormState();
+            }
+        });
+
+        // Restore state on initial page load
+        document.addEventListener('DOMContentLoaded', function() {
+            restoreFormState();
+        });
+
+        // Optional: Clear cache when user explicitly resets or leaves the site
+        window.addEventListener('beforeunload', function() {
+            // Uncomment the line below if you want to clear cache when leaving the page
+            // clearFormState();
+        });
+
+    })();
+</script>
+
+<script>
     // Cookie Accept Banner
     jQuery(document).ready(function ($) {
         //   sessionStorage.setItem('cookieAgree', '0');

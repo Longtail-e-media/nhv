@@ -16,7 +16,7 @@ $qsearch = '
                                                 <!--<label>Destination</label>-->
                                                 <select class="form-control form-control-sm qdestination"
                                                         name="qdestination[]" tabindex="2">
-                                                <option value="">Destination</option>';
+                                                <option value="all">Destination</option>';
 $qsearch .= Destination::get_destination_option();
 $qsearch .= '                                   </select>
                                             </div>
@@ -28,7 +28,7 @@ $qsearch .= '                                   </select>
                                                 <!--<label>Activities</label>-->
                                                 <select class="form-control form-control-sm qactivities"
                                                         name="qactivities[]" tabindex="2">
-                                                    <option value="">Activity</option>
+                                                    <option value="all">Activity</option>
                                                 </select>
                                             </div>
                                         </div>
