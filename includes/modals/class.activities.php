@@ -140,13 +140,13 @@ class Activities extends DatabaseObject
         $record = self::find_by_sql($sql);
         $result = '';
         if ($record) {
-            $result .= '<option value="all">Activity</option>';
+            $result .= '<option value="">Activity</option>';
             foreach ($record as $row) {
                 $sel = ($selid == $row->id) ? 'selected' : '';
                 $result .= '<option value="' . $row->id . '" ' . $sel . '>' . $row->title . '</option>';
             }
         } else {
-            $result .= '<option value="all">Activity</option>';
+            $result .= '<option value="">Activity</option>';
         }
         return $result;
     }
