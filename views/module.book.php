@@ -152,7 +152,7 @@ if (defined('BOOKTRIP_PAGE')) {
                 <div class="custom-control custom-checkbox">
                     <input id="terms" name="terms" type="checkbox" class="custom-control-input" value="acceptTerms"/>
                     <label class="custom-control-label" for="terms">By submitting
-                        a booking request, you accept our <a href="' . BASE_URL . 'pages/terms-and-conditions" target="_blank">terms and conditions.</label>
+                        a booking request, you accept our <a href="' . BASE_URL . 'pages/terms-and-conditions" target="_blank">terms and conditions</a>.</label>
                 </div>
                 <div id="msg" style="display: none;"></div>
                 <div class="row mt-20">

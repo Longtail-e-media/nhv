@@ -35,11 +35,13 @@ if (isset($_POST['action']) and ($_POST['action'] == 'forfriendmail')):
     $mail->AddReplyTo($usermail, $sitename);
     $mail->AddAddress($primary_email);
 
-    $ccmail = explode(",", $cc_emails);
-    if ($ccmail) {
-        $recs = $ccmail;
-        foreach ($recs as $k => $v) {
-            $mail->AddCC($v);
+    if (!empty($cc_emails)) {
+        $ccmail = explode(",", $cc_emails);
+        if ($ccmail) {
+            $recs = $ccmail;
+            foreach ($recs as $k => $v) {
+                $mail->AddCC($v);
+            }
         }
     }
     $mail->Subject = "Best Package for your travel";
