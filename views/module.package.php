@@ -299,34 +299,34 @@ if (defined('FIXED_DEPATURE')) {
             if (file_exists($file_path) and !empty($FixRow->title)) {
                 $activity = Activities::field_by_id($FixRow->activityId, 'title');
                 $resfix .= '
-            <!--<div class="col-md-4">
-            <div class="to-ho-hotel-con"><a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
-                <div class="to-ho-hotel-con-1">
-                    <div class="hom-hot-av-tic">
-                        ' . $activity . ' 
+                    <!--<div class="col-md-4">
+                    <div class="to-ho-hotel-con"><a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
+                        <div class="to-ho-hotel-con-1">
+                            <div class="hom-hot-av-tic">
+                                ' . $activity . ' 
+                            </div>
+                            <img src="' . IMAGE_PATH . 'package/' . $FixRow->image . '" alt="' . $FixRow->title . '">
+                        </div>
+                        <div class="to-ho-hotel-con-23">
+                            <div class="to-ho-hotel-con-2">
+                                <h4>' . $FixRow->title . '</h4>
+                            </div></a>
+                            <div class="to-ho-hotel-con-3">
+                                <ul>
+                                    <li>
+                                        Duration : ' . $FixRow->days . ' <br />
+                                        Difficulty : ' . set_na($FixRow->difficulty) . '
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="to-ho-hotel-con-4">
+                                <a href="' . BASE_URL . 'book/package/' . $FixRow->slug . '" class="link-btn hom-hot-book-btn">Book Now</a>
+                                <a href="' . BASE_URL . 'package/' . $FixRow->slug . '" class="link-btn hom-hot-view-btn">View More</a>
+                            </div>
+                        </div>
                     </div>
-                    <img src="' . IMAGE_PATH . 'package/' . $FixRow->image . '" alt="' . $FixRow->title . '">
-                </div>
-                <div class="to-ho-hotel-con-23">
-                    <div class="to-ho-hotel-con-2">
-                        <h4>' . $FixRow->title . '</h4>
-                    </div></a>
-                    <div class="to-ho-hotel-con-3">
-                        <ul>
-                            <li>
-                                Duration : ' . $FixRow->days . ' <br />
-                                Difficulty : ' . set_na($FixRow->difficulty) . '
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="to-ho-hotel-con-4">
-                        <a href="' . BASE_URL . 'book/package/' . $FixRow->slug . '" class="link-btn hom-hot-book-btn">Book Now</a>
-                        <a href="' . BASE_URL . 'package/' . $FixRow->slug . '" class="link-btn hom-hot-view-btn">View More</a>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-        ';
+                </div>-->
+                ';
                 $img = $tag = '';
                 // getting image
                 $file_path = SITE_ROOT . "images/package/" . $FixRow->image;
@@ -350,44 +350,39 @@ if (defined('FIXED_DEPATURE')) {
                 }
 
                 $resfix .= '
-            <div class="col">
-                <figure class="tour-grid-item-01 aw">
-                    <a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
-                        <style>
-                            .hgt-230{height:230px !important;}
-                            .new-img3.tt{top:54%;}
-                        </style>
-                        <div class="image">
-                            <img src="' . $img . '" alt="' . $FixRow->title . '" class="hgt-230"/>
-                            ' . $price_text . '
-                            
-                            
-                        </div>
-                        <figcaption class="content ">
-                            ' . $tag . '
-                            <h5 class="">' . substr($FixRow->title, 0, 48) . '</h5>';
-                $fixeddata = packagedate::get_package_date_home($FixRow->id);
-                //  pr($fixeddata);
-                if (!empty($fixeddata)) {
-                    $start_date = date('F d, Y', strtotime($fixeddata->package_date));
-                    $end_date = date('F d, Y', strtotime($fixeddata->package_date . ' + ' . $FixRow->days . ' days'));
-                    // $count=packagedate::getTotalSub($FixRow->id);
-                    // $total = !empty($count) ? $count : 0;
-                    //  @$diff = $fixeddata->package_seats - $total;
-                    $sqla = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$FixRow->id AND fixed_date_id=$fixeddata->id";
-                    $resa = $db->fetch_array($db->query($sqla));
-                    $totala = !empty($resa['total']) ? $resa['total'] : 0;
-                    // pr($diffa);
-                    @$diffa = $fixeddata->package_seats - $totala;
-                    // pr($FixRow);
-                    $difffa = $diffa;
-                    if ($diffa > 0) {
-                        $resfix .= '  
+                    <div class="col">
+                        <figure class="tour-grid-item-01 aw">
+                            <a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
+                                <style>
+                                    .hgt-230{height:230px !important;}
+                                    .new-img3.tt{top:54%;}
+                                </style>
+                                <div class="image">
+                                    <img src="' . $img . '" alt="' . $FixRow->title . '" class="hgt-230"/>
+                                    ' . $price_text . '
+                                </div>
+                                <figcaption class="content ">
+                                    ' . $tag . '
+                                    <h5 class="">' . substr($FixRow->title, 0, 48) . '</h5>
+                ';
+
+                $start_date = date('F d, Y', strtotime($FixRow->package_date));
+                $end_date = date('F d, Y', strtotime($FixRow->package_date . ' + ' . $FixRow->days . ' days'));
+                // $count=packagedate::getTotalSub($FixRow->id);
+                // $total = !empty($count) ? $count : 0;
+                //  @$diff = $FixRow->package_seats - $total;
+                $sqla = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$FixRow->id AND fixed_date_id=$FixRow->id";
+                $resa = $db->fetch_array($db->query($sqla));
+                $totala = !empty($resa['total']) ? $resa['total'] : 0;
+                // pr($diffa);
+                @$diffa = $FixRow->package_seats - $totala;
+                // pr($FixRow);
+                $difffa = $diffa;
+                if ($diffa > 0) {
+                    $resfix .= '  
                             <ul class="item-meta mt-15">
                                 <li><span class="font700 h6">Start/End Trip:</span> <span class="font400 h6">' . $start_date . ' - ' . $end_date . '</span></li>
-                               
                             </ul>
-                           
                             
                             <div class="row">
                                 <div class="col-md-6">
@@ -405,69 +400,76 @@ if (defined('FIXED_DEPATURE')) {
                                                            data-readonly value="' . $rating . '"/>
                                                 </div>
                                             </div>
-                                        </li>-->    <li><span class="font700 h6"><i class="far fa-hourglass"></i>' . $FixRow->days . ' Days</span></li>
+                                        </li>-->    
+                                        <li><span class="font700 h6"><i class="far fa-hourglass"></i>' . $FixRow->days . ' Days</span></li>
                                     </ul>
-                                    
-                                </div>';
+                                </div>
+                    ';
 
-                        $resfix .= '<div class="col-md-6">
+                    $resfix .= '
+                            <div class="col-md-6">
                                 <ul class="item-meta mt-15">
                                     <li><span class="font700 h6">seats left:</span> <span class="font400 h6">' . $diffa . '</span></li>
                                 </ul>
                                <form method="post" action="' . BASE_URL . 'book/package/' . $FixRow->slug . '">
-                                    <input type="hidden" name="date" value="' . date('Y-m-d', strtotime($fixeddata->package_date)) . '">
-                                    <input type="hidden" name="price" value="' . $fixeddata->package_rate . '">
-                                    <input type="hidden" name="fixed_date_id" value="' . $fixeddata->id . '">
+                                    <input type="hidden" name="date" value="' . date('Y-m-d', strtotime($FixRow->package_date)) . '">
+                                    <input type="hidden" name="price" value="' . $FixRow->package_rate . '">
+                                    <input type="hidden" name="fixed_date_id" value="' . $FixRow->id . '">
                                     <input type="hidden" name="max_pax" value="' . $difff . '">
                                     <button type="submit" class="btn btn-primary btn-block btn-sm mt-3 btn-contact-page">Book now</button>
-                                </form></div></div>';
-                    }
-                    $resfix .= '
-                            <!-- <ul class="item-meta mt-15">
-                                <li><span class="font700 h6">' . $FixRow->days . ' Days</span></li>
-                                <li>
-                                    <p class="mt-3">Price from <span class="h6 line-1 text-primary font16">$ ' . $FixRow->price . '</span>
-                                        <span class="text-muted mr-5"></span></p>
-                                </li>
-                            </ul>-->
-                        </figcaption>';
-                    if (!empty($FixRow->accomodation)) {
-                        $resfix .= '<p class="featured-trip1 d-none">';
-                        $routes = explode(',', $FixRow->accomodation);
-                        $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
-                        $lastRoute = end($limitedRoutes);
-
-                        foreach ($limitedRoutes as $route) {
-                            $resfix .= ($lastRoute == $route) ? $route : $route . ' -> ';
-                        }
-
-                        $resfix .= '</p>';
-                    }
-                    if (!empty($FixRow->difficulty)) {
-                        switch ($FixRow->difficulty) {
-                            case 'Easy':
-                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                                break;
-                            case 'Moderate':
-                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                                break;
-                            case 'Moderate To Strenous':
-                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                                break;
-                            case 'Strenous':
-                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                                break;
-                            case 'Very Strenous':
-                                $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                                break;
-                        }
-                    }
-                    $resfix .= '    
-                    </a>
-                </figure>
-            </div>
-        ';
+                                </form>
+                            </div>
+                        </div>
+                    ';
                 }
+
+                $resfix .= '
+                                <!-- <ul class="item-meta mt-15">
+                                    <li><span class="font700 h6">' . $FixRow->days . ' Days</span></li>
+                                    <li>
+                                        <p class="mt-3">Price from <span class="h6 line-1 text-primary font16">$ ' . $FixRow->price . '</span>
+                                            <span class="text-muted mr-5"></span></p>
+                                    </li>
+                                </ul>-->
+                            </figcaption>';
+
+                if (!empty($FixRow->accomodation)) {
+                    $resfix .= '<p class="featured-trip1 d-none">';
+                    $routes = explode(',', $FixRow->accomodation);
+                    $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
+                    $lastRoute = end($limitedRoutes);
+
+                    foreach ($limitedRoutes as $route) {
+                        $resfix .= ($lastRoute == $route) ? $route : $route . ' -> ';
+                    }
+
+                    $resfix .= '</p>';
+                }
+
+                if (!empty($FixRow->difficulty)) {
+                    switch ($FixRow->difficulty) {
+                        case 'Easy':
+                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                            break;
+                        case 'Moderate':
+                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                            break;
+                        case 'Moderate To Strenous':
+                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                            break;
+                        case 'Strenous':
+                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                            break;
+                        case 'Very Strenous':
+                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
+                            break;
+                    }
+                }
+                $resfix .= '    
+                            </a>
+                        </figure>
+                    </div>
+                ';
             }
         }
     }
@@ -2248,31 +2250,26 @@ if ($totl > 0) {
                         <div class="image">
                             <img src="' . $img . '" alt="' . $row->title . '" class="hgt-230"/>
                             ' . $price_text . '
-                            
-                            
                         </div>
                         <figcaption class="content ">
                             ' . $tag . '
-                            <h5 class="">' . substr($row->title, 0, 48) . '</h5>';
-            $fixeddata = packagedate::get_package_date_home($row->id);
-            if (!empty($fixeddata)) {
-                $start_date = date('F d, Y', strtotime($fixeddata->package_date));
-                $end_date = date('F d, Y', strtotime($fixeddata->package_date . ' + ' . $row->days . ' days'));
-                $sqlb = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$row->id AND fixed_date_id=$fixeddata->id";
-                $resb = $db->fetch_array($db->query($sqlb));
-                $totalb = !empty($resb['total']) ? $resb['total'] : 0;
-                // pr($total);
-                @$diffb = $fixeddata->package_seats - $totalb;
-                // $difffb = $diffb - 1;
-                $difffb = $diffb;
-                // pr($difffb);
-                if ($diffb > 0) {
-                    $reshfix .= '  
+                            <h5 class="">' . substr($row->title, 0, 48) . '</h5>
+            ';
+
+            $start_date = date('F d, Y', strtotime($row->package_date));
+            $end_date = date('F d, Y', strtotime($row->package_date . ' + ' . $row->days . ' days'));
+            $sqlb = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$row->id AND fixed_date_id=$row->id";
+            $resb = $db->fetch_array($db->query($sqlb));
+            $totalb = !empty($resb['total']) ? $resb['total'] : 0;
+            @$diffb = $row->package_seats - $totalb;
+            // $difffb = $diffb - 1;
+            $difffb = $diffb;
+
+            if ($diffb > 0) {
+                $reshfix .= '  
                             <ul class="item-meta mt-15">
                                 <li><span class="font700 h6">Start/End Trip:</span> <span class="font400 h6">' . $start_date . ' - ' . $end_date . '</span></li>
-                               
                             </ul>
-                            
                             
                             <div class="row">
                                 <div class="col-md-6">
@@ -2292,21 +2289,24 @@ if ($totl > 0) {
                                             </div>
                                         </li>-->    <li><span class="font700 h6"><i class="far fa-hourglass"></i>' . $row->days . ' Days</span></li>
                                     </ul>
-                                </div>';
-                    $reshfix .= '<div class="col-md-6">
-                               <ul class="item-meta mt-15">
-                                <li><span class="font700 h6">seats left:</span> <span class="font400 h6">' . $difffb . '</span></li>
-                               
-                            </ul>
-                               <form method="post" action="' . BASE_URL . 'book/package/' . $row->slug . '">
-                                    <input type="hidden" name="date" value="' . date('Y-m-d', strtotime($fixeddata->package_date)) . '">
-                                    <input type="hidden" name="price" value="' . $fixeddata->package_rate . '">
-                                    <input type="hidden" name="fixed_date_id" value="' . $fixeddata->id . '">
-                                    <input type="hidden" name="max_pax" value="' . $difffb . '">
-                                    <button type="submit" class="btn btn-primary btn-block btn-sm mt-3 btn-contact-page">Book now</button>
-                                </form></div></div>';
-                }
-                $reshfix .= '
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="item-meta mt-15">
+                                        <li><span class="font700 h6">seats left:</span> <span class="font400 h6">' . $difffb . '</span></li>
+                                    </ul>
+                                   <form method="post" action="' . BASE_URL . 'book/package/' . $row->slug . '">
+                                        <input type="hidden" name="date" value="' . date('Y-m-d', strtotime($row->package_date)) . '">
+                                        <input type="hidden" name="price" value="' . $row->package_rate . '">
+                                        <input type="hidden" name="fixed_date_id" value="' . $row->id . '">
+                                        <input type="hidden" name="max_pax" value="' . $difffb . '">
+                                        <button type="submit" class="btn btn-primary btn-block btn-sm mt-3 btn-contact-page">Book now</button>
+                                    </form>
+                                </div>
+                            </div>
+                ';
+            }
+
+            $reshfix .= '
                             <!-- <ul class="item-meta mt-15">
                                 <li><span class="font700 h6">' . $row->days . ' Days</span></li>
                                 <li>
@@ -2314,44 +2314,46 @@ if ($totl > 0) {
                                         <span class="text-muted mr-5"></span></p>
                                 </li>
                             </ul>-->
-                        </figcaption>';
-                if (!empty($row->accomodation)) {
-                    $reshfix .= '<p class="featured-trip1 d-none">';
-                    $routes = explode(',', $row->accomodation);
-                    $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
-                    $lastRoute = end($limitedRoutes);
+                        </figcaption>
+            ';
 
-                    foreach ($limitedRoutes as $route) {
-                        $reshfix .= ($lastRoute == $route) ? $route : $route . ' -> ';
-                    }
+            if (!empty($row->accomodation)) {
+                $reshfix .= '<p class="featured-trip1 d-none">';
+                $routes = explode(',', $row->accomodation);
+                $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
+                $lastRoute = end($limitedRoutes);
 
-                    $reshfix .= '</p>';
+                foreach ($limitedRoutes as $route) {
+                    $reshfix .= ($lastRoute == $route) ? $route : $route . ' -> ';
                 }
-                if (!empty($row->difficulty)) {
-                    switch ($row->difficulty) {
-                        case 'Easy':
-                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
-                            break;
-                        case 'Moderate':
-                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
-                            break;
-                        case 'Moderate To Strenous':
-                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
-                            break;
-                        case 'Strenous':
-                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
-                            break;
-                        case 'Very Strenous':
-                            $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
-                            break;
-                    }
-                }
-                $reshfix .= '    
-                    </a>
-                </figure>
-            </div>
-        ';
+
+                $reshfix .= '</p>';
             }
+            if (!empty($row->difficulty)) {
+                switch ($row->difficulty) {
+                    case 'Easy':
+                        $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                        break;
+                    case 'Moderate':
+                        $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                        break;
+                    case 'Moderate To Strenous':
+                        $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                        break;
+                    case 'Strenous':
+                        $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                        break;
+                    case 'Very Strenous':
+                        $reshfix .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="' . $row->difficulty . '" alt="Difficulty">';
+                        break;
+                }
+            }
+
+            $reshfix .= '    
+                        </a>
+                    </figure>
+                </div>
+            ';
         }
     }
 }
