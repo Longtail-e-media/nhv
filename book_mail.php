@@ -81,7 +81,7 @@ $body .= '<tr>
 /*
 * mail info
 */
-$mail = new PHPMailer(); // defaults to using php "mail()"
+$mail = SMTPMailer();
 $mail->SetFrom($email, $full_name);
 $mail->AddReplyTo($email, $full_name);
 $mail->AddAddress($usermail, $sitename);

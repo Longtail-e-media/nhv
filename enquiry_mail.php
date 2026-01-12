@@ -33,7 +33,11 @@ if (isset($_POST['action']) and ($_POST['action'] == 'forcoment')):
 			  </tr>
 			</table>';
 
-    $mail = new PHPMailer(); // defaults to using php "mail()"
+    // Server settings
+
+    // $mail = new PHPMailer(); // defaults to using php "mail()"
+    $mail = SMTPMailer();
+
     $mail->SetFrom($email, $name);
     $mail->AddReplyTo($email, $name);
     $mail->AddAddress($usermail, $sitename);
@@ -46,6 +50,7 @@ if (isset($_POST['action']) and ($_POST['action'] == 'forcoment')):
     }
     $mail->Subject = "Enquiry from " . $name;
 
+    $mail->isHTML(true);
     $mail->MsgHTML($body);
 
     if (!$mail->Send()):

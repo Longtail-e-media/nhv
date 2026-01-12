@@ -41,7 +41,7 @@
 	* mail info
 	*/
 
-	$mail = new PHPMailer(); // defaults to using php "mail()"  
+	$mail = SMTPMailer();
 	$mail->SetFrom($bookInfo->person_email, $fullname);
 	$mail->AddReplyTo($bookInfo->person_email,$fullname);
 	$mail->AddAddress($usermail, $sitename);
@@ -76,7 +76,7 @@
 		</tr>
 	</table>';
 
-	$rplymail = new PHPMailer(); // defaults to using php "mail()"  
+	$rplymail = SMTPMailer();
 
 	$rplymail->SetFrom($usermail, $sitename);
 	$rplymail->AddReplyTo($usermail, $sitename);

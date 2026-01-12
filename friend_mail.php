@@ -30,7 +30,7 @@ if (isset($_POST['action']) and ($_POST['action'] == 'forfriendmail')):
 			  </tr>
 			</table>';
 
-    $mail = new PHPMailer(); // defaults to using php "mail()"
+    $mail = SMTPMailer();
     $mail->SetFrom($usermail, $sitename);
     $mail->AddReplyTo($usermail, $sitename);
     $mail->AddAddress($primary_email);

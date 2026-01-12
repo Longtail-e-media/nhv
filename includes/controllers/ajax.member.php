@@ -52,7 +52,7 @@
 		  		</tr>
 			</table>';
 
-			$mail = new PHPMailer(); // defaults to using php "mail()"		
+			$mail = SMTPMailer();
 			$mail->SetFrom($mailaddress, $fullname);
 			$mail->AddReplyTo($mailaddress, $fullname);
 			$mail->AddAddress($usermail, $sitename);
@@ -75,7 +75,7 @@
 				</tr>
 			</table>';
 
-			$rplymail = new PHPMailer(); // defaults to using php "mail()"	
+			$rplymail = SMTPMailer();
 
 			$rplymail->SetFrom($usermail, $sitename);
 			$rplymail->AddReplyTo($usermail, $sitename);
@@ -272,7 +272,7 @@
 			  		</tr>
 				</table>';
 
-				$mail = new PHPMailer(); // defaults to using php "mail()"		
+				$mail = SMTPMailer();
 				$mail->SetFrom($usermail, $sitename);
 				$mail->AddReplyTo($usermail, $sitename);
 				$mail->AddAddress($record->mailaddress, $fullname);
@@ -493,7 +493,7 @@
 				  		</tr>
 					</table>';
 
-					$mail = new PHPMailer(); // defaults to using php "mail()"		
+					$mail = SMTPMailer();
 					$mail->SetFrom($usermail, $sitename);
 					$mail->AddReplyTo($usermail, $sitename);
 					$mail->AddAddress($recRow->mailaddress, $fullname);
@@ -565,7 +565,7 @@
 			  		</tr>
 				</table>';
 
-				$mail = new PHPMailer(); // defaults to using php "mail()"		
+				$mail = SMTPMailer();
 				$mail->SetFrom($record->mailaddress, $fullname);
 				$mail->AddReplyTo($record->mailaddress, $fullname);
 				$mail->AddAddress($usermail, $sitename);
@@ -588,7 +588,7 @@
 					</tr>
 				</table>';
 
-				$rplymail = new PHPMailer(); // defaults to using php "mail()"	
+				$rplymail = SMTPMailer();
 
 				$rplymail->SetFrom($usermail, $sitename);
 				$rplymail->AddReplyTo($usermail, $sitename);

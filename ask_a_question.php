@@ -31,7 +31,7 @@ if(isset($_POST['action']) and ($_POST['action']=='forQuestion')):
 			  </tr>
 			</table>';
 
-    $mail = new PHPMailer(); // defaults to using php "mail()"
+    $mail = SMTPMailer();
     $mail->SetFrom($email, $full_name);
     $mail->AddReplyTo($email,$full_name);
     $mail->AddAddress($usermail, $sitename);

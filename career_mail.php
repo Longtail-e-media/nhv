@@ -53,7 +53,7 @@ require_once("includes/initialize.php");
 		
 		
 	if($_POST['action']=="forcareer"):
-	$mail = new PHPMailer(); // defaults to using php "mail()"
+	$mail = SMTPMailer();
 	
 	$mail->SetFrom($email, $fname);
 	$mail->AddReplyTo($email,$fname);

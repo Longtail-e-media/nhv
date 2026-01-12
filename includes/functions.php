@@ -1113,4 +1113,25 @@ function get_front_pagination_for_search($total = '', $per_page = '2', $page = '
     }
     return $pagination;
 }
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+if (!function_exists('SMTPMailer')) {
+    function SMTPMailer()
+    {
+        $mail = new PHPMailer();
+
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'nhvnext18@gmail.com';
+        $mail->Password = 'yecckushqsnyvduv';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        return $mail;
+    }
+}
 ?>
