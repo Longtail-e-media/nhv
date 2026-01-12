@@ -86,7 +86,10 @@ require_once('meta_tags.php');
 
 // Load helper Class
 require_once('helpers/language.php');
-require_once('helpers/class.phpmailer.php');
+// require_once('helpers/class.phpmailer.php');
+require_once('helpers/PHPMailer/src/Exception.php');
+require_once('helpers/PHPMailer/src/PHPMailer.php');
+require_once('helpers/PHPMailer/src/SMTP.php');
 require_once('helpers/MCAPI.class.php');
 require_once('helpers/class.countrylist.php');
 require_once('helpers/class.pagination.php');
