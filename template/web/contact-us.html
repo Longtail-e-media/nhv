@@ -173,6 +173,8 @@
 
 <!-- JS -->
 <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script type="text/javascript" src="js/plugins.js"></script>
 <script type="text/javascript" src="js/custom-core.js"></script>
 <!-- disable text selection -->
@@ -245,6 +247,41 @@
         })
 
     });
+</script>
+
+<script>
+    $(function() {
+
+    function adjustHeader() {
+        var $header = $('#header-waypoint-sticky');
+
+        // Check if GT banner exists
+        var $banner = $('iframe.goog-te-banner-frame');
+
+        if ($banner.length > 0) {
+            var bannerHeight = $banner.height();
+            $header.css('top', bannerHeight + 'px'); // always below banner
+        } else {
+            $header.css('top', '0');
+        }
+    }
+
+    // Initial adjustment
+    adjustHeader();
+
+    // On window resize
+    $(window).on('resize', adjustHeader);
+
+    // After selecting language
+    $(document).on('change', '.goog-te-combo', function() {
+        setTimeout(adjustHeader, 200); // give GT time to render banner
+    });
+
+    // Optional: in case GT loads dynamically
+    setInterval(adjustHeader, 500);
+
+});
+
 </script>
 
 </body>

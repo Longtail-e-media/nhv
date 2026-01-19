@@ -79,7 +79,7 @@ $footer .= '
                     ' . $jVars['module:footer-menu-2'] . '
                 </div>
                 <div class="col-md-2 col-sm-12 col-xs-1">
-                    <h3>Others</h3>
+                    <h3>Quick links</h3>
                     ' . $jVars['module:footer-menu-3'] . '
                 </div>
 
@@ -94,8 +94,8 @@ $footer .= '
                         <li><a href="https://www.facebook.com/nattapage/" target="_blank"><img src="'.IMAGE_PATH.'/natta.png" class="width-50" alt="NATTA"></a></li>
                         <li><a href="https://www.nepal.gov.np/" target="_blank"><img src="'.IMAGE_PATH.'/tourism.jpg" class="width-50" alt="Nepal Government"></a></li>
                         <li><a href="https://www.welcomenepal.com/" target="_blank"><img src="'.IMAGE_PATH.'/ntb.png" class="width-50" alt="NTB"></a></li>
-                        <li><a href="https://www.nepalmountaineering.org/" target="_blank"><img src="'.IMAGE_PATH.'/nma.png" class="width-50" alt="NMA"></a></li>
-                        <li><a href="https://keepnepal.org/" target="_blank"><img src="'.IMAGE_PATH.'/keep.jpg" class="width-43" alt="Keep Nepal"></a></li>
+                        <!--<li><a href="https://www.nepalmountaineering.org/" target="_blank"><img src="'.IMAGE_PATH.'/nma.png" class="width-50" alt="NMA"></a></li>
+                        <li><a href="https://keepnepal.org/" target="_blank"><img src="'.IMAGE_PATH.'/keep.jpg" class="width-43" alt="Keep Nepal"></a></li>-->
                     </ul>
                 </div>
                 

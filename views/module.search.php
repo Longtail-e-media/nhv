@@ -196,35 +196,33 @@ if (defined('SEARCH_PAGE')) {
     ';
     if (isMobile()) {
         $resisearch .= '
-            <div id="accordion mobile-view" style="display:none;">
+            <div id="accordion" class="mobile-view23">
                 <div class="card">
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
-                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Destination
-                            </button>
+                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Destination</button>
                         </h5>
                     </div>
-    
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" >
                         <div class="card-body">
                             <div class="box-content">
                                 ' . $destination_filter . '
                             </div>
                         </div>
                     </div>
-                </div>
+               </div>
                 
                 <div class="card">
                     <div class="card-header" id="headingTwo">
                         <h5 class="mb-0">
-                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 Activities
                             </button>
                         </h5>
                     </div>
                     
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" >
                         <div class="card-body">
                             <div class="box-content">
                                 ' . $activities_filter . '
@@ -236,12 +234,13 @@ if (defined('SEARCH_PAGE')) {
                 <div class="card">
                     <div class="card-header" id="headingThree">
                         <h5 class="mb-0">
-                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 Duration
                             </button>
                         </h5>
                     </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" >
                         <div class="card-body">
                             <div class="box-content">
                                 ' . $duration_filter . '
@@ -335,6 +334,7 @@ if (defined('SEARCH_PAGE')) {
         $sql .= " AND pkg.destinationId = $dest->id ";
     }
 
+    // pr($sql);
     if (!empty($qactivities[0]) and @$qactivities[0] != 'all') {
         foreach ($qactivities as $qact) {
             if (sizeof($qactivities) > 1) {

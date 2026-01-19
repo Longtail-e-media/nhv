@@ -13460,6 +13460,10 @@ hr {
 	color: #6c757d;
 }
 
+#customize_form .required, #booking_form .required, .customize-inner .required{
+    color:red;
+}
+
 .blockquote-footer::before {
 	content: "\2014\00A0";
 }

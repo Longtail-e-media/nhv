@@ -19,14 +19,14 @@ if (defined('BOOKTRIP_PAGE')) {
                 <div class="row gap-15 mb-15">
                     <div class="col-6 col-md-12">
                         <div class="form-group">
-                            <label>Full Name *</label>
+                            <label>Full Name <span class="required" title="required">*</span></label>
                             <input type="text" name="full_name" class="form-control" placeholder="Full name"/>
                             <input type="hidden" name="pkg_id" value="' . $pkgRec->id . '"/>
                         </div>
                     </div>
                     <div class="col-6 col-md-6">
                         <div class="form-group">
-                            <label>Email *</label>
+                            <label>Email <span class="required" title="required">*</span></label>
                             <input type="email" name="email" class="form-control" placeholder="Email Address"/>
                         </div>
                     </div>
@@ -38,7 +38,7 @@ if (defined('BOOKTRIP_PAGE')) {
                     </div>
                     <div class="col-6 col-md-6">
                         <div class="form-group">
-                            <label>Country *</label>
+                            <label>Country <span class="required" title="required">*</span></label>
                             <select data-placeholder="Select" name="country" class="chosen-the-basi form-control countrySelect" tabindex="2" id="countrySelect">
                                 <option value="">Select</option>';
         $countries = Countries::find_all();
@@ -51,13 +51,13 @@ if (defined('BOOKTRIP_PAGE')) {
                     </div>
                     <div class="col-6 col-md-6">
                         <div class="form-group">
-                            <label>Whatsapp *</label>
+                            <label>Whatsapp <span class="required" title="required">*</span></label>
                             <input type="text" name="phone" class="form-control phone" placeholder="+9779812345678"/>
                         </div>
                     </div>
                     <div class="col-12 col-md-12">
                         <div class="form-group">
-                            <label>Address *</label>
+                            <label>Address <span class="required" title="required">*</span></label>
                             <input type="text" name="address1" class="form-control" placeholder="Street 1"/>
                             <input type="text" name="address2" class="form-control mt-10" placeholder="Street 2 - Optional"/>
                         </div>
@@ -77,7 +77,7 @@ if (defined('BOOKTRIP_PAGE')) {
                     
                     <div class="col-12 col-md-12">
                         <div class="form-group">
-                            <label>Message *</label>
+                            <label>Message <span class="required" title="required">*</span></label>
                             <textarea name="message" id="message" class="form-control" rows="7"></textarea>
                         </div>
                     </div>
@@ -167,6 +167,115 @@ if (defined('BOOKTRIP_PAGE')) {
         // Trip Details start
         $destslug = Destination::field_by_id($pkgRec->destinationId, 'slug');
         $dsRec = Destination::find_by_slug($destslug);
+        if (isMobile()) {
+            $side_info_bar .= '
+                <aside class="mobile-view89 sidebar-wrapper no-border">
+                    <div class="booking-box">
+                        <div class="box-heading"><h3 class="h6 text-white text-uppercase">Trip detail</h3></div>
+                        <div class="box-content">
+                            <a href="' . BASE_URL . 'package/' . $pkgRec->slug . '" class="tour-small-grid-01 mb-20 clearfix">
+                                <div class="image"><img src="' . IMAGE_PATH . 'package/' . $pkgRec->image . '" alt="' . $pkgRec->title . '"/></div>
+                                <div class="content">
+                                    <h6>' . $pkgRec->title . '</h6>
+                                    <ul class="item-meta">
+                                        <li><i class="elegent-icon-pin_alt text-warning"></i>' . $dsRec->title . '</li>
+                                        <li><strong>' . $pkgRec->days . ' days</strong></li>
+                                    </ul>';
+            if (!empty($pkgRec->difficulty)) {
+                switch ($pkgRec->difficulty) {
+                    case 'Easy':
+                        $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/1.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
+                        break;
+                    case 'Moderate':
+                        $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/2.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
+                        break;
+                    case 'Moderate To Strenous':
+                        $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/3.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
+                        break;
+                    case 'Strenous':
+                        $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/4.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
+                        break;
+                    case 'Very Strenous':
+                        $side_info_bar .= '<span class="price">Difficulty : <span class="h6 line-1 number"><img src="' . IMAGE_PATH . 'static/meter/5.png" title="' . $pkgRec->difficulty . '" class="new-img4  "></span></span>';
+                        break;
+                }
+            }
+            $side_info_bar .= '
+                                    <!--<span class="price">Difficulty : <span class="h6 line-1 number">' . $pkgRec->difficulty . '</span></span>-->
+                                    <!--<span class="price">Price from <span class="h6 line-1 text-primary number">$ ' . $pkgRec->price . '</span></span>-->
+                                </div>
+                            </a>
+                            <span class="font600">Your chosen date <span class="required" title="required">*</span> </span>
+                            <div class="form-group form-spin-group mt-10">
+                                <div class="error-message-date"></div>
+                                ';
+            if (!empty($date)) {
+                $side_info_bar .= '<input type="text" class="form-control" id="datepicker-here" name="trip_date" data-language="en" value="' . $date . '" readonly/>
+                                    ';
+            } else {
+                $side_info_bar .= '<input type="text" class="form-control datepicker-here" id="datepicker-here" name="trip_date" data-language="en" placeholder="Choose Date"/>';
+            }
+            $side_info_bar .= '
+                            </div>
+                            <div class="form-group form-spin-group  mt-15 ">
+                                <label class="h6 font-sm">How many travellers?</label>
+                                <input type="text" class="form-control touch-spin-03 form-control-readonly" name="trip_pax" value="1" readonly/>
+                            </div>
+            ';
+            /*if ($max == 0) {
+                $side_info_bar .= '<span class="font600">Travellers to go</span>
+            <div class="form-group form-spin-group mt-10">
+            <input type="number" class="form-control" name="paxx"  placeholder="No. of pax" min="1" step="1" value="1"/>
+            </div>';
+            }
+            if ($max > 0) {
+                $side_info_bar .= '
+                            <div class="form-group form-spin-group  mt-15 ">
+                                <label class="h6 font-sm">How many guests?</label>
+                                <input type="text" class="form-control touch-spin-03 form-control-readonly" name="trip_pax" value="1" readonly/>
+                            </div>
+                ';
+            }*/
+            $siteRegulars = Config::find_by_id(1);
+    
+            $tellinked = '';
+            $telno = explode(",", $siteRegulars->contact_info);
+            $lastElement = array_shift($telno);
+            $tellinked .= '<a href="tel:' . $lastElement . '" target="_blank">' . $lastElement . '</a>';
+            foreach ($telno as $tel) {
+    
+                $tellinked .= ',<a href="tel:+977-' . $tel . '" target="_blank">' . $tel . '</a>';
+                if (end($telno) != $tel) {
+                    $tellinked .= '';
+                }
+            }
+            $side_info_bar .= '
+                            <!--<ul class="border-top mt-20 pt-15">
+                                <li class="clearfix">$3550 x 2 guests<span class="float-right">$251.98</span>
+                                </li>
+                                <li class="clearfix">Booking fee + tax<span class="float-right">$9.50</span>
+                                </li>
+                                <li class="clearfix pl-15">Book now &amp; Save<span
+                                        class="float-right text-primary">-$15</span></li>
+                                <li class="clearfix">Other fees<span
+                                        class="float-right text-success">Free</span></li>
+                                <li class="clearfix border-top font700 text-uppercase">
+                                    <div class="border-top mt-1">
+                                        <span>Total</span><span class="float-right text-dark">$248.58</span>
+                                    </div>
+                                </li>
+                            </ul>-->
+                        </div>
+                        <div class="box-bottom">
+                            <h6 class="">We are the best tour operator</h6>
+                            <p class="font-sm" style="color:#fff;font-size:14px;">For custom tour program, direct call <span class=""> ' . $tellinked . '</span>.
+                            </p>
+                        </div>
+                    </div>
+                </aside>
+            ';
+        }
+        
         $side_info_bar .= '
             <aside class="sticky-kit sidebar-wrapper no-border">
                 <div class="booking-box">
@@ -204,7 +313,7 @@ if (defined('BOOKTRIP_PAGE')) {
                                 <!--<span class="price">Price from <span class="h6 line-1 text-primary number">$ ' . $pkgRec->price . '</span></span>-->
                             </div>
                         </a>
-                        <span class="font600">Your chosen date</span>
+                        <span class="font600">Your chosen date <span class="required" title="required">*</span></span>
                         <div class="form-group form-spin-group mt-10">
                             <div class="error-message-date"></div>
                             ';

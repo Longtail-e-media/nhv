@@ -136,7 +136,7 @@ $customize .= '
                 <div class="col-12 col-md-12">
 
                     <div class="form-group">
-                        <label>Select Your Trip</label>
+                        <label>Select Your Trip <span class="required" title="required">*</span></label>
                         <select data-placeholder="Select Your Trip" class="chosen-the-basi form-control" tabindex="2" name="trip">
                             <option value="">Select Your Trip</option>';
 $tripRec = Package::get_packages();
@@ -152,7 +152,7 @@ $customize .= '
 
                 <div class="col-6 col-md-6 col-md-6">
                     <div class="form-group">
-                        <label>Trip Date</label>
+                        <label>Trip Date <span class="required" title="required">*</span></label>
                         <div class="row cols-3 gap-5">
                             <input type="text" name="trip_date" class="form-control datepicker-here" placeholder="Trip Date" data-language="en"/>
                         </div>
@@ -161,7 +161,7 @@ $customize .= '
 
                 <div class="col-6 col-md-6 col-md-6">
                     <div class="form-group">
-                        <label>No. Of Pax.</label>
+                        <label>No. Of Pax. <span class="required" title="required">*</span></label>
                          <input type="number" class="form-control" name="pax"  min="1" step="1" value="1" placeholder="No. of pax"/>
                         <!--<select data-placeholder="Select" name="pax" class="chosen-the-basi form-control" tabindex="2">
                             <option value="">Select</option>
@@ -179,26 +179,26 @@ $customize .= '
 
                 <div class="col-6 col-md-12">
                     <div class="form-group">
-                        <label>Full Name</label>
+                        <label>Full Name <span class="required" title="required">*</span></label>
                         <input type="text" name="full_name" class="form-control" placeholder="Full name"/>
                     </div>
                 </div>
 
                 <div class="col-6 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label>Email</label>
+                        <label>Email <span class="required" title="required">*</span></label>
                         <input type="email" name="email" class="form-control" placeholder="Email address"/>
                     </div>
                 </div>
                 <div class="col-6 col-md-6">
                     <div class="form-group">
-                        <label>Address</label>
+                        <label>Address <span class="required" title="required">*</span></label>
                         <input type="text" name="address" class="form-control" placeholder="Address"/>
                     </div>
                 </div>
                 <div class="col-6 col-md-6">
                     <div class="form-group">
-                        <label>Country</label>
+                        <label>Country <span class="required" title="required">*</span></label>
                         <select data-placeholder="Select" name="country" class="chosen-the-basi form-control countrySelect" tabindex="2" id="countrySelect">
                             <option value="">Select</option>';
 $contRec = Countries::find_all();
@@ -211,14 +211,14 @@ $customize .= '
                 </div>
                 <div class="col-12 col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label>Whatsapp</label>
+                        <label>Whatsapp <span class="required" title="required">*</span></label>
                         <input type="text" name="phone" class="form-control phone" placeholder="Whatsapp"/>
                     </div>
                 </div>
 
                 <div class="col-6 col-md-12">
                     <div class="form-group">
-                        <label>Your Question/Comments</label>
+                        <label>Your Question/Comments <span class="required" title="required">*</span></label>
                         <textarea class="form-control rounded-0" name="message" id="exampleFormControlTextarea2" rows="3"></textarea>
                     </div>
                 </div>

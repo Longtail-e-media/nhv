@@ -538,9 +538,9 @@ if (defined('PACKAGE_PAGE')) {
     $pkgRec = Package::find_by_slug($slug);
 
     if (!empty($pkgRec)) {
-
+        
         $destslug = Destination::field_by_id($pkgRec->destinationId, 'slug');
-
+    
         // getting avg rating
         $rating = Package::get_avg_rating($pkgRec->id);
         $reviews_total = Package::get_review_num($pkgRec->id);
@@ -630,7 +630,7 @@ if (defined('PACKAGE_PAGE')) {
                <!--<div class="slick-carousel-wrapper slick-hero-wrapper clearfix">
 					<div class="slick-carousel-inner">
 						<div class="slick-hero">-->
-                        	<div class="slider-collage detail-slide" style="padding-top:90px;">
+                        	<div class="slider-collage detail-slide">
                     <div class="main text-center">
                         <div class="container-fluid" id="gallery">
             ';
@@ -724,7 +724,7 @@ if (defined('PACKAGE_PAGE')) {
 					</div>
 				</div>-->
 				
-				<!--<div class="slider-collage detail-slide" style="padding-top:90px;">
+				<!--<div class="slider-collage detail-slide" style="padding-top:70px;">
                     <div class="main text-center">
                         <div class="container-fluid" id="gallery">
                             <div class="row image-row-1 room-images">
@@ -806,7 +806,7 @@ if (defined('PACKAGE_PAGE')) {
 				</div>
             ';
         }
-
+        
 
         $dsRec = Destination::find_by_slug($destslug);
         $respkg_detail .= '   
@@ -2137,9 +2137,9 @@ $jVars['module:package-ask-question-modal'] = $ask_question;
 
 // Fixed package for home
 $reshfix = '';
-// $sql = "SELECT MAX(pd.package_currency),MAX(pd.package_rate), MIN(pd.package_date) AS package_date, p.slug,p.group_size, p.title, p.difficulty,p.id, p.image,p.accomodation, p.tags, p.price, p.breif, p.days, p.gread, p.pdate, p.destinationId, p.activityId FROM tbl_package_date AS pd
-// INNER JOIN tbl_package AS p ON pd.package_id = p.id
-// WHERE
+// $sql = "SELECT MAX(pd.package_currency),MAX(pd.package_rate), MIN(pd.package_date) AS package_date, p.slug,p.group_size, p.title, p.difficulty,p.id, p.image,p.accomodation, p.tags, p.price, p.breif, p.days, p.gread, p.pdate, p.destinationId, p.activityId FROM tbl_package_date AS pd 
+// INNER JOIN tbl_package AS p ON pd.package_id = p.id 
+// WHERE 
 // p.status='1' AND pd.status='1' AND package_date>=CURDATE() GROUP BY pd.package_id ORDER BY package_date ASC LIMIT 6";
 $sql = "SELECT 
     MAX(pd.package_currency) AS package_currency,
@@ -2176,9 +2176,9 @@ GROUP BY pd.id
 HAVING remaining_seats > 0
 ORDER BY package_date ASC
 LIMIT 6;";
-// $sql = "SELECT MAX(pd.package_currency), MAX(pd.package_rate), MIN(pd.package_date) AS package_date, p.slug, p.title, p.image, p.tags, p.breif, p.days, p.gread, p.pdate, p.destinationId, p.activityId FROM tbl_package_date AS pd
-//     INNER JOIN tbl_package AS p ON pd.package_id = p.id
-//     WHERE
+// $sql = "SELECT MAX(pd.package_currency), MAX(pd.package_rate), MIN(pd.package_date) AS package_date, p.slug, p.title, p.image, p.tags, p.breif, p.days, p.gread, p.pdate, p.destinationId, p.activityId FROM tbl_package_date AS pd 
+//     INNER JOIN tbl_package AS p ON pd.package_id = p.id 
+//     WHERE 
 //     p.status='1' AND pd.status='1' AND package_date>=CURDATE() GROUP BY pd.package_id ORDER BY COUNT(package_date) ASC  LIMIT 6 ";
 $query = $db->query($sql);
 

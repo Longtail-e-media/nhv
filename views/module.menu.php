@@ -116,6 +116,24 @@ if ($menuRec):
                     padding:4px;
                     border: 3px solid #2a97af;
                 }
+                
+                @media(max-width:912px){
+                    .skiptranslate.goog-te-gadget {
+                        color: #fff;
+                        border-radius: 7px;
+                        margin-left: -1px;
+                        margin-right: -54px;
+                        color: transparent;
+                        height: 48px;
+                        margin-top: 13px;
+                    }
+                    .goog-te-gadget .goog-te-combo {
+                        padding: 4px;
+                        border: 3px solid #2a97af;
+                        z-index: 1;
+                        position: relative;
+                    }
+                }
             </style>
             <div class="language3 cappa-wrap-book">
                 <div class="google_translate" id="google_translate_element"></div>

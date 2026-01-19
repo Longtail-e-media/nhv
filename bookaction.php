@@ -52,7 +52,7 @@ if(isset($_POST['action']) and ($_POST['action']=='forcoment')):
 			  </tr>
 			</table>';
 
-		$mail = SMTPMailer();
+		$mail = new PHPMailer(); // defaults to using php "mail()"		
 		$mail->SetFrom($temail, $tname);
 		$mail->AddReplyTo($temail,$tname);
 		$mail->AddAddress($usermail, $sitename);
