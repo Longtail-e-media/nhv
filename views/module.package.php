@@ -257,7 +257,9 @@ $resfix = '';
 // INNER JOIN tbl_package AS p ON pd.package_id = p.id 
 // WHERE 
 // p.status='1' AND pd.status='1' AND package_date>=CURDATE() GROUP BY pd.package_id ORDER BY package_date ASC ";
-$sql = "SELECT 
+
+/*
+$sql = "SELECT
     MAX(pd.package_currency) AS package_currency,
     MAX(pd.package_rate) AS package_rate,
     MIN(pd.package_date) AS package_date,
@@ -281,15 +283,62 @@ $sql = "SELECT
     (pd.package_seats - IFNULL(SUM(b.trip_pax), 0)) AS remaining_seats
 FROM tbl_package_date AS pd
 INNER JOIN tbl_package AS p ON pd.package_id = p.id
-LEFT JOIN tbl_bookinginfo AS b 
+LEFT JOIN tbl_bookinginfo AS b
     ON b.pkg_id = p.id AND b.fixed_date_id = pd.id
-WHERE 
-    p.status = '1' 
-    AND pd.status = '1' 
+WHERE
+    p.status = '1'
+    AND pd.status = '1'
     AND pd.package_date >= CURDATE()
 GROUP BY pd.id
 HAVING remaining_seats > 0
 ORDER BY package_date ASC;";
+*/
+
+$sql = "
+SELECT 
+    pd.package_currency,
+    pd.package_rate,
+    pd.package_date,
+    p.slug,
+    p.group_size,
+    p.title,
+    p.difficulty,
+    p.id,
+    p.image,
+    p.accomodation,
+    p.tags,
+    p.price,
+    p.breif,
+    p.days,
+    p.gread,
+    p.pdate,
+    p.destinationId,
+    p.activityId,
+    pd.package_seats,
+    IFNULL(SUM(b.trip_pax), 0) AS total_booked,
+    (pd.package_seats - IFNULL(SUM(b.trip_pax), 0)) AS remaining_seats
+FROM tbl_package_date pd
+INNER JOIN tbl_package p 
+    ON pd.package_id = p.id
+LEFT JOIN tbl_bookinginfo b 
+    ON b.pkg_id = p.id AND b.fixed_date_id = pd.id
+INNER JOIN (
+    -- Find the closest available date per package
+    SELECT pd2.package_id, MIN(pd2.package_date) AS next_date
+    FROM tbl_package_date pd2
+    LEFT JOIN tbl_bookinginfo b2 
+        ON b2.fixed_date_id = pd2.id
+    WHERE pd2.status = '1' AND pd2.package_date >= CURDATE()
+    GROUP BY pd2.package_id
+) AS nearest
+    ON nearest.package_id = pd.package_id 
+    AND nearest.next_date = pd.package_date
+WHERE p.status = '1'
+GROUP BY pd.id
+HAVING remaining_seats > 0
+ORDER BY pd.package_date ASC;
+";
+
 $query = $db->query($sql);
 $totl = $db->num_rows($query);
 if (defined('FIXED_DEPATURE')) {
@@ -2141,7 +2190,8 @@ $reshfix = '';
 // INNER JOIN tbl_package AS p ON pd.package_id = p.id 
 // WHERE 
 // p.status='1' AND pd.status='1' AND package_date>=CURDATE() GROUP BY pd.package_id ORDER BY package_date ASC LIMIT 6";
-$sql = "SELECT 
+
+/*$sql = "SELECT
     MAX(pd.package_currency) AS package_currency,
     MAX(pd.package_rate) AS package_rate,
     MIN(pd.package_date) AS package_date,
@@ -2166,16 +2216,93 @@ $sql = "SELECT
     (pd.package_seats - IFNULL(SUM(b.trip_pax), 0)) AS remaining_seats
 FROM tbl_package_date AS pd
 INNER JOIN tbl_package AS p ON pd.package_id = p.id
-LEFT JOIN tbl_bookinginfo AS b 
+LEFT JOIN tbl_bookinginfo AS b
     ON b.pkg_id = p.id AND b.fixed_date_id = pd.id
-WHERE 
-    p.status = '1' 
-    AND pd.status = '1' 
+WHERE
+    p.status = '1'
+    AND pd.status = '1'
     AND pd.package_date >= CURDATE()
 GROUP BY pd.id
 HAVING remaining_seats > 0
 ORDER BY package_date ASC
-LIMIT 6;";
+LIMIT 6;";*/
+
+$sql = "
+SELECT 
+    pd.package_currency,
+    pd.package_rate,
+    pd.package_date,
+    p.slug,
+    p.group_size,
+    p.title,
+    p.difficulty,
+    p.id,
+    p.image,
+    p.accomodation,
+    p.tags,
+    p.color,
+    p.price,
+    p.breif,
+    p.days,
+    p.gread,
+    p.pdate,
+    p.destinationId,
+    p.activityId,
+    pd.package_seats,
+    booked.total_booked,
+    (pd.package_seats - booked.total_booked) AS remaining_seats
+FROM tbl_package_date pd
+
+INNER JOIN tbl_package p 
+    ON pd.package_id = p.id
+
+INNER JOIN (
+    SELECT 
+        pd2.id,
+        pd2.package_id,
+        pd2.package_date,
+        pd2.package_seats,
+        IFNULL(SUM(b2.trip_pax), 0) AS total_booked
+    FROM tbl_package_date pd2
+    LEFT JOIN tbl_bookinginfo b2 
+        ON b2.fixed_date_id = pd2.id
+    WHERE 
+        pd2.status = '1'
+        AND pd2.package_date >= CURDATE()
+    GROUP BY pd2.id
+) booked 
+    ON booked.id = pd.id
+
+INNER JOIN (
+    SELECT package_id, MIN(package_date) AS next_available_date
+    FROM (
+        SELECT 
+            pd3.id,
+            pd3.package_id,
+            pd3.package_date,
+            pd3.package_seats,
+            IFNULL(SUM(b3.trip_pax), 0) AS total_booked
+        FROM tbl_package_date pd3
+        LEFT JOIN tbl_bookinginfo b3 
+            ON b3.fixed_date_id = pd3.id
+        WHERE 
+            pd3.status = '1'
+            AND pd3.package_date >= CURDATE()
+        GROUP BY pd3.id
+    ) temp
+    WHERE (package_seats - total_booked) > 0
+    GROUP BY package_id
+) nearest
+    ON nearest.package_id = pd.package_id
+    AND nearest.next_available_date = pd.package_date
+
+WHERE 
+    p.status = '1'
+    AND (pd.package_seats - booked.total_booked) > 0
+
+ORDER BY pd.package_date ASC;
+";
+
 // $sql = "SELECT MAX(pd.package_currency), MAX(pd.package_rate), MIN(pd.package_date) AS package_date, p.slug, p.title, p.image, p.tags, p.breif, p.days, p.gread, p.pdate, p.destinationId, p.activityId FROM tbl_package_date AS pd 
 //     INNER JOIN tbl_package AS p ON pd.package_id = p.id 
 //     WHERE 
