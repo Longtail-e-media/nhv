@@ -24,6 +24,12 @@ function className_metatags()
         exit;
     endif;
 
+    if ($fileName == 'fix_dept'):
+        $className = 'Nepal';
+        return $className;
+        exit;
+    endif;
+
     if ($fileName != 'index'):
         $className = ucfirst(strtolower($fileName));
         return $className;
