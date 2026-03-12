@@ -295,232 +295,176 @@ ORDER BY package_date ASC;";
 */
 
 $sql = "
-SELECT 
-    pd.package_currency,
-    pd.package_rate,
-    pd.package_date,
-    p.slug,
-    p.group_size,
-    p.title,
-    p.difficulty,
-    p.id,
-    p.image,
-    p.accomodation,
-    p.tags,
-    p.price,
-    p.breif,
-    p.days,
-    p.gread,
-    p.pdate,
-    p.destinationId,
-    p.activityId,
-    pd.package_seats,
-    IFNULL(SUM(b.trip_pax), 0) AS total_booked,
-    (pd.package_seats - IFNULL(SUM(b.trip_pax), 0)) AS remaining_seats
-FROM tbl_package_date pd
-INNER JOIN tbl_package p 
-    ON pd.package_id = p.id
-LEFT JOIN tbl_bookinginfo b 
-    ON b.pkg_id = p.id AND b.fixed_date_id = pd.id
-INNER JOIN (
-    -- Find the closest available date per package
-    SELECT pd2.package_id, MIN(pd2.package_date) AS next_date
-    FROM tbl_package_date pd2
-    LEFT JOIN tbl_bookinginfo b2 
-        ON b2.fixed_date_id = pd2.id
-    WHERE pd2.status = '1' AND pd2.package_date >= CURDATE()
-    GROUP BY pd2.package_id
-) AS nearest
-    ON nearest.package_id = pd.package_id 
-    AND nearest.next_date = pd.package_date
-WHERE p.status = '1'
-GROUP BY pd.id
-HAVING remaining_seats > 0
-ORDER BY pd.package_date ASC;
+    SELECT 
+        pd.package_currency,
+        pd.package_rate,
+        pd.package_date,
+        p.slug,
+        p.group_size,
+        p.title,
+        p.difficulty,
+        p.id,
+        p.image,
+        p.accomodation,
+        p.tags,
+        p.price,
+        p.breif,
+        p.days,
+        p.gread,
+        p.pdate,
+        p.destinationId,
+        p.activityId,
+        pd.package_seats,
+        IFNULL(SUM(b.trip_pax), 0) AS total_booked,
+        (pd.package_seats - IFNULL(SUM(b.trip_pax), 0)) AS remaining_seats
+    FROM tbl_package_date pd
+    INNER JOIN tbl_package p 
+        ON pd.package_id = p.id
+    LEFT JOIN tbl_bookinginfo b 
+        ON b.pkg_id = p.id AND b.fixed_date_id = pd.id
+    INNER JOIN (
+        -- Find the closest available date per package
+        SELECT pd2.package_id, MIN(pd2.package_date) AS next_date
+        FROM tbl_package_date pd2
+        LEFT JOIN tbl_bookinginfo b2 
+            ON b2.fixed_date_id = pd2.id
+        WHERE pd2.status = '1' AND pd2.package_date >= CURDATE()
+        GROUP BY pd2.package_id
+    ) AS nearest
+        ON nearest.package_id = pd.package_id 
+        AND nearest.next_date = pd.package_date
+    WHERE p.status = '1'
+    GROUP BY pd.id
+    HAVING remaining_seats > 0
+    ORDER BY p.destinationId ASC, pd.package_date ASC;
 ";
 
 $query = $db->query($sql);
 $totl = $db->num_rows($query);
+
 if (defined('FIXED_DEPATURE')) {
     if ($totl > 0) {
+        $current_destination = '';
+        $resfix = '
+            <style>
+                .hgt-230{height:230px !important;}
+                .new-img3.tt{top:54%;}
+            </style>
+        ';
+
         while ($FixRow = $db->fetch_object($query)) {
-            $file_path = SITE_ROOT . 'images/package/' . $FixRow->image;
-            if (file_exists($file_path) and !empty($FixRow->title)) {
-                $activity = Activities::field_by_id($FixRow->activityId, 'title');
-                $resfix .= '
-                    <!--<div class="col-md-4">
-                    <div class="to-ho-hotel-con"><a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
-                        <div class="to-ho-hotel-con-1">
-                            <div class="hom-hot-av-tic">
-                                ' . $activity . ' 
-                            </div>
-                            <img src="' . IMAGE_PATH . 'package/' . $FixRow->image . '" alt="' . $FixRow->title . '">
-                        </div>
-                        <div class="to-ho-hotel-con-23">
-                            <div class="to-ho-hotel-con-2">
-                                <h4>' . $FixRow->title . '</h4>
-                            </div></a>
-                            <div class="to-ho-hotel-con-3">
-                                <ul>
-                                    <li>
-                                        Duration : ' . $FixRow->days . ' <br />
-                                        Difficulty : ' . set_na($FixRow->difficulty) . '
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="to-ho-hotel-con-4">
-                                <a href="' . BASE_URL . 'book/package/' . $FixRow->slug . '" class="link-btn hom-hot-book-btn">Book Now</a>
-                                <a href="' . BASE_URL . 'package/' . $FixRow->slug . '" class="link-btn hom-hot-view-btn">View More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-                ';
-                $img = $tag = '';
-                // getting image
-                $file_path = SITE_ROOT . "images/package/" . $FixRow->image;
-                $img = (!empty($FixRow->image) and file_exists($file_path)) ? IMAGE_PATH . "package/" . $FixRow->image : $img = IMAGE_PATH . "static/home-featured.jpg";
+            $destination_name = Destination::field_by_id($FixRow->destinationId, 'title');
 
-                // getting tags
-                $tag = (!empty($FixRow->tags)) ? '<span class="ribbon_3 ' . $FixRow->color . '">' . $FixRow->tags . '</span>' : '';
+            // If destination changes, print heading
+            if ($current_destination != $destination_name) {
 
-                // getting destination
-                $destination_name = Destination::field_by_id($FixRow->destinationId, 'title');
-
-                // getting avg rating
-                $rating = Package::get_avg_rating($FixRow->id);
-
-                $price_text = '';
-                if (!empty($FixRow->price) and (empty($FixRow->offer_price))) {
-                    $price_text = '<p class="home-price">Starting USD ' . $FixRow->price . '</p>';
-                }
-                if (!empty($FixRow->offer_price)) {
-                    $price_text = '<p class="home-price">Starting USD <del>' . $FixRow->price . '</del> ' . $FixRow->offer_price . '</p>';
+                if ($current_destination != '') {
+                    $resfix .= '</div></div>'; // close previous row + destination
                 }
 
                 $resfix .= '
-                    <div class="col">
-                        <figure class="tour-grid-item-01 aw">
-                            <a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
-                                <style>
-                                    .hgt-230{height:230px !important;}
-                                    .new-img3.tt{top:54%;}
-                                </style>
-                                <div class="image">
-                                    <img src="' . $img . '" alt="' . $FixRow->title . '" class="hgt-230"/>
-                                    ' . $price_text . '
-                                </div>
-                                <figcaption class="content ">
-                                    ' . $tag . '
-                                    <h5 class="">' . substr($FixRow->title, 0, 48) . '</h5>
+                    <div class="departure-destination mb-50">
+                        <h3 class="mb-4">'.$destination_name.'</h3>
+                        <div class="row">
                 ';
 
-                $start_date = date('F d, Y', strtotime($FixRow->package_date));
-                $end_date = date('F d, Y', strtotime($FixRow->package_date . ' + ' . $FixRow->days . ' days'));
-                // $count=packagedate::getTotalSub($FixRow->id);
-                // $total = !empty($count) ? $count : 0;
-                //  @$diff = $FixRow->package_seats - $total;
-                $sqla = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$FixRow->id AND fixed_date_id=$FixRow->id";
-                $resa = $db->fetch_array($db->query($sqla));
-                $totala = !empty($resa['total']) ? $resa['total'] : 0;
-                // pr($diffa);
-                @$diffa = $FixRow->package_seats - $totala;
-                // pr($FixRow);
-                $difffa = $diffa;
-                if ($diffa > 0) {
-                    $resfix .= '  
-                            <ul class="item-meta mt-15">
-                                <li><span class="font700 h6">Start/End Trip:</span> <span class="font400 h6">' . $start_date . ' - ' . $end_date . '</span></li>
-                            </ul>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <ul class="item-meta mt-15">
-                                        <li>
-                                            <!--<i class="elegent-icon-pin_alt text-warning"></i>--> 
-                                            <i class="far fa-map pr-2"></i>' . $destination_name . '
-                                        </li>
-                                        <!--<li>
-                                            <div class="rating-item rating-sm rating-inline clearfix">
-                                                <div class="rating-icons">
-                                                    <input type="hidden" class="rating"
-                                                           data-filled="rating-icon ri-star rating-rated"
-                                                           data-empty="rating-icon ri-star-empty" data-fractions="2"
-                                                           data-readonly value="' . $rating . '"/>
-                                                </div>
-                                            </div>
-                                        </li>-->    
-                                        <li><span class="font700 h6"><i class="far fa-hourglass"></i>' . $FixRow->days . ' Days</span></li>
-                                    </ul>
-                                </div>
-                    ';
-
-                    $resfix .= '
-                            <div class="col-md-6">
-                                <ul class="item-meta mt-15">
-                                    <li><span class="font700 h6">seats left:</span> <span class="font400 h6">' . $diffa . '</span></li>
-                                </ul>
-                               <form method="post" action="' . BASE_URL . 'book/package/' . $FixRow->slug . '">
-                                    <input type="hidden" name="date" value="' . date('Y-m-d', strtotime($FixRow->package_date)) . '">
-                                    <input type="hidden" name="price" value="' . $FixRow->package_rate . '">
-                                    <input type="hidden" name="fixed_date_id" value="' . $FixRow->id . '">
-                                    <input type="hidden" name="max_pax" value="' . $difff . '">
-                                    <button type="submit" class="btn btn-primary btn-block btn-sm mt-3 btn-contact-page">Book now</button>
-                                </form>
-                            </div>
-                        </div>
-                    ';
-                }
-
-                $resfix .= '
-                                <!-- <ul class="item-meta mt-15">
-                                    <li><span class="font700 h6">' . $FixRow->days . ' Days</span></li>
-                                    <li>
-                                        <p class="mt-3">Price from <span class="h6 line-1 text-primary font16">$ ' . $FixRow->price . '</span>
-                                            <span class="text-muted mr-5"></span></p>
-                                    </li>
-                                </ul>-->
-                            </figcaption>';
-
-                if (!empty($FixRow->accomodation)) {
-                    $resfix .= '<p class="featured-trip1 d-none">';
-                    $routes = explode(',', $FixRow->accomodation);
-                    $limitedRoutes = array_slice($routes, 0, 4); // limit to first 4 items
-                    $lastRoute = end($limitedRoutes);
-
-                    foreach ($limitedRoutes as $route) {
-                        $resfix .= ($lastRoute == $route) ? $route : $route . ' -> ';
-                    }
-
-                    $resfix .= '</p>';
-                }
-
-                if (!empty($FixRow->difficulty)) {
-                    switch ($FixRow->difficulty) {
-                        case 'Easy':
-                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/1.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                            break;
-                        case 'Moderate':
-                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/2.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                            break;
-                        case 'Moderate To Strenous':
-                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/3.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                            break;
-                        case 'Strenous':
-                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/4.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                            break;
-                        case 'Very Strenous':
-                            $resfix .= '<img src="' . IMAGE_PATH . 'static/meter/5.png" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">';
-                            break;
-                    }
-                }
-                $resfix .= '    
-                            </a>
-                        </figure>
-                    </div>
-                ';
+                $current_destination = $destination_name;
             }
+
+            // Image fallback
+            $file_path = SITE_ROOT . "images/package/" . $FixRow->image;
+            $img = (!empty($FixRow->image) && file_exists($file_path))
+                ? IMAGE_PATH . "package/" . $FixRow->image
+                : IMAGE_PATH . "static/home-featured.jpg";
+
+            $img = (!empty($FixRow->image) and file_exists($file_path)) ? IMAGE_PATH . "package/" . $FixRow->image : $img = IMAGE_PATH . "static/home-featured.jpg";
+
+            // getting tags
+            $tag = (!empty($FixRow->tags)) ? '<span class="ribbon_3 ' . $FixRow->color . '">' . $FixRow->tags . '</span>' : '';
+
+            // Dates
+            $start_date = date('F d, Y', strtotime($FixRow->package_date));
+            $end_date = date('F d, Y', strtotime($FixRow->package_date . ' + ' . $FixRow->days . ' days'));
+
+            // Remaining seats
+            $sqla = "SELECT SUM(trip_pax) total FROM tbl_bookinginfo WHERE pkg_id=$FixRow->id AND fixed_date_id=$FixRow->id";
+            $resa = $db->fetch_array($db->query($sqla));
+            $diffa = $FixRow->package_seats - (!empty($resa['total']) ? $resa['total'] : 0);
+
+            if ($diffa <= 0) continue; // skip if no seats
+
+            $price_text = '';
+            if (!empty($FixRow->price) and (empty($FixRow->offer_price))) {
+                $price_text = '<p class="home-price">Starting USD ' . $FixRow->price . '</p>';
+            }
+            if (!empty($FixRow->offer_price)) {
+                $price_text = '<p class="home-price">Starting USD <del>' . $FixRow->price . '</del> ' . $FixRow->offer_price . '</p>';
+            }
+
+            // Difficulty meter
+            $difficulty_img = '';
+            switch($FixRow->difficulty){
+                case 'Easy': $difficulty_img = IMAGE_PATH.'static/meter/1.png'; break;
+                case 'Moderate': $difficulty_img = IMAGE_PATH.'static/meter/2.png'; break;
+                case 'Moderate To Strenous': $difficulty_img = IMAGE_PATH.'static/meter/3.png'; break;
+                case 'Strenous': $difficulty_img = IMAGE_PATH.'static/meter/4.png'; break;
+                case 'Very Strenous': $difficulty_img = IMAGE_PATH.'static/meter/5.png'; break;
+            }
+
+            // Routes
+            $routes_text = '';
+            if (!empty($FixRow->accomodation)) {
+                $routes = explode(',', $FixRow->accomodation);
+                $limitedRoutes = array_slice($routes, 0, 4);
+                $routes_text = '<p class="featured-trip1 d-none">'.implode(' -> ', $limitedRoutes).'</p>';
+            }
+
+            $resfix .= '
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <figure class="tour-grid-item-01 aw">
+                        <a href="' . BASE_URL . 'package/' . $FixRow->slug . '">
+                            <div class="image">
+                                <img src="' . $img . '" alt="' . $FixRow->title . '" class="hgt-230"/>
+                                ' . $price_text . '
+                            </div>
+                            <figcaption class="content ">
+                                ' . $tag . '
+                                <h5 class="">' . substr($FixRow->title, 0, 48) . '</h5>
+                                <ul class="item-meta mt-15">
+                                    <li><span class="font700 h6">Start/End Trip:</span> <span class="font400 h6">' . $start_date . ' - ' . $end_date . '</span></li>
+                                </ul>
+                        
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="item-meta mt-15">
+                                            <li><i class="far fa-map pr-2"></i>' . $destination_name . '</li>
+                                            <li><span class="font700 h6"><i class="far fa-hourglass"></i>' . $FixRow->days . ' Days</span></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <ul class="item-meta mt-15">
+                                            <li><span class="font700 h6">seats left:</span> <span class="font400 h6">' . $diffa . '</span></li>
+                                        </ul>
+                                       <form method="post" action="' . BASE_URL . 'book/package/' . $FixRow->slug . '">
+                                            <input type="hidden" name="date" value="' . date('Y-m-d', strtotime($FixRow->package_date)) . '">
+                                            <input type="hidden" name="price" value="' . $FixRow->package_rate . '">
+                                            <input type="hidden" name="fixed_date_id" value="' . $FixRow->id . '">
+                                            <input type="hidden" name="max_pax" value="' . $diffa . '">
+                                            <button type="submit" class="btn btn-primary btn-block btn-sm mt-3 btn-contact-page">Book now</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </figcaption>
+                            ' . $routes_text . '
+                            ' . (!empty($difficulty_img) ? '<img src="' . $difficulty_img . '" class="new-img3 tt" title="' . $FixRow->difficulty . '" alt="Difficulty">' : '') . '
+                        </a>
+                    </figure>
+                </div>
+            ';
         }
+
+        $resfix .= '</div></div>';
     }
 }
 
