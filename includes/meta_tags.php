@@ -25,7 +25,7 @@ function className_metatags()
     endif;
 
     if ($fileName == 'fix_dept'):
-        $className = 'Nepal';
+        $className = 'Fixed Departures';
         return $className;
         exit;
     endif;
