@@ -776,27 +776,50 @@ if (defined('PACKAGE_PAGE')) {
             ';
         } else {
             $respkg_detail .= '
-                <div class="slick-carousel-wrapper slick-hero-wrapper clearfix">
-					<div class="slick-carousel-inner">
-						<div class="slick-hero">
-                            <div class="slick-item">
-                                <div class="image">
-                                    <img src="' . IMAGE_PATH . 'static/package/7.jpg" alt="' . $pkgRec->title . '" />
+                <div class="slider-collage detail-slide">
+                    <div class="main text-center">
+                        <div class="container-fluid" id="gallery">
+                            <div class="row image-row-1 room-images">
+                                <div class="col-md-3 images" style="display: block;">
+                                    <a href="' . IMAGE_PATH . 'static/package/7.jpg" data-src="' . IMAGE_PATH . 'static/package/7.jpg">
+                                        <img src="' . IMAGE_PATH . 'static/package/7.jpg" width="100%" class="img-thumbnail" alt="Mount Kailash">
+                                    </a>
+                                </div>
+                            
+                                <div class="col-md-3 images" style="display: block;">
+                                    <a href="' . IMAGE_PATH . 'static/package/6.jpg" data-src="' . IMAGE_PATH . 'static/package/6.jpg">
+                                        <img src="' . IMAGE_PATH . 'static/package/6.jpg" width="100%" class="img-thumbnail" alt="Mount Kailash">
+                                    </a>
+                                </div>
+                            
+                                <div class="col-md-6 images" style="display: block;">
+                                    <a href="' . IMAGE_PATH . 'static/package/5.jpg" data-src="' . IMAGE_PATH . 'static/package/5.jpg">
+                                        <img src="' . IMAGE_PATH . 'static/package/5.jpg" width="100%" class="img-thumbnail" alt="Mount Kailash">
+                                    </a>
                                 </div>
                             </div>
-                            <div class="slick-item">
-                                <div class="image">
-                                    <img src="' . IMAGE_PATH . 'static/package/6.jpg" alt="' . $pkgRec->title . '" />
+                            <div class="row room-images room-next-images">
+                                <div class="col-md-6 images" style="display: block;">
+                                    <a href="' . IMAGE_PATH . 'static/package/7.jpg" data-src="' . IMAGE_PATH . 'static/package/7.jpg">
+                                        <img src="' . IMAGE_PATH . 'static/package/7.jpg" width="100%" class="img-thumbnail" alt="Mount Kailash">
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="slick-item">
-                                <div class="image">
-                                    <img src="' . IMAGE_PATH . 'static/package/5.jpg" alt="' . $pkgRec->title . '" />
+                            
+                                <div class="col-md-3 images" style="display: block;">
+                                    <a href="' . IMAGE_PATH . 'static/package/6.jpg" data-src="' . IMAGE_PATH . 'static/package/6.jpg">
+                                        <img src="' . IMAGE_PATH . 'static/package/6.jpg" width="100%" class="img-thumbnail" alt="Mount Kailash">
+                                    </a>
+                                </div>
+                            
+                                <div class="col-md-3 images" style="display: block;">
+                                    <a href="' . IMAGE_PATH . 'static/package/5.jpg" data-src="' . IMAGE_PATH . 'static/package/5.jpg">
+                                        <img src="' . IMAGE_PATH . 'static/package/5.jpg" width="100%" class="img-thumbnail" alt="Mount Kailash">
+                                    </a>
                                 </div>
                             </div>
                         </div>
-					</div>
-				</div>
+                    </div>
+                </div> 
             ';
         }
         
