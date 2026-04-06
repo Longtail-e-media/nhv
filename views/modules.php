@@ -55,7 +55,7 @@ $jVars['forntJs']  = "";
 
 /* For Front CSS */
 $initialCssFiles = array(
-						 FRONT_CSS."bootstrap.css"
+						 FRONT_CSS."custom-themes.css",
 						);
 for($i = 0; $i < count($initialCssFiles); $i++)
 {

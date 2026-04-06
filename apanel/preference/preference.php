@@ -238,11 +238,11 @@ $moduleFoldername = "";		// Image folder name
             <div class="form-row">
                 <div class="form-label col-md-2">
                     <label for="">
-                        Schema.org :
+                        Custom Style :
                     </label>
                 </div>                
                 <div class="form-input col-md-6">
-                    <textarea placeholder="Schema.org" name="headers" id="headers" class=""><?php echo !empty($PrefeRow->headers)?$PrefeRow->headers:"";?></textarea>
+                    <textarea name="headers" id="headers" class="large-textarea"><?php echo !empty($PrefeRow->headers)?$PrefeRow->headers:"";?></textarea>
                 </div>                
             </div>
 

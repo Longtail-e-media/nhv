@@ -49,7 +49,7 @@
 			$record->site_description	= $_REQUEST['site_description'];
 			$record->linksrc 		= $_REQUEST['linksrc'];
 			$record->google_anlytics	= $_REQUEST['google_anlytics'];	
-			$record->headers	= $_REQUEST['headers'];		
+			$record->headers 			= $_REQUEST['headers'];		
 			$record->action 			= '0';
 
 			if(!empty($_REQUEST['imageArrayname'])):
@@ -64,6 +64,12 @@
 
 			$db->begin();
 			if($record->save()):$db->commit();
+				$siteRegulars 	= Config::find_by_id(1);
+    			$content = $siteRegulars->headers;
+    			$fp = fopen($_SERVER['DOCUMENT_ROOT']."/".SITE_FOLDER. "/css/front/custom-themes.css","wb");
+    			fwrite($fp,$content);
+    			fclose($fp);
+				
 			   $message  = sprintf($GLOBALS['basic']['changesSaved_'], "Config '".$record->sitetitle."'");
 			   echo json_encode(array("action"=>"success","message"=>$message));
 			   log_action($message,1,4);
